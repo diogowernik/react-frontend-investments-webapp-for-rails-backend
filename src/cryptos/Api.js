@@ -107,6 +107,7 @@ const saveCrypto = (data, id=null) => {
   return fetch(apiUrl, {
     method: apiMethod,
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
     body: body
