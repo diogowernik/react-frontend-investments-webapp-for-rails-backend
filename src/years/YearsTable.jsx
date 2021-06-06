@@ -1,0 +1,47 @@
+import React, { Component } from 'react'
+import { Link } from "react-router-dom"
+import { Table } from 'reactstrap'
+
+class YearsTable extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      years: props.years
+    }
+  }
+
+  render() {
+    const years = this.state.years
+    if (years.length === 0) {
+      return <div></div>
+    } else {
+      return (
+        <Table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Body</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {years.map(year => (
+              <tr key={year.id}>
+                <td>{year.id}</td>
+                <td>{year.title}</td>
+                <td>{year.body}</td>
+                <td>
+                  <Link className="btn btn-success" to={`/years/${year.id}/edit`}>Edit</Link>{' '}
+                  <Link className="btn btn-danger" to={`/years/${year.id}/delete`}>Delete</Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      )
+    }
+  }
+}
+
+export default YearsTable
