@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
-const Api = require('./Api.js')
+const Api = require('./YearApi.js')
 
 class YearForm extends Component {
   constructor(props) {

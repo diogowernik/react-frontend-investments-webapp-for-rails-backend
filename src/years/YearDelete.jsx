@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 
-const Api = require('./Api.js')
+const Api = require('./YearApi.js')
 class YearDelete extends Component {
   constructor(props) {
     super(props)
