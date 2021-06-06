@@ -93,7 +93,7 @@ const getYear = (id) => {
 
 const saveYear = (data, id=null) => {
   let apiUrl = `${apiHost}/api/years`
-  let apiMethod = 'year'
+  let apiMethod = 'post'
   if (id) {
     apiUrl = `${apiUrl}/${id}`
     apiMethod = 'put'
