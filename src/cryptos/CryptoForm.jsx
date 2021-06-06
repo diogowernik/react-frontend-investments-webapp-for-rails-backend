@@ -14,7 +14,7 @@ class CryptoForm extends Component {
         title: '',
         slug: '',
         coingecko_id: '',
-        ticker: '',
+        ticker: ''
       },
       redirect: null,
       errors: []
@@ -52,7 +52,7 @@ class CryptoForm extends Component {
 
   setTicker(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('ticker_id', newVal)
+    this.setFieldState('ticker', newVal)
   }
 
   setFieldState(field, newVal) {
@@ -68,9 +68,9 @@ class CryptoForm extends Component {
 
     let crypto = {
       title: this.state.crypto.title,
-      slug: this.state.year.slug,
-      coingecko_id: this.state.year.coingecko_id,
-      ticker: this.state.year.ticker,
+      slug: this.state.crypto.slug,
+      coingecko_id: this.state.crypto.coingecko_id,
+      ticker: this.state.crypto.ticker,
     }
 
     Api.saveCrypto(crypto, this.state.crypto.id)
