@@ -15,6 +15,7 @@ import YearDelete from './years/YearDelete'
 import Cryptos from './cryptos/Cryptos'
 import CryptoForm from './cryptos/CryptoForm'
 import CryptoDelete from './cryptos/CryptoDelete'
+import CryptoShow from './cryptos/CryptoShow'
 
 class App extends Component {
   render() {
@@ -37,6 +38,7 @@ class App extends Component {
           <Route exact path='/cryptos/new' component={CryptoForm} />
           <Route exact path="/cryptos/:id/edit" render={(routeProps) => ( <CryptoForm {...routeProps} /> )} />
           <Route exact path="/cryptos/:id/delete" render={(routeProps) => ( <CryptoDelete {...routeProps} /> )} />
+          <Route exact path="/cryptos/:id" render={(routeProps) => ( <CryptoShow {...routeProps} /> )} />
 
 
         </div>
