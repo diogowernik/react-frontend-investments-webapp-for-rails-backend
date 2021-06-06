@@ -21,7 +21,9 @@ class CryptosTable extends Component {
             <tr>
               <th>ID</th>
               <th>Title</th>
-              <th>Body</th>
+              <th>Slug</th>
+              <th>Ticker</th>
+              <th>Coingecko Id</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -30,7 +32,9 @@ class CryptosTable extends Component {
               <tr key={crypto.id}>
                 <td>{crypto.id}</td>
                 <td>{crypto.title}</td>
-                <td>{crypto.body}</td>
+                <td>{crypto.slug}</td>
+                <td>{crypto.ticker}</td>
+                <td>{crypto.coingecko_id}</td>
                 <td>
                   <Link className="btn btn-success" to={`/cryptos/${crypto.id}/edit`}>Edit</Link>{' '}
                   <Link className="btn btn-danger" to={`/cryptos/${crypto.id}/delete`}>Delete</Link>

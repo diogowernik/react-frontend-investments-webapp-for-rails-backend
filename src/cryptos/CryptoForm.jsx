@@ -12,12 +12,18 @@ class CryptoForm extends Component {
       crypto: {
         id: this.getCryptoId(props),
         title: '',
+        slug: '',
+        coingecko_id: '',
+        ticker: '',
       },
       redirect: null,
       errors: []
     }
 
     this.setTitle = this.setTitle.bind(this)
+    this.setSlug = this.setSlug.bind(this)
+    this.setCoingecko_id = this.setCoingecko_id.bind(this)
+    this.setTicker = this.setTicker.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -34,6 +40,21 @@ class CryptoForm extends Component {
     this.setFieldState('title', newVal)
   }
 
+  setSlug(event) {
+    let newVal = event.target.value || ''
+    this.setFieldState('slug', newVal)
+  }
+
+  setCoingecko_id(event) {
+    let newVal = event.target.value || ''
+    this.setFieldState('coingecko_id', newVal)
+  }
+
+  setTicker(event) {
+    let newVal = event.target.value || ''
+    this.setFieldState('ticker_id', newVal)
+  }
+
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
@@ -47,6 +68,9 @@ class CryptoForm extends Component {
 
     let crypto = {
       title: this.state.crypto.title,
+      slug: this.state.year.slug,
+      coingecko_id: this.state.year.coingecko_id,
+      ticker: this.state.year.ticker,
     }
 
     Api.saveCrypto(crypto, this.state.crypto.id)
@@ -112,6 +136,18 @@ class CryptoForm extends Component {
                 <FormGroup>
                   <Label for="title">Title</Label>
                   <Input type="text" name="title" id="title" value={crypto.title} placeholder="Enter title" onChange={this.setTitle} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="slug">Slug</Label>
+                  <Input type="text" name="slug" id="slug" value={crypto.slug} placeholder="Enter slug" onChange={this.setSlug} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="coingecko_id">Coingecko</Label>
+                  <Input type="text" name="coingecko_id" id="coingecko_id" value={crypto.coingecko_id} placeholder="Enter coingecko_id" onChange={this.setCoingecko_id} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="ticker">Ticker</Label>
+                  <Input type="text" name="ticker" id="ticker" value={crypto.ticker} placeholder="Enter ticker" onChange={this.setTicker} />
                 </FormGroup>
                 <Button color="success">Submit</Button>
               </Form>
