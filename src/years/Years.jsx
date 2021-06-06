@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import YearsTable from './YearsTable'
 
-const Api = require('./YearApi.js')
+const Api = require('./Api.js')
 
 class Years extends Component {
   constructor(props) {

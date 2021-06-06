@@ -14,7 +14,7 @@ const collectErrors = (response) => {
     return errors
   }
 
-  const fields = Object.keys(response)
+const fields = Object.keys(response)
   fields.forEach(field => {
     const prefix = capitalizeFirstLetter(field)
     response[field].forEach(message => {
