@@ -96,7 +96,12 @@ class CryptoForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3>{crypto.title}</h3>
+              <h3 className="mt-3 mb-3">{crypto.title}</h3>
+              <p>
+                <b>Id Coingecko:</b> {crypto.coingecko_id} <br />
+                <b>Url:</b> https://meusite.com/{crypto.slug} <br />
+                <b>Ticker:</b> {crypto.ticker}                 
+              </p>
 
               {errors.length > 0 &&
                 <div>

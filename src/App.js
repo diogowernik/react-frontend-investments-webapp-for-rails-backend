@@ -36,8 +36,8 @@ class App extends Component {
 
           <Route exact path='/cryptos' component={Cryptos} />
           <Route exact path='/cryptos/new' component={CryptoForm} />
-          <Route exact path="/cryptos/:id/edit" render={(routeProps) => ( <CryptoForm {...routeProps} /> )} />
-          <Route exact path="/cryptos/:id/delete" render={(routeProps) => ( <CryptoDelete {...routeProps} /> )} />
+          <Route exact path="/crypto/:id/edit" render={(routeProps) => ( <CryptoForm {...routeProps} /> )} />
+          <Route exact path="/crypto/:id/delete" render={(routeProps) => ( <CryptoDelete {...routeProps} /> )} />
           <Route exact path="/crypto/:id" render={(routeProps) => ( <CryptoShow {...routeProps} /> )} />
 
 

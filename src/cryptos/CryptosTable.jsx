@@ -36,8 +36,9 @@ class CryptosTable extends Component {
                 <td>{crypto.ticker}</td>
                 <td>{crypto.coingecko_id}</td>
                 <td>
-                  <Link className="btn btn-success" to={`/cryptos/${crypto.id}/edit`}>Edit</Link>{' '}
-                  <Link className="btn btn-danger" to={`/cryptos/${crypto.id}/delete`}>Delete</Link>
+                  <Link className="btn btn-primary" to={`/crypto/${crypto.id}`}>View</Link>{' '}
+                  <Link className="btn btn-success" to={`/crypto/${crypto.id}/edit`}>Edit</Link>{' '}
+                  <Link className="btn btn-danger" to={`/crypto/${crypto.id}/delete`}>Delete</Link>
                 </td>
               </tr>
             ))}
