@@ -1,4 +1,5 @@
-const apiHost = 'http://localhost:3000'
+//const apiHost = 'http://localhost:3000'
+const apiHost = 'https://api.miz.finance'
 
 // TODO: base cryptos url
 
