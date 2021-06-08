@@ -1,5 +1,5 @@
-//const apiHost = 'http://localhost:3000'
-const apiHost = 'https://api.miz.finance'
+const apiHost = 'http://localhost:3000'
+//const apiHost = 'https://api.miz.finance'
 
 // TODO: base categories url
 
@@ -101,7 +101,7 @@ const saveCategory = (data, id=null) => {
   }
 
   const body = JSON.stringify({
-    crypto: data
+    category: data
   })
 
   let response_ok = null
