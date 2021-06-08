@@ -17,6 +17,11 @@ import CryptoForm from './cryptos/CryptoForm'
 import CryptoDelete from './cryptos/CryptoDelete'
 import CryptoShow from './cryptos/CryptoShow'
 
+import Wallets from './wallets/Wallets'
+import WalletForm from './wallets/WalletForm'
+import WalletDelete from './wallets/WalletDelete'
+import WalletShow from './wallets/WalletShow'
+
 class App extends Component {
   render() {
     return (
@@ -39,6 +44,12 @@ class App extends Component {
           <Route exact path="/crypto/:id/edit" render={(routeProps) => ( <CryptoForm {...routeProps} /> )} />
           <Route exact path="/crypto/:id/delete" render={(routeProps) => ( <CryptoDelete {...routeProps} /> )} />
           <Route exact path="/crypto/:id" render={(routeProps) => ( <CryptoShow {...routeProps} /> )} />
+
+          <Route exact path='/wallets' component={Wallets} />
+          <Route exact path='/wallets/new' component={WalletForm} />
+          <Route exact path="/wallet/:id/edit" render={(routeProps) => ( <WalletForm {...routeProps} /> )} />
+          <Route exact path="/wallet/:id/delete" render={(routeProps) => ( <WalletDelete {...routeProps} /> )} />
+          <Route exact path="/wallet/:id" render={(routeProps) => ( <WalletShow {...routeProps} /> )} />
 
 
 
