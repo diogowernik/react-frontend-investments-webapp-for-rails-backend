@@ -22,6 +22,16 @@ import WalletForm from './wallets/WalletForm'
 import WalletDelete from './wallets/WalletDelete'
 import WalletShow from './wallets/WalletShow'
 
+import Assets from './assets/Assets'
+import AssetForm from './assets/AssetForm'
+import AssetDelete from './assets/AssetDelete'
+import AssetShow from './assets/AssetShow'
+
+import Categories from './categories/Categories'
+import CategoryForm from './categories/CategoryForm'
+import CategoryDelete from './categories/CategoryDelete'
+import CategoryShow from './categories/CategoryShow'
+
 class App extends Component {
   render() {
     return (
@@ -50,6 +60,18 @@ class App extends Component {
           <Route exact path="/wallet/:id/edit" render={(routeProps) => ( <WalletForm {...routeProps} /> )} />
           <Route exact path="/wallet/:id/delete" render={(routeProps) => ( <WalletDelete {...routeProps} /> )} />
           <Route exact path="/wallet/:id" render={(routeProps) => ( <WalletShow {...routeProps} /> )} />
+
+          <Route exact path='/assets' component={Assets} />
+          <Route exact path='/assets/new' component={AssetForm} />
+          <Route exact path="/asset/:id/edit" render={(routeProps) => ( <AssetForm {...routeProps} /> )} />
+          <Route exact path="/asset/:id/delete" render={(routeProps) => ( <AssetDelete {...routeProps} /> )} />
+          <Route exact path="/asset/:id" render={(routeProps) => ( <AssetShow {...routeProps} /> )} />
+
+          <Route exact path='/categories' component={Categories} />
+          <Route exact path='/categories/new' component={CategoryForm} />
+          <Route exact path="/asset/:id/edit" render={(routeProps) => ( <CategoryForm {...routeProps} /> )} />
+          <Route exact path="/asset/:id/delete" render={(routeProps) => ( <CategoryDelete {...routeProps} /> )} />
+          <Route exact path="/asset/:id" render={(routeProps) => ( <CategoryShow {...routeProps} /> )} />
 
 
 
