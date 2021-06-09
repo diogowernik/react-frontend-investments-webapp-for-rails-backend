@@ -20,10 +20,8 @@ class AssetsTable extends Component {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Title</th>
-              <th>Slug</th>
               <th>Ticker</th>
-              <th>Coingecko Id</th>
+              <th>Category</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -31,10 +29,8 @@ class AssetsTable extends Component {
             {assets.map(asset => (
               <tr key={asset.id}>
                 <td>{asset.id}</td>
-                <td>{asset.title}</td>
-                <td>{asset.slug}</td>
                 <td>{asset.ticker}</td>
-                <td>{asset.coingecko_id}</td>
+                <th>{asset.category.title}</th>
                 <td>
                   <Link className="btn btn-primary" to={`/asset/${asset.id}`}>View</Link>{' '}
                   <Link className="btn btn-success" to={`/asset/${asset.id}/edit`}>Edit</Link>{' '}

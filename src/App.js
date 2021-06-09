@@ -69,8 +69,8 @@ class App extends Component {
 
           <Route exact path='/categories' component={Categories} />
           <Route exact path='/categories/new' component={CategoryForm} />
-          <Route exact path="/categories/:id/edit" render={(routeProps) => ( <CategoryForm {...routeProps} /> )} />
-          <Route exact path="/categories/:id/delete" render={(routeProps) => ( <CategoryDelete {...routeProps} /> )} />
+          <Route exact path="/category/:id/edit" render={(routeProps) => ( <CategoryForm {...routeProps} /> )} />
+          <Route exact path="/category/:id/delete" render={(routeProps) => ( <CategoryDelete {...routeProps} /> )} />
           <Route exact path="/category/:id" render={(routeProps) => ( <CategoryShow {...routeProps} /> )} />
 
 

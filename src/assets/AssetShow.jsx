@@ -4,13 +4,13 @@ import { Container, Row, Col, Alert } from 'reactstrap'
 
 const Api = require('./Api.js')
 
-class CryptoForm extends Component {
+class AssetForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       asset: {
-        id: this.getCryptoId(props),
+        id: this.getAssetId(props),
         ticker: '',
       },
       redirect: null,
@@ -21,7 +21,7 @@ class CryptoForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getCryptoId(props) {
+  getAssetId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -49,7 +49,7 @@ class CryptoForm extends Component {
       ticker: this.state.asset.ticker,
     }
 
-    Api.saveCrypto(asset, this.state.asset.id)
+    Api.saveAsset(asset, this.state.asset.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -66,7 +66,7 @@ class CryptoForm extends Component {
 
   componentDidMount() {
     if (this.state.asset.id) {
-      Api.getCrypto(this.state.asset.id)
+      Api.getAsset(this.state.asset.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -122,4 +122,4 @@ class CryptoForm extends Component {
   }
 }
 
-export default CryptoForm
+export default AssetForm

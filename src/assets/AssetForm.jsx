@@ -123,7 +123,7 @@ class AssetForm extends Component {
                 </FormGroup>
                 <FormGroup>
                   <Label for="ticker">Ticker</Label>
-                  <Input type="text" name="ticker" id="ticker" value={asset.ticker} placeholder="Enter ticker" onChange={this.setTicker} />
+                  <Input type="integer" name="ticker" id="ticker" value={asset.ticker} placeholder="Enter ticker" onChange={this.setTicker} />
                 </FormGroup>
                 <Button color="success">Submit</Button>
               </Form>
