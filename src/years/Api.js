@@ -1,5 +1,5 @@
-//const apiHost = 'http://localhost:3000'
-const apiHost = 'https://api.miz.finance'
+const apiHost = 'http://localhost:3000'
+//const apiHost = 'https://api.miz.finance'
 // TODO: base years url
 
 const capitalizeFirstLetter = (string) => {

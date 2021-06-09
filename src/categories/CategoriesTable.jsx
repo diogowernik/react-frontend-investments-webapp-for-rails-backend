@@ -22,8 +22,6 @@ class CategoriesTable extends Component {
               <th>ID</th>
               <th>Title</th>
               <th>Slug</th>
-              <th>Ticker</th>
-              <th>Coingecko Id</th>
               <th>Actions</th>
             </tr>
           </thead>

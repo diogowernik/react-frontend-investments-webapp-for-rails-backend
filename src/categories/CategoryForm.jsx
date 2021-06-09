@@ -20,7 +20,6 @@ class CategoryForm extends Component {
 
     this.setTitle = this.setTitle.bind(this)
     this.setSlug = this.setSlug.bind(this)
-
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
