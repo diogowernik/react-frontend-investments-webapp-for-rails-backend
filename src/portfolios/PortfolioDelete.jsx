@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 
 const Api = require('./Api.js')
-class PortifolioDelete extends Component {
+class PortfolioDelete extends Component {
   constructor(props) {
     super(props)
 
@@ -13,14 +13,14 @@ class PortifolioDelete extends Component {
   }
 
   componentDidMount() {
-    Api.deletePortifolio(this.state.id)
+    Api.deletePortfolio(this.state.id)
       .then(response => {
         const [error] = response
         if (error) {
           // TODO: set flash
         }
         this.setState({
-          redirect: '/portifolios'
+          redirect: '/portfolios'
         })
       })
   }
@@ -39,4 +39,4 @@ class PortifolioDelete extends Component {
 
 }
 
-export default PortifolioDelete
+export default PortfolioDelete

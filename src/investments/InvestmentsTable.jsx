@@ -19,11 +19,12 @@ class InvestmentsTable extends Component {
         <Table>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Slug</th>
-              <th>Ticker</th>
-              <th>Coingecko Id</th>
+              <th>Id</th>
+              <th>Asset</th>
+              <th>Category</th>
+              <th>Portfolio</th>
+              <th>Amount</th>
+              <th>Cost</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -31,10 +32,11 @@ class InvestmentsTable extends Component {
             {investments.map(investment => (
               <tr key={investment.id}>
                 <td>{investment.id}</td>
-                <td>{investment.title}</td>
-                <td>{investment.slug}</td>
-                <td>{investment.ticker}</td>
-                <td>{investment.coingecko_id}</td>
+                <td>{investment.asset.ticker}</td>
+                <td>{investment.category.title}</td>
+                <td>{investment.portfolio.title}</td>
+                <td>{investment.amount}</td>
+                <td>{investment.cost}</td>
                 <td>
                   <Link className="btn btn-primary" to={`/investment/${investment.id}`}>View</Link>{' '}
                   <Link className="btn btn-success" to={`/investment/${investment.id}/edit`}>Edit</Link>{' '}

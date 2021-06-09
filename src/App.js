@@ -32,6 +32,16 @@ import CategoryForm from './categories/CategoryForm'
 import CategoryDelete from './categories/CategoryDelete'
 import CategoryShow from './categories/CategoryShow'
 
+import Portfolios from './portfolios/Portfolios'
+import PortfolioForm from './portfolios/PortfolioForm'
+import PortfolioDelete from './portfolios/PortfolioDelete'
+import PortfolioShow from './portfolios/PortfolioShow'
+
+import Investments from './investments/Investments'
+import InvestmentForm from './investments/InvestmentForm'
+import InvestmentDelete from './investments/InvestmentDelete'
+import InvestmentShow from './investments/InvestmentShow'
+
 class App extends Component {
   render() {
     return (
@@ -72,6 +82,18 @@ class App extends Component {
           <Route exact path="/category/:id/edit" render={(routeProps) => ( <CategoryForm {...routeProps} /> )} />
           <Route exact path="/category/:id/delete" render={(routeProps) => ( <CategoryDelete {...routeProps} /> )} />
           <Route exact path="/category/:id" render={(routeProps) => ( <CategoryShow {...routeProps} /> )} />
+
+          <Route exact path='/portfolios' component={Portfolios} />
+          <Route exact path='/portfolios/new' component={PortfolioForm} />
+          <Route exact path="/portfolio/:id/edit" render={(routeProps) => ( <PortfolioForm {...routeProps} /> )} />
+          <Route exact path="/portfolio/:id/delete" render={(routeProps) => ( <PortfolioDelete {...routeProps} /> )} />
+          <Route exact path="/portfolio/:id" render={(routeProps) => ( <PortfolioShow {...routeProps} /> )} />
+
+          <Route exact path='/investments' component={Investments} />
+          <Route exact path='/investments/new' component={InvestmentForm} />
+          <Route exact path="/investment/:id/edit" render={(routeProps) => ( <InvestmentForm {...routeProps} /> )} />
+          <Route exact path="/investment/:id/delete" render={(routeProps) => ( <InvestmentDelete {...routeProps} /> )} />
+          <Route exact path="/investment/:id" render={(routeProps) => ( <InvestmentShow {...routeProps} /> )} />
 
 
 

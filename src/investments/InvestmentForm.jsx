@@ -11,19 +11,22 @@ class InvestmentForm extends Component {
     this.state = {
       investment: {
         id: this.getInvestmentId(props),
-        title: '',
-        slug: '',
-        coingecko_id: '',
-        ticker: ''
+        asset_id: '',
+        category_id: '',
+        portfolio_id: '',
+        amount: '',
+        cost: '',
       },
       redirect: null,
       errors: []
     }
 
-    this.setTitle = this.setTitle.bind(this)
-    this.setSlug = this.setSlug.bind(this)
-    this.setCoingecko_id = this.setCoingecko_id.bind(this)
-    this.setTicker = this.setTicker.bind(this)
+    this.setAsset_id = this.setAsset_id.bind(this)
+    this.setCategory_id = this.setCategory_id.bind(this)
+    this.setPortfolio_id = this.setPortfolio_id.bind(this)
+    this.setAmount = this.setAmount.bind(this)
+    this.setCost = this.setCost.bind(this)
+
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -35,24 +38,29 @@ class InvestmentForm extends Component {
     }
   }
 
-  setTitle(event) {
+  setAsset_id(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('title', newVal)
+    this.setFieldState('asset_id', newVal)
   }
 
-  setSlug(event) {
+  setCategory_id(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('slug', newVal)
+    this.setFieldState('category_id', newVal)
   }
 
-  setCoingecko_id(event) {
+  setPortfolio_id(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('coingecko_id', newVal)
+    this.setFieldState('portfolio_id', newVal)
   }
 
-  setTicker(event) {
+  setAmount(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('ticker', newVal)
+    this.setFieldState('amount', newVal)
+  }
+
+  setCost(event) {
+    let newVal = event.target.value || ''
+    this.setFieldState('cost', newVal)
   }
 
   setFieldState(field, newVal) {
@@ -67,10 +75,11 @@ class InvestmentForm extends Component {
     event.preventDefault()
 
     let investment = {
-      title: this.state.investment.title,
-      slug: this.state.investment.slug,
-      coingecko_id: this.state.investment.coingecko_id,
-      ticker: this.state.investment.ticker,
+      asset_id: this.state.investment.asset_id,
+      category_id: this.state.investment.category_id,
+      portfolio_id: this.state.investment.portfolio_id,
+      amount: this.state.investment.amount,
+      cost: this.state.investment.cost,
     }
 
     Api.saveInvestment(investment, this.state.investment.id)
@@ -134,20 +143,24 @@ class InvestmentForm extends Component {
 
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
-                  <Label for="title">Title</Label>
-                  <Input type="text" name="title" id="title" value={investment.title} placeholder="Enter title" onChange={this.setTitle} />
+                  <Label for="asset_id">Asset</Label>
+                  <Input type="text" name="asset_id" id="asset_id" value={investment.asset_id} placeholder="Enter asset_id" onChange={this.setAsset_id} />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="slug">Slug</Label>
-                  <Input type="text" name="slug" id="slug" value={investment.slug} placeholder="Enter slug" onChange={this.setSlug} />
+                  <Label for="category_id">Category</Label>
+                  <Input type="text" name="category_id" id="category_id" value={investment.category_id} placeholder="Enter category_id" onChange={this.setCategory_id} />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="coingecko_id">Coingecko</Label>
-                  <Input type="text" name="coingecko_id" id="coingecko_id" value={investment.coingecko_id} placeholder="Enter coingecko_id" onChange={this.setCoingecko_id} />
+                  <Label for="portfolio_id">Portfolio</Label>
+                  <Input type="text" name="portfolio_id" id="portfolio_id" value={investment.portfolio_id} placeholder="Enter portfolio_id" onChange={this.setPortfolio_id} />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="ticker">Ticker</Label>
-                  <Input type="text" name="ticker" id="ticker" value={investment.ticker} placeholder="Enter ticker" onChange={this.setTicker} />
+                  <Label for="amount">Amount</Label>
+                  <Input type="text" name="amount" id="amount" value={investment.amount} placeholder="Enter amount" onChange={this.setAmount} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="cost">Cost</Label>
+                  <Input type="text" name="cost" id="cost" value={investment.cost} placeholder="Enter cost" onChange={this.setCost} />
                 </FormGroup>
                 <Button color="success">Submit</Button>
               </Form>

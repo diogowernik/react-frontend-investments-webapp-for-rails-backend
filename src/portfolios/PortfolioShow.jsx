@@ -4,13 +4,13 @@ import { Container, Row, Col, Alert } from 'reactstrap'
 
 const Api = require('./Api.js')
 
-class PortifolioForm extends Component {
+class PortfolioForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      portifolio: {
-        id: this.getPortifolioId(props),
+      portfolio: {
+        id: this.getPortfolioId(props),
         title: '',
       },
       redirect: null,
@@ -21,7 +21,7 @@ class PortifolioForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getPortifolioId(props) {
+  getPortfolioId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -37,7 +37,7 @@ class PortifolioForm extends Component {
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.portifolio[field] = newVal
+      newState.portfolio[field] = newVal
       return newState
     })
   }
@@ -45,11 +45,11 @@ class PortifolioForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let portifolio = {
-      title: this.state.portifolio.title,
+    let portfolio = {
+      title: this.state.portfolio.title,
     }
 
-    Api.savePortifolio(portifolio, this.state.portifolio.id)
+    Api.savePortfolio(portfolio, this.state.portfolio.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -58,15 +58,15 @@ class PortifolioForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/portifolios'
+            redirect: '/portfolios'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.portifolio.id) {
-      Api.getPortifolio(this.state.portifolio.id)
+    if (this.state.portfolio.id) {
+      Api.getPortfolio(this.state.portfolio.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -75,7 +75,7 @@ class PortifolioForm extends Component {
             })
           } else {
             this.setState({
-              portifolio: data,
+              portfolio: data,
               errors: []
             })
           }
@@ -84,7 +84,7 @@ class PortifolioForm extends Component {
   }
 
   render() {
-    const { redirect, portifolio, errors } = this.state
+    const { redirect, portfolio, errors } = this.state
 
     if (redirect) {
       return (
@@ -96,11 +96,9 @@ class PortifolioForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3 className="mt-3 mb-3">{portifolio.title}</h3>
+              <h3 className="mt-3 mb-3">{portfolio.title}</h3>
               <p>
-                <b>Id Coingecko:</b> {portifolio.coingecko_id} <br />
-                <b>Url:</b> https://meusite.com/{portifolio.slug} <br />
-                <b>Ticker:</b> {portifolio.ticker}                 
+                <b>Url:</b> https://meusite.com/{portfolio.slug} <br />
               </p>
 
               {errors.length > 0 &&
@@ -122,4 +120,4 @@ class PortifolioForm extends Component {
   }
 }
 
-export default PortifolioForm
+export default PortfolioForm

@@ -1,41 +1,41 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
-import PortifoliosTable from './PortifoliosTable'
+import PortfoliosTable from './PortfoliosTable'
 
 const Api = require('./Api.js')
 
-class Portifolios extends Component {
+class Portfolios extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      portifolios: [],
+      portfolios: [],
       isLoaded: false,
       error: null
     }
   }
 
   componentDidMount() {
-    Api.getPortifolios()
+    Api.getPortfolios()
       .then(response => {
         const [error, data] = response
         if (error) {
           this.setState({
             isLoaded: true,
-            portifolios: [],
+            portfolios: [],
             error: data
           })
         } else {
           this.setState({
             isLoaded: true,
-            portifolios: data
+            portfolios: data
           })
         }
       })
   }
 
   render() {
-    const { error, isLoaded, portifolios } = this.state
+    const { error, isLoaded, portfolios } = this.state
 
     if (error) {
 
@@ -59,8 +59,8 @@ class Portifolios extends Component {
         <Container>
           <Row>
             <Col>
-              <PortifoliosTable portifolios={portifolios}></PortifoliosTable>
-              <Link className="btn btn-primary" to="/portifolios/new">Add Portifolio</Link>
+              <PortfoliosTable portfolios={portfolios}></PortfoliosTable>
+              <Link className="btn btn-primary" to="/portfolios/new">Add Portfolio</Link>
             </Col>
           </Row>
         </Container>
@@ -71,4 +71,4 @@ class Portifolios extends Component {
   }
 }
 
-export default Portifolios
+export default Portfolios

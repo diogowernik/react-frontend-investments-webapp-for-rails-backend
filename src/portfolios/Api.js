@@ -1,7 +1,7 @@
 const apiHost = 'http://localhost:3000'
 //const apiHost = 'https://api.miz.finance'
 
-// TODO: base portifolios url
+// TODO: base portfolios url
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -25,9 +25,9 @@ const collectErrors = (response) => {
   return errors
 }
 
-const deletePortifolio = (id) => {
+const deletePortfolio = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/portifolios/${id}`, {
+  return fetch(`${apiHost}/api/portfolios/${id}`, {
     method: 'delete',
     headers: {
       'Content-Type': 'application/json'
@@ -50,9 +50,9 @@ const deletePortifolio = (id) => {
   })
 }
 
-const getPortifolios = () => {
+const getPortfolios = () => {
   let response_ok = null
-  return fetch(`${apiHost}/api/portifolios`, {
+  return fetch(`${apiHost}/api/portfolios`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json'
@@ -71,9 +71,9 @@ const getPortifolios = () => {
     })
 }
 
-const getPortifolio = (id) => {
+const getPortfolio = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/portifolios/${id}`, {
+  return fetch(`${apiHost}/api/portfolios/${id}`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
@@ -92,8 +92,8 @@ const getPortifolio = (id) => {
   })
 }
 
-const savePortifolio = (data, id=null) => {
-  let apiUrl = `${apiHost}/api/portifolios`
+const savePortfolio = (data, id=null) => {
+  let apiUrl = `${apiHost}/api/portfolios`
   let apiMethod = 'post'
   if (id) {
     apiUrl = `${apiUrl}/${id}`
@@ -101,7 +101,7 @@ const savePortifolio = (data, id=null) => {
   }
 
   const body = JSON.stringify({
-    portifolio: data
+    portfolio: data
   })
 
   let response_ok = null
@@ -127,8 +127,8 @@ const savePortifolio = (data, id=null) => {
 }
 
 module.exports = {
-  savePortifolio: savePortifolio,
-  getPortifolio: getPortifolio,
-  deletePortifolio: deletePortifolio,
-  getPortifolios: getPortifolios
+  savePortfolio: savePortfolio,
+  getPortfolio: getPortfolio,
+  deletePortfolio: deletePortfolio,
+  getPortfolios: getPortfolios
 }
