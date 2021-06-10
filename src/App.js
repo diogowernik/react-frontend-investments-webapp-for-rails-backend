@@ -28,9 +28,13 @@ import InvestmentForm from './investments/InvestmentForm'
 import InvestmentDelete from './investments/InvestmentDelete'
 import InvestmentShow from './investments/InvestmentShow'
 
+import NavBar from './layouts/navbar'
+
 class App extends Component {
   render() {
     return (
+      <>
+      <NavBar />
       <Router>
         <div>
           <Route exact path='/' component={Portfolios} />
@@ -68,6 +72,7 @@ class App extends Component {
 
         </div>
       </Router>
+      </>
     )
   }
 }
