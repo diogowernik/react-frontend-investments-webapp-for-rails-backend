@@ -20,7 +20,6 @@ class InvestmentsTable extends Component {
           <thead>
             <tr>
               <th>Id</th>
-              <th>Asset</th>
               <th>Category</th>
               <th>Portfolio</th>
               <th>Amount</th>
@@ -32,7 +31,6 @@ class InvestmentsTable extends Component {
             {investments.map(investment => (
               <tr key={investment.id}>
                 <td>{investment.id}</td>
-                <td>{investment.asset.ticker}</td>
                 <td>{investment.category.title}</td>
                 <td>{investment.portfolio.title}</td>
                 <td>{investment.amount}</td>

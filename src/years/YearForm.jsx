@@ -12,12 +12,14 @@ class YearForm extends Component {
       year: {
         id: this.getYearId(props),
         title: '',
+        slug: '',
       },
       redirect: null,
       errors: []
     }
 
     this.setTitle = this.setTitle.bind(this)
+    this.setSlug = this.setSlug.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -34,6 +36,11 @@ class YearForm extends Component {
     this.setFieldState('title', newVal)
   }
 
+  setSlug(event) {
+    let newVal = event.target.value || ''
+    this.setFieldState('slug', newVal)
+  }
+
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
@@ -47,6 +54,7 @@ class YearForm extends Component {
 
     let year = {
       title: this.state.year.title,
+      slug: this.state.year.slug,
     }
 
     Api.saveYear(year, this.state.year.id)
@@ -112,6 +120,10 @@ class YearForm extends Component {
                 <FormGroup>
                   <Label for="title">Title</Label>
                   <Input type="text" name="title" id="title" value={year.title} placeholder="Enter title" onChange={this.setTitle} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="slug">Slug</Label>
+                  <Input type="text" name="slug" id="slug" value={year.slug} placeholder="Enter slug" onChange={this.setSlug} />
                 </FormGroup>
                 <Button color="success">Submit</Button>
               </Form>

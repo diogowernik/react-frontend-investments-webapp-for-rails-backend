@@ -11,7 +11,6 @@ class InvestmentForm extends Component {
     this.state = {
       investment: {
         id: this.getInvestmentId(props),
-        asset_id: '',
         category_id: '',
         portfolio_id: '',
         amount: '',
@@ -21,7 +20,6 @@ class InvestmentForm extends Component {
       errors: []
     }
 
-    this.setAsset_id = this.setAsset_id.bind(this)
     this.setCategory_id = this.setCategory_id.bind(this)
     this.setPortfolio_id = this.setPortfolio_id.bind(this)
     this.setAmount = this.setAmount.bind(this)
@@ -36,11 +34,6 @@ class InvestmentForm extends Component {
     } catch (error) {
       return null
     }
-  }
-
-  setAsset_id(event) {
-    let newVal = event.target.value || ''
-    this.setFieldState('asset_id', newVal)
   }
 
   setCategory_id(event) {
@@ -75,7 +68,6 @@ class InvestmentForm extends Component {
     event.preventDefault()
 
     let investment = {
-      asset_id: this.state.investment.asset_id,
       category_id: this.state.investment.category_id,
       portfolio_id: this.state.investment.portfolio_id,
       amount: this.state.investment.amount,
@@ -142,10 +134,6 @@ class InvestmentForm extends Component {
               }
 
               <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label for="asset_id">Asset</Label>
-                  <Input type="text" name="asset_id" id="asset_id" value={investment.asset_id} placeholder="Enter asset_id" onChange={this.setAsset_id} />
-                </FormGroup>
                 <FormGroup>
                   <Label for="category_id">Category</Label>
                   <Input type="text" name="category_id" id="category_id" value={investment.category_id} placeholder="Enter category_id" onChange={this.setCategory_id} />
