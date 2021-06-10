@@ -12,14 +12,16 @@ class PostForm extends Component {
       post: {
         id: this.getPostId(props),
         title: '',
-        body: '',
+        slug: '',
+        description: '',
       },
       redirect: null,
       errors: []
     }
 
     this.setTitle = this.setTitle.bind(this)
-    this.setBody = this.setBody.bind(this)
+    this.setSlug = this.setSlug.bind(this)
+    this.setDescription = this.setDescription.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -36,9 +38,13 @@ class PostForm extends Component {
     this.setFieldState('title', newVal)
   }
 
-  setBody(event) {
+  setSlug(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('body', newVal)
+    this.setFieldState('slug', newVal)
+  }
+  setDescription(event) {
+    let newVal = event.target.value || ''
+    this.setFieldState('description', newVal)
   }
 
   setFieldState(field, newVal) {
@@ -54,7 +60,8 @@ class PostForm extends Component {
 
     let post = {
       title: this.state.post.title,
-      body: this.state.post.body
+      slug: this.state.post.slug,
+      description: this.state.post.description,
     }
 
     Api.savePost(post, this.state.post.id)
@@ -122,8 +129,12 @@ class PostForm extends Component {
                   <Input type="text" name="title" id="title" value={post.title} placeholder="Enter title" onChange={this.setTitle} />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="body">Body</Label>
-                  <Input type="text" name="body" id="body" value={post.body} placeholder="Enter body" onChange={this.setBody} />
+                  <Label for="slug">Slug</Label>
+                  <Input type="text" name="slug" id="slug" value={post.slug} placeholder="Enter slug" onChange={this.setSlug} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="description">Description</Label>
+                  <Input type="text" name="description" id="description" value={post.description} placeholder="Enter description" onChange={this.setDescription} />
                 </FormGroup>
                 <Button color="success">Submit</Button>
               </Form>

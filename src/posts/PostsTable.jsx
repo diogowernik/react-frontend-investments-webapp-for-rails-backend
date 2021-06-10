@@ -21,7 +21,8 @@ class PostsTable extends Component {
             <tr>
               <th>ID</th>
               <th>Title</th>
-              <th>Body</th>
+              <th>Slug</th>
+              <th>Description</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -30,7 +31,8 @@ class PostsTable extends Component {
               <tr key={post.id}>
                 <td>{post.id}</td>
                 <td>{post.title}</td>
-                <td>{post.body}</td>
+                <td>{post.slug}</td>
+                <td>{post.description}</td>
                 <td>
                   <Link className="btn btn-success" to={`/posts/${post.id}/edit`}>Edit</Link>{' '}
                   <Link className="btn btn-danger" to={`/posts/${post.id}/delete`}>Delete</Link>
