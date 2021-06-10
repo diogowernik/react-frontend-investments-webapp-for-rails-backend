@@ -1,4 +1,5 @@
-const apiHost = 'http://localhost:3000'
+import { apiHost } from '../apiHost.js';
+
 // const apiHost = 'https://api.miz.finance'
 
 // TODO: base wallets url
@@ -33,31 +34,31 @@ const deleteWallet = (id) => {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => {
-    response_ok = response.ok
-    if (response.status === 204) {
-      return ''
-    } else {
-      return response.json()
-    }
-  })
-  .then(response => {
-    if (response_ok) {
-      return [false, response]
-    } else {
-      return [true, collectErrors(response)]
-    }
-  })
+    .then(response => {
+      response_ok = response.ok
+      if (response.status === 204) {
+        return ''
+      } else {
+        return response.json()
+      }
+    })
+    .then(response => {
+      if (response_ok) {
+        return [false, response]
+      } else {
+        return [true, collectErrors(response)]
+      }
+    })
 }
 
 const getWallets = () => {
   let response_ok = null
   return fetch(`${apiHost}/api/wallets`, {
-      method: 'get',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
     .then(response => {
       response_ok = response.ok
       return response.json()
@@ -79,20 +80,20 @@ const getWallet = (id) => {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => {
-    response_ok = response.ok
-    return response.json()
-  })
-  .then(response => {
-    if (response_ok) {
-      return [false, response]
-    } else {
-      return [true, collectErrors(response)]
-    }
-  })
+    .then(response => {
+      response_ok = response.ok
+      return response.json()
+    })
+    .then(response => {
+      if (response_ok) {
+        return [false, response]
+      } else {
+        return [true, collectErrors(response)]
+      }
+    })
 }
 
-const saveWallet = (data, id=null) => {
+const saveWallet = (data, id = null) => {
   let apiUrl = `${apiHost}/api/wallets`
   let apiMethod = 'post'
   if (id) {
@@ -113,22 +114,21 @@ const saveWallet = (data, id=null) => {
     },
     body: body
   })
-  .then(response => {
-    response_ok = response.ok
-    return response.json()
-  })
-  .then(response => {
-    if (response_ok) {
-      return [false, null]
-    } else {
-      return [true, collectErrors(response)]
-    }
-  })
+    .then(response => {
+      response_ok = response.ok
+      return response.json()
+    })
+    .then(response => {
+      if (response_ok) {
+        return [false, null]
+      } else {
+        return [true, collectErrors(response)]
+      }
+    })
 }
-
-module.exports = {
-  saveWallet: saveWallet,
-  getWallet: getWallet,
-  deleteWallet: deleteWallet,
-  getWallets: getWallets
+export {
+  saveWallet,
+  getWallet,
+  deleteWallet,
+  getWallets
 }
