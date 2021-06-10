@@ -23,7 +23,7 @@ class CryptosTable extends Component {
               <th>Title</th>
               <th>Slug</th>
               <th>Ticker</th>
-              <th>Coingecko Id</th>
+              <th>Price</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -34,7 +34,7 @@ class CryptosTable extends Component {
                 <td>{crypto.title}</td>
                 <td>{crypto.slug}</td>
                 <td>{crypto.ticker}</td>
-                <td>{crypto.coingecko_id}</td>
+                <td>{crypto.price}</td>
                 <td>
                   <Link className="btn btn-primary" to={`/crypto/${crypto.id}`}>View</Link>{' '}
                   <Link className="btn btn-success" to={`/crypto/${crypto.id}/edit`}>Edit</Link>{' '}

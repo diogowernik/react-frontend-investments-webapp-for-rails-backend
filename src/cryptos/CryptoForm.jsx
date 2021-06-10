@@ -13,7 +13,7 @@ class CryptoForm extends Component {
         id: this.getCryptoId(props),
         title: '',
         slug: '',
-        coingecko_id: '',
+        price: '',
         ticker: ''
       },
       redirect: null,
@@ -22,7 +22,7 @@ class CryptoForm extends Component {
 
     this.setTitle = this.setTitle.bind(this)
     this.setSlug = this.setSlug.bind(this)
-    this.setCoingecko_id = this.setCoingecko_id.bind(this)
+    this.setPrice = this.setPrice.bind(this)
     this.setTicker = this.setTicker.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -45,9 +45,9 @@ class CryptoForm extends Component {
     this.setFieldState('slug', newVal)
   }
 
-  setCoingecko_id(event) {
+  setPrice(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('coingecko_id', newVal)
+    this.setFieldState('price', newVal)
   }
 
   setTicker(event) {
@@ -69,7 +69,7 @@ class CryptoForm extends Component {
     let crypto = {
       title: this.state.crypto.title,
       slug: this.state.crypto.slug,
-      coingecko_id: this.state.crypto.coingecko_id,
+      price: this.state.crypto.price,
       ticker: this.state.crypto.ticker,
     }
 
@@ -142,8 +142,8 @@ class CryptoForm extends Component {
                   <Input type="text" name="slug" id="slug" value={crypto.slug} placeholder="Enter slug" onChange={this.setSlug} />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="coingecko_id">Coingecko</Label>
-                  <Input type="text" name="coingecko_id" id="coingecko_id" value={crypto.coingecko_id} placeholder="Enter coingecko_id" onChange={this.setCoingecko_id} />
+                  <Label for="price">Coingecko</Label>
+                  <Input type="text" name="price" id="price" value={crypto.price} placeholder="Enter price" onChange={this.setPrice} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="ticker">Ticker</Label>
