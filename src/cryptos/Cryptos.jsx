@@ -1,41 +1,41 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
-import InvestmentsTable from './InvestmentsTable'
+import CryptosTable from './CryptosTable'
 
 const Api = require('./Api.js')
 
-class Investments extends Component {
+class Cryptos extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      investments: [],
+      cryptos: [],
       isLoaded: false,
       error: null
     }
   }
 
   componentDidMount() {
-    Api.getInvestments()
+    Api.getCryptos()
       .then(response => {
         const [error, data] = response
         if (error) {
           this.setState({
             isLoaded: true,
-            investments: [],
+            cryptos: [],
             error: data
           })
         } else {
           this.setState({
             isLoaded: true,
-            investments: data
+            cryptos: data
           })
         }
       })
   }
 
   render() {
-    const { error, isLoaded, investments } = this.state
+    const { error, isLoaded, cryptos } = this.state
 
     if (error) {
 
@@ -57,10 +57,11 @@ class Investments extends Component {
 
       return (
         <Container>
+          <h4 className="mt-4 mb-4">Criptomoedas nos Portfolios</h4>
           <Row>
             <Col>
-              <InvestmentsTable investments={investments}></InvestmentsTable>
-              <Link className="btn btn-primary" to="/investments/new">Add Investment</Link>
+              <CryptosTable cryptos={cryptos}></CryptosTable>
+              <Link className="btn btn-primary" to="/cryptos/new">Add Crypto</Link>
             </Col>
           </Row>
         </Container>
@@ -71,4 +72,4 @@ class Investments extends Component {
   }
 }
 
-export default Investments
+export default Cryptos

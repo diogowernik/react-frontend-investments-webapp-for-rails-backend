@@ -1,41 +1,41 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
-import WalletsTable from './WalletsTable'
+import RadarfiisTable from './RadarfiisTable'
 
 const Api = require('./Api.js')
 
-class Wallets extends Component {
+class Radarfiis extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      wallets: [],
+      radarfiis: [],
       isLoaded: false,
       error: null
     }
   }
 
   componentDidMount() {
-    Api.getWallets()
+    Api.getRadarfiis()
       .then(response => {
         const [error, data] = response
         if (error) {
           this.setState({
             isLoaded: true,
-            wallets: [],
+            radarfiis: [],
             error: data
           })
         } else {
           this.setState({
             isLoaded: true,
-            wallets: data
+            radarfiis: data
           })
         }
       })
   }
 
   render() {
-    const { error, isLoaded, wallets } = this.state
+    const { error, isLoaded, radarfiis } = this.state
 
     if (error) {
 
@@ -57,10 +57,11 @@ class Wallets extends Component {
 
       return (
         <Container>
+          <h4 className="mt-4 mb-4">Radar Fiis</h4>
           <Row>
             <Col>
-              <WalletsTable wallets={wallets}></WalletsTable>
-              <Link className="btn btn-primary" to="/wallets/new">Add Wallet</Link>
+              <RadarfiisTable radarfiis={radarfiis}></RadarfiisTable>
+              <Link className="btn btn-primary" to="/radarfiis/new">Add Radarfii</Link>
             </Col>
           </Row>
         </Container>
@@ -71,4 +72,4 @@ class Wallets extends Component {
   }
 }
 
-export default Wallets
+export default Radarfiis

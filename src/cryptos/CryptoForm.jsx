@@ -4,13 +4,13 @@ import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } fro
 
 const Api = require('./Api.js')
 
-class InvestmentForm extends Component {
+class CryptoForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      investment: {
-        id: this.getInvestmentId(props),
+      crypto: {
+        id: this.getCryptoId(props),
         category_id: '',
         portfolio_id: '',
         amount: '',
@@ -28,7 +28,7 @@ class InvestmentForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getInvestmentId(props) {
+  getCryptoId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -59,7 +59,7 @@ class InvestmentForm extends Component {
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.investment[field] = newVal
+      newState.crypto[field] = newVal
       return newState
     })
   }
@@ -67,14 +67,14 @@ class InvestmentForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let investment = {
-      category_id: this.state.investment.category_id,
-      portfolio_id: this.state.investment.portfolio_id,
-      amount: this.state.investment.amount,
-      cost: this.state.investment.cost,
+    let crypto = {
+      category_id: this.state.crypto.category_id,
+      portfolio_id: this.state.crypto.portfolio_id,
+      amount: this.state.crypto.amount,
+      cost: this.state.crypto.cost,
     }
 
-    Api.saveInvestment(investment, this.state.investment.id)
+    Api.saveCrypto(crypto, this.state.crypto.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -83,15 +83,15 @@ class InvestmentForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/investments'
+            redirect: '/cryptos'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.investment.id) {
-      Api.getInvestment(this.state.investment.id)
+    if (this.state.crypto.id) {
+      Api.getCrypto(this.state.crypto.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -100,7 +100,7 @@ class InvestmentForm extends Component {
             })
           } else {
             this.setState({
-              investment: data,
+              crypto: data,
               errors: []
             })
           }
@@ -109,7 +109,7 @@ class InvestmentForm extends Component {
   }
 
   render() {
-    const { redirect, investment, errors } = this.state
+    const { redirect, crypto, errors } = this.state
 
     if (redirect) {
       return (
@@ -121,7 +121,7 @@ class InvestmentForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3>Edit Investment</h3>
+              <h3>Edit Crypto</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -136,19 +136,19 @@ class InvestmentForm extends Component {
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <Label for="category_id">Category</Label>
-                  <Input type="text" name="category_id" id="category_id" value={investment.category_id} placeholder="Enter category_id" onChange={this.setCategory_id} />
+                  <Input type="text" name="category_id" id="category_id" value={crypto.category_id} placeholder="Enter category_id" onChange={this.setCategory_id} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="portfolio_id">Portfolio</Label>
-                  <Input type="text" name="portfolio_id" id="portfolio_id" value={investment.portfolio_id} placeholder="Enter portfolio_id" onChange={this.setPortfolio_id} />
+                  <Input type="text" name="portfolio_id" id="portfolio_id" value={crypto.portfolio_id} placeholder="Enter portfolio_id" onChange={this.setPortfolio_id} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="amount">Amount</Label>
-                  <Input type="text" name="amount" id="amount" value={investment.amount} placeholder="Enter amount" onChange={this.setAmount} />
+                  <Input type="text" name="amount" id="amount" value={crypto.amount} placeholder="Enter amount" onChange={this.setAmount} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="cost">Cost</Label>
-                  <Input type="text" name="cost" id="cost" value={investment.cost} placeholder="Enter cost" onChange={this.setCost} />
+                  <Input type="text" name="cost" id="cost" value={crypto.cost} placeholder="Enter cost" onChange={this.setCost} />
                 </FormGroup>
                 <Button color="success">Submit</Button>
               </Form>
@@ -160,4 +160,4 @@ class InvestmentForm extends Component {
   }
 }
 
-export default InvestmentForm
+export default CryptoForm

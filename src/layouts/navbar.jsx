@@ -21,31 +21,56 @@ const NavBar = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarBrand href="/">Administrativo</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
+
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink href="/portifolios">Portfolios</NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-            </NavItem>
+            
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Options
+                Admin Classes
               </DropdownToggle>
               <DropdownMenu right>
+                
+                
                 <DropdownItem>
-                  Option 1
+                  <a href="/cryptos">Criptos nos portfolios</a>
+                </DropdownItem>
+
+                <DropdownItem>
+                  <a href="/fiis">Fiis nos portfolios</a>
+                </DropdownItem>
+                
+                <DropdownItem divider />
+
+                <DropdownItem>
+                  <a href="/radarfiis">Radar Fiis</a>
                 </DropdownItem>
                 <DropdownItem>
-                  Option 2
+                  <a href="/radarcryptos">Radar Crypto</a>
                 </DropdownItem>
+
+                <DropdownItem divider />
+
+                <DropdownItem>
+                  <a href="/categories">Categorias de Investimentos</a>
+                </DropdownItem>
+                <DropdownItem>
+                  <a href="/movements">Operações Financeiras</a>
+                </DropdownItem>
+
                 <DropdownItem divider />
                 <DropdownItem>
-                  Reset
+                  <a href="/years">Anos</a>
                 </DropdownItem>
+                <DropdownItem>
+                  <a href="/posts">Publicações</a>
+                </DropdownItem>
+                
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>

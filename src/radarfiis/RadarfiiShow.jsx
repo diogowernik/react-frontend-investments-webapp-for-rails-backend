@@ -4,13 +4,13 @@ import { Container, Row, Col, Alert } from 'reactstrap'
 
 const Api = require('./Api.js')
 
-class InvestmentForm extends Component {
+class RadarfiiForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      investment: {
-        id: this.getInvestmentId(props),
+      radarfii: {
+        id: this.getRadarfiiId(props),
         title: '',
       },
       redirect: null,
@@ -21,7 +21,7 @@ class InvestmentForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getInvestmentId(props) {
+  getRadarfiiId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -37,7 +37,7 @@ class InvestmentForm extends Component {
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.investment[field] = newVal
+      newState.radarfii[field] = newVal
       return newState
     })
   }
@@ -45,11 +45,11 @@ class InvestmentForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let investment = {
-      title: this.state.investment.title,
+    let radarfii = {
+      title: this.state.radarfii.title,
     }
 
-    Api.saveInvestment(investment, this.state.investment.id)
+    Api.saveRadarfii(radarfii, this.state.radarfii.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -58,15 +58,15 @@ class InvestmentForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/investments'
+            redirect: '/radarfiis'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.investment.id) {
-      Api.getInvestment(this.state.investment.id)
+    if (this.state.radarfii.id) {
+      Api.getRadarfii(this.state.radarfii.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -75,7 +75,7 @@ class InvestmentForm extends Component {
             })
           } else {
             this.setState({
-              investment: data,
+              radarfii: data,
               errors: []
             })
           }
@@ -84,7 +84,7 @@ class InvestmentForm extends Component {
   }
 
   render() {
-    const { redirect, investment, errors } = this.state
+    const { redirect, radarfii, errors } = this.state
 
     if (redirect) {
       return (
@@ -96,11 +96,9 @@ class InvestmentForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3 className="mt-3 mb-3">{investment.title}</h3>
+              <h3 className="mt-3 mb-3">{radarfii.title}</h3>
               <p>
-                <b>Id Coingecko:</b> {investment.coingecko_id} <br />
-                <b>Url:</b> https://meusite.com/{investment.slug} <br />
-                <b>Ticker:</b> {investment.ticker}                 
+                <b>Url:</b> https://meusite.com/{radarfii.slug} <br />             
               </p>
 
               {errors.length > 0 &&
@@ -122,4 +120,4 @@ class InvestmentForm extends Component {
   }
 }
 
-export default InvestmentForm
+export default RadarfiiForm

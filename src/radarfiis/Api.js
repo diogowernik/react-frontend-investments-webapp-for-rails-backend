@@ -2,7 +2,7 @@ import { apiHost } from '../apiHost.js';
 
 // const apiHost = 'https://api.miz.finance'
 
-// TODO: base wallets url
+// TODO: base radarfiis url
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -26,9 +26,9 @@ const collectErrors = (response) => {
   return errors
 }
 
-const deleteWallet = (id) => {
+const deleteRadarfii = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/wallets/${id}`, {
+  return fetch(`${apiHost}/api/radarfiis/${id}`, {
     method: 'delete',
     headers: {
       'Content-Type': 'application/json'
@@ -51,9 +51,9 @@ const deleteWallet = (id) => {
     })
 }
 
-const getWallets = () => {
+const getRadarfiis = () => {
   let response_ok = null
-  return fetch(`${apiHost}/api/wallets`, {
+  return fetch(`${apiHost}/api/radarfiis`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
@@ -72,9 +72,9 @@ const getWallets = () => {
     })
 }
 
-const getWallet = (id) => {
+const getRadarfii = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/wallets/${id}`, {
+  return fetch(`${apiHost}/api/radarfiis/${id}`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
@@ -93,8 +93,8 @@ const getWallet = (id) => {
     })
 }
 
-const saveWallet = (data, id = null) => {
-  let apiUrl = `${apiHost}/api/wallets`
+const saveRadarfii = (data, id = null) => {
+  let apiUrl = `${apiHost}/api/radarfiis`
   let apiMethod = 'post'
   if (id) {
     apiUrl = `${apiUrl}/${id}`
@@ -102,7 +102,7 @@ const saveWallet = (data, id = null) => {
   }
 
   const body = JSON.stringify({
-    wallet: data
+    radarfii: data
   })
 
   let response_ok = null
@@ -127,8 +127,8 @@ const saveWallet = (data, id = null) => {
     })
 }
 export {
-  saveWallet,
-  getWallet,
-  deleteWallet,
-  getWallets
+  saveRadarfii,
+  getRadarfii,
+  deleteRadarfii,
+  getRadarfiis
 }

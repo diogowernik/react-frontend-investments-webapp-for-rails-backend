@@ -4,13 +4,13 @@ import { Container, Row, Col, Alert } from 'reactstrap'
 
 const Api = require('./Api.js')
 
-class WalletForm extends Component {
+class CryptoForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      wallet: {
-        id: this.getWalletId(props),
+      crypto: {
+        id: this.getCryptoId(props),
         title: '',
       },
       redirect: null,
@@ -21,7 +21,7 @@ class WalletForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getWalletId(props) {
+  getCryptoId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -37,7 +37,7 @@ class WalletForm extends Component {
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.wallet[field] = newVal
+      newState.crypto[field] = newVal
       return newState
     })
   }
@@ -45,11 +45,11 @@ class WalletForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let wallet = {
-      title: this.state.wallet.title,
+    let crypto = {
+      title: this.state.crypto.title,
     }
 
-    Api.saveWallet(wallet, this.state.wallet.id)
+    Api.saveCrypto(crypto, this.state.crypto.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -58,15 +58,15 @@ class WalletForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/wallets'
+            redirect: '/cryptos'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.wallet.id) {
-      Api.getWallet(this.state.wallet.id)
+    if (this.state.crypto.id) {
+      Api.getCrypto(this.state.crypto.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -75,7 +75,7 @@ class WalletForm extends Component {
             })
           } else {
             this.setState({
-              wallet: data,
+              crypto: data,
               errors: []
             })
           }
@@ -84,7 +84,7 @@ class WalletForm extends Component {
   }
 
   render() {
-    const { redirect, wallet, errors } = this.state
+    const { redirect, crypto, errors } = this.state
 
     if (redirect) {
       return (
@@ -96,9 +96,11 @@ class WalletForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3 className="mt-3 mb-3">{wallet.title}</h3>
+              <h3 className="mt-3 mb-3">{crypto.title}</h3>
               <p>
-                <b>Url:</b> https://meusite.com/{wallet.slug} <br />             
+                <b>Id Coingecko:</b> {crypto.coingecko_id} <br />
+                <b>Url:</b> https://meusite.com/{crypto.slug} <br />
+                <b>Ticker:</b> {crypto.ticker}                 
               </p>
 
               {errors.length > 0 &&
@@ -120,4 +122,4 @@ class WalletForm extends Component {
   }
 }
 
-export default WalletForm
+export default CryptoForm

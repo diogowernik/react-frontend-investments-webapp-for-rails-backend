@@ -57,6 +57,7 @@ class Portfolios extends Component {
 
       return (
         <Container>
+          <h4 className="mt-4 mb-4">Portfolios</h4>
           <Row>
             <Col>
               <PortfoliosTable portfolios={portfolios}></PortfoliosTable>

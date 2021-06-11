@@ -132,3 +132,4 @@ module.exports = {
   deletePortfolio: deletePortfolio,
   getPortfolios: getPortfolios
 }
+

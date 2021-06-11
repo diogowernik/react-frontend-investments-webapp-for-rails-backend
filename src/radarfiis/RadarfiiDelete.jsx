@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 
 const Api = require('./Api.js')
-class WalletDelete extends Component {
+class RadarfiiDelete extends Component {
   constructor(props) {
     super(props)
 
@@ -13,14 +13,14 @@ class WalletDelete extends Component {
   }
 
   componentDidMount() {
-    Api.deleteWallet(this.state.id)
+    Api.deleteRadarfii(this.state.id)
       .then(response => {
         const [error] = response
         if (error) {
           // TODO: set flash
         }
         this.setState({
-          redirect: '/wallets'
+          redirect: '/radarfiis'
         })
       })
   }
@@ -39,4 +39,4 @@ class WalletDelete extends Component {
 
 }
 
-export default WalletDelete
+export default RadarfiiDelete

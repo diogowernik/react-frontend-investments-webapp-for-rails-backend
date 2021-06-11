@@ -57,6 +57,7 @@ class Categories extends Component {
 
       return (
         <Container>
+          <h4 className="mt-4 mb-4">Categorias de investimentos</h4>
           <Row>
             <Col>
               <CategoriesTable categories={categories}></CategoriesTable>

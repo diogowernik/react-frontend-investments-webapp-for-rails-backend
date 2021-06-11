@@ -4,13 +4,13 @@ import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } fro
 
 const Api = require('./Api.js')
 
-class WalletForm extends Component {
+class RadarfiiForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      wallet: {
-        id: this.getWalletId(props),
+      radarfii: {
+        id: this.getRadarfiiId(props),
         title: '',
         slug: '',
       },
@@ -23,7 +23,7 @@ class WalletForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getWalletId(props) {
+  getRadarfiiId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -44,7 +44,7 @@ class WalletForm extends Component {
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.wallet[field] = newVal
+      newState.radarfii[field] = newVal
       return newState
     })
   }
@@ -52,12 +52,12 @@ class WalletForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let wallet = {
-      title: this.state.wallet.title,
-      slug: this.state.wallet.slug,
+    let radarfii = {
+      title: this.state.radarfii.title,
+      slug: this.state.radarfii.slug,
     }
 
-    Api.saveWallet(wallet, this.state.wallet.id)
+    Api.saveRadarfii(radarfii, this.state.radarfii.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -66,15 +66,15 @@ class WalletForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/wallets'
+            redirect: '/radarfiis'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.wallet.id) {
-      Api.getWallet(this.state.wallet.id)
+    if (this.state.radarfii.id) {
+      Api.getRadarfii(this.state.radarfii.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -83,7 +83,7 @@ class WalletForm extends Component {
             })
           } else {
             this.setState({
-              wallet: data,
+              radarfii: data,
               errors: []
             })
           }
@@ -92,7 +92,7 @@ class WalletForm extends Component {
   }
 
   render() {
-    const { redirect, wallet, errors } = this.state
+    const { redirect, radarfii, errors } = this.state
 
     if (redirect) {
       return (
@@ -104,7 +104,7 @@ class WalletForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3>Edit Wallet</h3>
+              <h3>Edit Radarfii</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -119,11 +119,11 @@ class WalletForm extends Component {
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <Label for="title">Title</Label>
-                  <Input type="text" name="title" id="title" value={wallet.title} placeholder="Enter title" onChange={this.setTitle} />
+                  <Input type="text" name="title" id="title" value={radarfii.title} placeholder="Enter title" onChange={this.setTitle} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="slug">Slug</Label>
-                  <Input type="text" name="slug" id="slug" value={wallet.slug} placeholder="Enter slug" onChange={this.setSlug} />
+                  <Input type="text" name="slug" id="slug" value={radarfii.slug} placeholder="Enter slug" onChange={this.setSlug} />
                 </FormGroup>
                 <Button color="success">Submit</Button>
               </Form>
@@ -135,4 +135,4 @@ class WalletForm extends Component {
   }
 }
 
-export default WalletForm
+export default RadarfiiForm

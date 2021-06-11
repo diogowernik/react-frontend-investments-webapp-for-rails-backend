@@ -1,7 +1,7 @@
 const apiHost = 'http://localhost:3000'
 //const apiHost = 'https://api.miz.finance'
 
-// TODO: base investments url
+// TODO: base cryptos url
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -25,9 +25,9 @@ const collectErrors = (response) => {
   return errors
 }
 
-const deleteInvestment = (id) => {
+const deleteCrypto = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/investments/${id}`, {
+  return fetch(`${apiHost}/api/cryptos/${id}`, {
     method: 'delete',
     headers: {
       'Content-Type': 'application/json'
@@ -50,9 +50,9 @@ const deleteInvestment = (id) => {
   })
 }
 
-const getInvestments = () => {
+const getCryptos = () => {
   let response_ok = null
-  return fetch(`${apiHost}/api/investments`, {
+  return fetch(`${apiHost}/api/cryptos`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json'
@@ -71,9 +71,9 @@ const getInvestments = () => {
     })
 }
 
-const getInvestment = (id) => {
+const getCrypto = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/investments/${id}`, {
+  return fetch(`${apiHost}/api/cryptos/${id}`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
@@ -92,8 +92,8 @@ const getInvestment = (id) => {
   })
 }
 
-const saveInvestment = (data, id=null) => {
-  let apiUrl = `${apiHost}/api/investments`
+const saveCrypto = (data, id=null) => {
+  let apiUrl = `${apiHost}/api/cryptos`
   let apiMethod = 'post'
   if (id) {
     apiUrl = `${apiUrl}/${id}`
@@ -101,7 +101,7 @@ const saveInvestment = (data, id=null) => {
   }
 
   const body = JSON.stringify({
-    investment: data
+    crypto: data
   })
 
   let response_ok = null
@@ -127,8 +127,8 @@ const saveInvestment = (data, id=null) => {
 }
 
 module.exports = {
-  saveInvestment: saveInvestment,
-  getInvestment: getInvestment,
-  deleteInvestment: deleteInvestment,
-  getInvestments: getInvestments
+  saveCrypto: saveCrypto,
+  getCrypto: getCrypto,
+  deleteCrypto: deleteCrypto,
+  getCryptos: getCryptos
 }

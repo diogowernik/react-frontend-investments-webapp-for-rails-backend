@@ -57,6 +57,7 @@ class Movements extends Component {
 
       return (
         <Container>
+          <h4 className="mt-4 mb-4">Operações Financeiras</h4>
           <Row>
             <Col>
               <MovementsTable movements={movements}></MovementsTable>
