@@ -27,7 +27,7 @@ const NavBar = (props) => {
           <Nav className="mr-auto" navbar>
 
             <NavItem>
-              <NavLink href="/portifolios">Portfolios</NavLink>
+              <NavLink href="/portfolios">Portfolios</NavLink>
             </NavItem>
             
             <UncontrolledDropdown nav inNavbar>
