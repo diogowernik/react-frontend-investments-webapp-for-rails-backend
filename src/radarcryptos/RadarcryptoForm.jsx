@@ -4,13 +4,13 @@ import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } fro
 
 const Api = require('./Api.js')
 
-class RadarfiiForm extends Component {
+class RadarcryptoForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      radarfii: {
-        id: this.getRadarfiiId(props),
+      radarcrypto: {
+        id: this.getRadarcryptoId(props),
         ticker: '',
         title: '',
         slug: '',
@@ -28,7 +28,7 @@ class RadarfiiForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getRadarfiiId(props) {
+  getRadarcryptoId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -59,7 +59,7 @@ class RadarfiiForm extends Component {
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.radarfii[field] = newVal
+      newState.radarcrypto[field] = newVal
       return newState
     })
   }
@@ -67,14 +67,14 @@ class RadarfiiForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let radarfii = {
-      title: this.state.radarfii.title,
-      slug: this.state.radarfii.slug,
-      ticker: this.state.radarfii.ticker,
-      price: this.state.radarfii.price,
+    let radarcrypto = {
+      title: this.state.radarcrypto.title,
+      slug: this.state.radarcrypto.slug,
+      ticker: this.state.radarcrypto.ticker,
+      price: this.state.radarcrypto.price,
     }
 
-    Api.saveRadarfii(radarfii, this.state.radarfii.id)
+    Api.saveRadarcrypto(radarcrypto, this.state.radarcrypto.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -83,15 +83,15 @@ class RadarfiiForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/radarfiis'
+            redirect: '/radarcryptos'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.radarfii.id) {
-      Api.getRadarfii(this.state.radarfii.id)
+    if (this.state.radarcrypto.id) {
+      Api.getRadarcrypto(this.state.radarcrypto.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -100,7 +100,7 @@ class RadarfiiForm extends Component {
             })
           } else {
             this.setState({
-              radarfii: data,
+              radarcrypto: data,
               errors: []
             })
           }
@@ -109,7 +109,7 @@ class RadarfiiForm extends Component {
   }
 
   render() {
-    const { redirect, radarfii, errors } = this.state
+    const { redirect, radarcrypto, errors } = this.state
 
     if (redirect) {
       return (
@@ -121,7 +121,7 @@ class RadarfiiForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3>Edit Radarfii</h3>
+              <h3>Edit Radarcrypto</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -136,19 +136,19 @@ class RadarfiiForm extends Component {
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <Label for="ticker">Ticker</Label>
-                  <Input type="text" name="ticker" id="ticker" value={radarfii.ticker} placeholder="Enter ticker" onChange={this.setTicker} />
+                  <Input type="text" name="ticker" id="ticker" value={radarcrypto.ticker} placeholder="Enter ticker" onChange={this.setTicker} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="slug">Slug</Label>
-                  <Input type="text" name="slug" id="slug" value={radarfii.slug} placeholder="Enter slug" onChange={this.setSlug} />
+                  <Input type="text" name="slug" id="slug" value={radarcrypto.slug} placeholder="Enter slug" onChange={this.setSlug} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="title">Title</Label>
-                  <Input type="text" name="title" id="title" value={radarfii.title} placeholder="Enter title" onChange={this.setTitle} />
+                  <Input type="text" name="title" id="title" value={radarcrypto.title} placeholder="Enter title" onChange={this.setTitle} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="price">Price</Label>
-                  <Input type="text" name="price" id="price" value={radarfii.price} placeholder="Enter price" onChange={this.setPrice} />
+                  <Input type="text" name="price" id="price" value={radarcrypto.price} placeholder="Enter price" onChange={this.setPrice} />
                 </FormGroup>
                 
                 <Button color="success">Submit</Button>
@@ -161,4 +161,4 @@ class RadarfiiForm extends Component {
   }
 }
 
-export default RadarfiiForm
+export default RadarcryptoForm

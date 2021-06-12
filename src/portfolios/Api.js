@@ -1,5 +1,4 @@
-const apiHost = 'http://localhost:3000'
-//const apiHost = 'https://api.miz.finance'
+import { apiHost } from '../apiHost.js';
 
 // TODO: base portfolios url
 

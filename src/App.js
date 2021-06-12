@@ -28,6 +28,11 @@ import CryptoForm from './cryptos/CryptoForm'
 import CryptoDelete from './cryptos/CryptoDelete'
 import CryptoShow from './cryptos/CryptoShow'
 
+import Radarcryptos from './radarcryptos/Radarcryptos'
+import RadarcryptoForm from './radarcryptos/RadarcryptoForm'
+import RadarcryptoDelete from './radarcryptos/RadarcryptoDelete'
+import RadarcryptoShow from './radarcryptos/RadarcryptoShow'
+
 import NavBar from './layouts/navbar'
 
 class App extends Component {
@@ -68,7 +73,11 @@ class App extends Component {
           <Route exact path="/crypto/:id/delete" render={(routeProps) => ( <CryptoDelete {...routeProps} /> )} />
           <Route exact path="/crypto/:id" render={(routeProps) => ( <CryptoShow {...routeProps} /> )} />
 
-
+          <Route exact path='/radarcryptos' component={Radarcryptos} />
+          <Route exact path='/radarcryptos/new' component={RadarcryptoForm} />
+          <Route exact path="/radarcrypto/:id/edit" render={(routeProps) => ( <RadarcryptoForm {...routeProps} /> )} />
+          <Route exact path="/radarcrypto/:id/delete" render={(routeProps) => ( <RadarcryptoDelete {...routeProps} /> )} />
+          <Route exact path="/radarcrypto/:id" render={(routeProps) => ( <RadarcryptoShow {...routeProps} /> )} />
 
         </div>
       </Router>

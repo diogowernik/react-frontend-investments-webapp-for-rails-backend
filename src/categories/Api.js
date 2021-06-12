@@ -1,4 +1,4 @@
-const apiHost = 'http://localhost:3000' 
+import { apiHost } from '../apiHost.js';
 
 // TODO: base categories url
 
