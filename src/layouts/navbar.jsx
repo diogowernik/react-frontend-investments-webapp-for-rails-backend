@@ -67,9 +67,6 @@ const NavBar = (props) => {
                 <DropdownItem>
                   <a href="/years">Anos</a>
                 </DropdownItem>
-                <DropdownItem>
-                  <a href="/posts">Publicações</a>
-                </DropdownItem>
                 
               </DropdownMenu>
             </UncontrolledDropdown>

@@ -125,9 +125,9 @@ const savePortfolio = (data, id=null) => {
   })
 }
 
-module.exports = {
-  savePortfolio: savePortfolio,
-  getPortfolio: getPortfolio,
-  deletePortfolio: deletePortfolio,
-  getPortfolios: getPortfolios
+export {
+  savePortfolio,
+  getPortfolio,
+  deletePortfolio,
+  getPortfolios
 }

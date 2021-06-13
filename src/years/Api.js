@@ -124,9 +124,11 @@ const saveYear = (data, id=null) => {
   })
 }
 
-module.exports = {
-  saveYear: saveYear,
-  getYear: getYear,
-  deleteYear: deleteYear,
-  getYears: getYears
+export {
+  saveYear,
+  getYear,
+  deleteYear,
+  getYears
 }
+
+

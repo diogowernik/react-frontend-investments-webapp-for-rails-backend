@@ -4,20 +4,18 @@ import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } fro
 
 const Api = require('./Api.js')
 
-class CryptoForm extends Component {
+class FiiForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      crypto: {
-        id: this.getCryptoId(props),
+      fii: {
+        id: this.getFiiId(props),
         category_id: '',
         portfolio_id: '',
         amount: '',
         cost: '',
-        total_cost: '',
-        total: '',
-        radarcrypto_id: '',
+        radarfii_id: '',
       },
       redirect: null,
       errors: []
@@ -26,18 +24,14 @@ class CryptoForm extends Component {
     this.setCategory_id = this.setCategory_id.bind(this)
     this.setPortfolio_id = this.setPortfolio_id.bind(this)
     this.setAmount = this.setAmount.bind(this)
-
-    this.setTotal = this.setTotal.bind(this)
-    this.setTotal_cost = this.setTotal_cost.bind(this)
-
     this.setCost = this.setCost.bind(this)
-    this.setRadarcrypto_id = this.setRadarcrypto_id.bind(this)
+    this.setRadarfii_id = this.setRadarfii_id.bind(this)
 
 
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getCryptoId(props) {
+  getFiiId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -55,9 +49,9 @@ class CryptoForm extends Component {
     this.setFieldState('portfolio_id', newVal)
   }
 
-    setRadarcrypto_id(event) {
+    setRadarfii_id(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('radarcrypto_id', newVal)
+    this.setFieldState('radarfii_id', newVal)
   }
 
   setAmount(event) {
@@ -70,20 +64,10 @@ class CryptoForm extends Component {
     this.setFieldState('cost', newVal)
   }
 
-  setTotal(event) {
-    let newVal = event.target.value || ''
-    this.setFieldState('total', newVal)
-  }
-
-  setTotal_cost(event) {
-    let newVal = event.target.value || ''
-    this.setFieldState('total_cost', newVal)
-  }
-
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.crypto[field] = newVal
+      newState.fii[field] = newVal
       return newState
     })
   }
@@ -91,17 +75,15 @@ class CryptoForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let crypto = {
-      category_id: this.state.crypto.category_id,
-      portfolio_id: this.state.crypto.portfolio_id,
-      amount: this.state.crypto.amount,
-      cost: this.state.crypto.cost,
-      radarcrypto_id: this.state.crypto.radarcrypto_id,
-      total_cost: this.state.crypto.total_cost,
-      total: this.state.crypto.total,
+    let fii = {
+      category_id: this.state.fii.category_id,
+      portfolio_id: this.state.fii.portfolio_id,
+      amount: this.state.fii.amount,
+      cost: this.state.fii.cost,
+      radarfii_id: this.state.fii.radarfii_id,
     }
 
-    Api.saveCrypto(crypto, this.state.crypto.id)
+    Api.saveFii(fii, this.state.fii.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -110,15 +92,15 @@ class CryptoForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/cryptos'
+            redirect: '/fiis'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.crypto.id) {
-      Api.getCrypto(this.state.crypto.id)
+    if (this.state.fii.id) {
+      Api.getFii(this.state.fii.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -127,7 +109,7 @@ class CryptoForm extends Component {
             })
           } else {
             this.setState({
-              crypto: data,
+              fii: data,
               errors: []
             })
           }
@@ -136,7 +118,7 @@ class CryptoForm extends Component {
   }
 
   render() {
-    const { redirect, crypto, errors } = this.state
+    const { redirect, fii, errors } = this.state
 
     if (redirect) {
       return (
@@ -148,7 +130,7 @@ class CryptoForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3>Edit Crypto</h3>
+              <h3>Edit Fii</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -163,31 +145,23 @@ class CryptoForm extends Component {
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <Label for="category_id">Category</Label>
-                  <Input type="text" name="category_id" id="category_id" value={crypto.category_id} placeholder="Enter category_id" onChange={this.setCategory_id} />
+                  <Input type="text" name="category_id" id="category_id" value={fii.category_id} placeholder="Enter category_id" onChange={this.setCategory_id} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="portfolio_id">Portfolio</Label>
-                  <Input type="text" name="portfolio_id" id="portfolio_id" value={crypto.portfolio_id} placeholder="Enter portfolio_id" onChange={this.setPortfolio_id} />
+                  <Input type="text" name="portfolio_id" id="portfolio_id" value={fii.portfolio_id} placeholder="Enter portfolio_id" onChange={this.setPortfolio_id} />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="radarcrypto_id">Radarcrypto</Label>
-                  <Input type="text" name="radarcrypto_id" id="radarcrypto_id" value={crypto.radarcrypto_id} placeholder="Enter radarcrypto_id" onChange={this.setRadarcrypto_id} />
+                  <Label for="radarfii_id">Radarfii</Label>
+                  <Input type="text" name="radarfii_id" id="radarfii_id" value={fii.radarfii_id} placeholder="Enter radarfii_id" onChange={this.setRadarfii_id} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="amount">Amount</Label>
-                  <Input type="text" name="amount" id="amount" value={crypto.amount} placeholder="Enter amount" onChange={this.setAmount} />
+                  <Input type="text" name="amount" id="amount" value={fii.amount} placeholder="Enter amount" onChange={this.setAmount} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="cost">Cost</Label>
-                  <Input type="text" name="cost" id="cost" value={crypto.cost} placeholder="Enter cost" onChange={this.setCost} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="total_cost">Total cost</Label>
-                  <Input type="text" name="total_cost" id="total_cost" value={crypto.total_cost} placeholder="Enter total_cost" onChange={this.setTotal_cost} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="total">Total hoje</Label>
-                  <Input type="text" name="total" id="total" value={crypto.total} placeholder="Enter total" onChange={this.setTotal} />
+                  <Input type="text" name="cost" id="cost" value={fii.cost} placeholder="Enter cost" onChange={this.setCost} />
                 </FormGroup>
                 <Button color="success">Submit</Button>
               </Form>
@@ -199,4 +173,4 @@ class CryptoForm extends Component {
   }
 }
 
-export default CryptoForm
+export default FiiForm

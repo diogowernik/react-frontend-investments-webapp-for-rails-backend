@@ -28,6 +28,11 @@ import CryptoForm from './cryptos/CryptoForm'
 import CryptoDelete from './cryptos/CryptoDelete'
 import CryptoShow from './cryptos/CryptoShow'
 
+import Fiis from './fiis/Fiis'
+import FiiForm from './fiis/FiiForm'
+import FiiDelete from './fiis/FiiDelete'
+import FiiShow from './fiis/FiiShow'
+
 import Radarcryptos from './radarcryptos/Radarcryptos'
 import RadarcryptoForm from './radarcryptos/RadarcryptoForm'
 import RadarcryptoDelete from './radarcryptos/RadarcryptoDelete'
@@ -72,6 +77,12 @@ class App extends Component {
           <Route exact path="/crypto/:id/edit" render={(routeProps) => ( <CryptoForm {...routeProps} /> )} />
           <Route exact path="/crypto/:id/delete" render={(routeProps) => ( <CryptoDelete {...routeProps} /> )} />
           <Route exact path="/crypto/:id" render={(routeProps) => ( <CryptoShow {...routeProps} /> )} />
+
+          <Route exact path='/fiis' component={Fiis} />
+          <Route exact path='/fiis/new' component={FiiForm} />
+          <Route exact path="/fii/:id/edit" render={(routeProps) => ( <FiiForm {...routeProps} /> )} />
+          <Route exact path="/fii/:id/delete" render={(routeProps) => ( <FiiDelete {...routeProps} /> )} />
+          <Route exact path="/fii/:id" render={(routeProps) => ( <FiiShow {...routeProps} /> )} />
 
           <Route exact path='/radarcryptos' component={Radarcryptos} />
           <Route exact path='/radarcryptos/new' component={RadarcryptoForm} />

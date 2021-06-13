@@ -125,9 +125,9 @@ const saveCrypto = (data, id=null) => {
   })
 }
 
-module.exports = {
-  saveCrypto: saveCrypto,
-  getCrypto: getCrypto,
-  deleteCrypto: deleteCrypto,
-  getCryptos: getCryptos
+export {
+  saveCrypto,
+  getCrypto,
+  deleteCrypto,
+  getCryptos
 }

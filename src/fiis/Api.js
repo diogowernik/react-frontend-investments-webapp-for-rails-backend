@@ -1,6 +1,6 @@
 import { apiHost } from '../apiHost.js';
 
-// TODO: base categories url
+// TODO: base fiis url
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -24,9 +24,9 @@ const collectErrors = (response) => {
   return errors
 }
 
-const deleteCategory = (id) => {
+const deleteFii = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/categories/${id}`, {
+  return fetch(`${apiHost}/api/fiis/${id}`, {
     method: 'delete',
     headers: {
       'Content-Type': 'application/json'
@@ -49,9 +49,9 @@ const deleteCategory = (id) => {
   })
 }
 
-const getCategories = () => {
+const getFiis = () => {
   let response_ok = null
-  return fetch(`${apiHost}/api/categories`, {
+  return fetch(`${apiHost}/api/fiis`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json'
@@ -70,9 +70,9 @@ const getCategories = () => {
     })
 }
 
-const getCategory = (id) => {
+const getFii = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/categories/${id}`, {
+  return fetch(`${apiHost}/api/fiis/${id}`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
@@ -91,8 +91,8 @@ const getCategory = (id) => {
   })
 }
 
-const saveCategory = (data, id=null) => {
-  let apiUrl = `${apiHost}/api/categories`
+const saveFii = (data, id=null) => {
+  let apiUrl = `${apiHost}/api/fiis`
   let apiMethod = 'post'
   if (id) {
     apiUrl = `${apiUrl}/${id}`
@@ -100,7 +100,7 @@ const saveCategory = (data, id=null) => {
   }
 
   const body = JSON.stringify({
-    category: data
+    fii: data
   })
 
   let response_ok = null
@@ -126,8 +126,8 @@ const saveCategory = (data, id=null) => {
 }
 
 export {
-  saveCategory,
-  getCategory,
-  deleteCategory,
-  getCategories
+  saveFii,
+  getFii,
+  deleteFii,
+  getFiis
 }
