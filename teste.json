@@ -1,0 +1,31 @@
+{
+    title: "Diogo Wernik",
+    cryptos: {
+    BTC: {
+    ticker: "BTC",
+    total: "23980.0",
+    },
+    ETH: {
+    ticker: "ETH",
+    total: "55600.0",
+    },
+    ADA: {
+    ticker: "ADA",
+    total: "1250.0",
+    },
+    },
+    fiis: {
+    DEVA11: {
+    ticker: "DEVA11",
+    total: "21654.0",
+    },
+    HGLG11: {
+    ticker: "HGLG11",
+    total: "12876.0",
+    },
+    KNIP11: {
+    ticker: "KNIP11",
+    total: "32456.0",
+    },
+    },
+    }
