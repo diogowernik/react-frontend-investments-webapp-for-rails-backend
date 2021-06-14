@@ -16,6 +16,8 @@ class FiiForm extends Component {
         amount: '',
         cost: '',
         radarfii_id: '',
+        total_cost: '',
+        total: '',
       },
       redirect: null,
       errors: []
@@ -26,6 +28,8 @@ class FiiForm extends Component {
     this.setAmount = this.setAmount.bind(this)
     this.setCost = this.setCost.bind(this)
     this.setRadarfii_id = this.setRadarfii_id.bind(this)
+    this.setTotal = this.setTotal.bind(this)
+    this.setTotal_cost = this.setTotal_cost.bind(this)
 
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -64,6 +68,17 @@ class FiiForm extends Component {
     this.setFieldState('cost', newVal)
   }
 
+  setTotal(event) {
+    let newVal = event.target.value || ''
+    this.setFieldState('total', newVal)
+  }
+
+  setTotal_cost(event) {
+    let newVal = event.target.value || ''
+    this.setFieldState('total_cost', newVal)
+  }
+
+
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
@@ -81,6 +96,8 @@ class FiiForm extends Component {
       amount: this.state.fii.amount,
       cost: this.state.fii.cost,
       radarfii_id: this.state.fii.radarfii_id,
+      total_cost: this.state.fii.total_cost,
+      total: this.state.fii.total,
     }
 
     Api.saveFii(fii, this.state.fii.id)
@@ -162,6 +179,14 @@ class FiiForm extends Component {
                 <FormGroup>
                   <Label for="cost">Cost</Label>
                   <Input type="text" name="cost" id="cost" value={fii.cost} placeholder="Enter cost" onChange={this.setCost} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="total_cost">Total cost</Label>
+                  <Input type="text" name="total_cost" id="total_cost" value={fii.total_cost} placeholder="Enter total_cost" onChange={this.setTotal_cost} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="total">Total hoje</Label>
+                  <Input type="text" name="total" id="total" value={fii.total} placeholder="Enter total" onChange={this.setTotal} />
                 </FormGroup>
                 <Button color="success">Submit</Button>
               </Form>

@@ -26,6 +26,8 @@ class FiisTable extends Component {
               <th>Portfolio</th>
               <th>Amount</th>
               <th>Cost</th>
+              <th>Total Cost</th>
+              <th>Total Today</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -38,6 +40,8 @@ class FiisTable extends Component {
                 <td>{fii.portfolio.title}</td>
                 <td>{fii.amount}</td>
                 <td>{fii.cost}</td>
+                <td>{fii.total_cost}</td>
+                <td>{fii.total}</td>
                 <td>
                   <Link className="btn btn-primary" to={`/fii/${fii.id}`}>View</Link>{' '}
                   <Link className="btn btn-success" to={`/fii/${fii.id}/edit`}>Edit</Link>{' '}
