@@ -1,6 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts'
-
+import { apiHost } from '../apiHost.js';
 
 class TreeChart extends React.Component {
   constructor(props) {
@@ -12,10 +12,24 @@ class TreeChart extends React.Component {
           toolbar: {
             show: false,}
         },
+        title: {
+          text: 'Portfolio',
+          align: 'center'
+        },
+        dataLabels: {
+          enabled: true,
+          style: {
+            fontSize: '12px',
+          },
+          formatter: function(text, op) {
+            return [text, op.value]
+          },
+          offsetY: -4
+        },
       },
       series: [
         {
-          name: 'Marketcap',
+          name: '',
           data: []
         }
       ]
@@ -23,7 +37,7 @@ class TreeChart extends React.Component {
   }
 
   fetchData() {
-    fetch("https://api.miz.finance/api/portfolios/" + this.props.id)
+    fetch(`${apiHost}/api/portfolios/` + this.props.id)
       .then(response => response.json())
       .then(
         (response) => {
@@ -47,8 +61,8 @@ class TreeChart extends React.Component {
         options={this.state.options}
         series={this.state.series}
         type='treemap'
-        height="350"
-        width="664"
+        height="450"
+        width="850"
       />
     );
   }
