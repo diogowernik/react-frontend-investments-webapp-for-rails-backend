@@ -16,6 +16,10 @@ class TreeChart extends React.Component {
           text: 'Portfolio',
           align: 'center'
         },
+        theme: {
+          mode: 'light', 
+          palette: 'palette8', 
+      },
         dataLabels: {
           enabled: true,
           style: {
@@ -26,6 +30,22 @@ class TreeChart extends React.Component {
           },
           offsetY: -4
         },
+        tooltip: {
+          y: {
+            formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
+              return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+            }
+          }
+        },
+        legend: {
+          show: true,
+          position: 'bottom',
+          horizontalAlign: 'right',
+          fontSize: '14px',
+          fontFamily: 'Helvetica, Arial',
+          fontWeight: 400,
+          width:'20px',
+        },
       },
       series: [
         {
@@ -33,7 +53,7 @@ class TreeChart extends React.Component {
           data: []
         }
       ]
-    };
+    }
   }
 
   fetchData() {
