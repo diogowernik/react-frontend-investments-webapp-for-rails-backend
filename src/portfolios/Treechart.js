@@ -26,7 +26,7 @@ class TreeChart extends React.Component {
             fontSize: '12px',
           },
           formatter: function(text, op) {
-            return [text, op.value]
+            return [text , op.value].toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
           },
           offsetY: -4
         },
