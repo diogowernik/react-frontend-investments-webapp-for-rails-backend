@@ -10,7 +10,18 @@
     "react-dom": "^16.14.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3",
-    "reactstrap": "^7.1.0"
+    "reactstrap": "^7.1.0",
+    "datatables.net": "1.10.24",
+    "datatables.net-bs": "1.10.24",
+    "datatables.net-bs4": "1.10.24",
+    "datatables.net-buttons": "1.7.0",
+    "datatables.net-buttons-bs": "1.7.0",
+    "datatables.net-keytable": "2.6.1",
+    "datatables.net-keytable-bs": "2.6.1",
+    "datatables.net-responsive": "2.2.7",
+    "datatables.net-responsive-bs": "2.2.7",
+    "jszip": "3.6.0",
+    "pdfmake": "0.1.70"
   },
   "scripts": {
     "start": "react-scripts start",
