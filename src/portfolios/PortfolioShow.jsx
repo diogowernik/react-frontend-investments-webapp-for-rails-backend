@@ -98,10 +98,10 @@ class PortfolioForm extends Component {
           <Row>
             <Col>
               <h3 className="mt-3 mb-3">{portfolio.title}</h3>
-              <p>testando
-                <b>Url:</b> https://meusite.com/{portfolio.slug} <br />
+              <p>
+                <b>Url:</b> https://meusite.com/{this.props.match.params.id} <br />
               </p>
-            <TreeChart/>
+            <TreeChart id={this.props.match.params.id} />
             
               {errors.length > 0 &&
                 <div>

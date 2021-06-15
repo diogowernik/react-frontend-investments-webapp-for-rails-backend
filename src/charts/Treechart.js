@@ -23,7 +23,7 @@ class TreeChart extends React.Component {
   }
 
   fetchData() {
-    fetch("https://api.miz.finance/api/portfolios/1")
+    fetch("https://api.miz.finance/api/portfolios/" + this.props.id)
       .then(response => response.json())
       .then(
         (response) => {
