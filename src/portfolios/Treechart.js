@@ -26,13 +26,13 @@ class TreeChart extends React.Component {
             fontSize: '12px',
           },
           formatter: function(text, op) {
-            return [text , op.value].toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+            return [text, op.value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 0, maximumFractionDigits: 0 })]
           },
           offsetY: -4
         },
         tooltip: {
           y: {
-            formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
+            formatter: function(value) {
               return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
             }
           }
