@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert } from 'reactstrap'
+import TreeChart from '../charts/Treechart.js'
 
 const Api = require('./Api.js')
 
@@ -98,9 +99,10 @@ class PortfolioForm extends Component {
             <Col>
               <h3 className="mt-3 mb-3">{portfolio.title}</h3>
               <p>
-                <b>Url:</b> https://meusite.com/{portfolio.slug} <br />
+                <b>Url:</b> https://meusite.com/{this.props.match.params.id} <br />
               </p>
-
+            <TreeChart id={this.props.match.params.id} />
+            
               {errors.length > 0 &&
                 <div>
                   {errors.map((error, index) =>
