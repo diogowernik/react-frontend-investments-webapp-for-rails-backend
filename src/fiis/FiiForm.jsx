@@ -60,7 +60,7 @@ class FiiForm extends Component {
     this.setFieldState('portfolio_id', newVal)
   }
 
-    setRadarfii_id(event) {
+  setRadarfii_id(event) {
     let newVal = event.target.value || ''
     this.setFieldState('radarfii_id', newVal)
   }
