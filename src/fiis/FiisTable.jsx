@@ -10,28 +10,7 @@ class FiisTable extends Component {
       fiis: props.fiis
     }
   }
-
   state = {
-    dtOptions1: {
-        'paging': true, // Table pagination
-        'ordering': true, // Column ordering
-        'info': true, // Bottom left status text
-        responsive: true,
-        // Text translation options
-        // Note the required keywords between underscores (e.g _MENU_)
-        oLanguage: {
-            sSearch: '<em class="fa fa-search"></em>',
-            sLengthMenu: '_MENU_ records per page',
-            info: 'Showing page _PAGE_ of _PAGES_',
-            zeroRecords: 'Nothing found - sorry',
-            infoEmpty: 'No records available',
-            infoFiltered: '(filtered from _MAX_ total records)',
-            oPaginate: {
-                sNext: '<em class="fa fa-caret-right"></em>',
-                sPrevious: '<em class="fa fa-caret-left"></em>'
-            }
-        }
-    },
     dtOptions2: {
         'paging': true, // Table pagination
         'ordering': true, // Column ordering
@@ -60,32 +39,8 @@ class FiisTable extends Component {
             { extend: 'pdf', className: 'btn-info', title: $('title').text() },
             { extend: 'print', className: 'btn-info' }
         ]
-    },
-    dtOptions3: {
-        'paging': true, // Table pagination
-        'ordering': true, // Column ordering
-        'info': true, // Bottom left status text
-        responsive: true,
-        // Text translation options
-        // Note the required keywords between underscores (e.g _MENU_)
-        oLanguage: {
-            sSearch: '<em class="fa fa-search"></em>',
-            sLengthMenu: '_MENU_ records per page',
-            info: 'Showing page _PAGE_ of _PAGES_',
-            zeroRecords: 'Nothing found - sorry',
-            infoEmpty: 'No records available',
-            infoFiltered: '(filtered from _MAX_ total records)',
-            oPaginate: {
-                sNext: '<em class="fa fa-caret-right"></em>',
-                sPrevious: '<em class="fa fa-caret-left"></em>'
-            }
-        },
-        // Datatable key setup
-        keys: true
     }
   }
-
-// Access to internal datatable instance for customizations
   dtInstance = dtInstance => {
       const inputSearchClass = 'datatable_input_col_search';
       const columnInputs = $('tfoot .' + inputSearchClass);
@@ -95,19 +50,12 @@ class FiisTable extends Component {
               dtInstance.fnFilter(this.value, columnInputs.index(this));
           });
   }
-
-
-
   render() {
     const fiis = this.state.fiis
     if (fiis.length === 0) {
       return <div></div>
     } else {
       return (
-
-        
-
-
         <Datatable options={this.state.dtOptions2}>
             <table className="table table-striped my-4 w-100">
                 <thead>
@@ -129,10 +77,9 @@ class FiisTable extends Component {
                     <tr key= {fii.id}>
                         <td>{fii.id}</td>
                         <td><a href={`/radarfii/${fii.radarfii.id}`}>{fii.radarfii.ticker}</a>{' '}</td>
-                        <td>{fii.category.title}</td>
-                        <td>{fii.portfolio.title}</td>
+                        <td><a href={`/category/${fii.category.id}`}>{fii.category.title}</a>{' '}</td>
+                        <td><a href={`/portfolio/${fii.portfolio.id}`}>{fii.portfolio.title}</a>{' '}</td>
                         <td>{fii.amount}</td>
-
                         <td>{fii.cost}</td>
                         <td>{fii.total_cost}</td>
                         <td>{fii.total}</td>
@@ -144,10 +91,7 @@ class FiisTable extends Component {
                 ))}
                 </tbody>
             </table>
-        </Datatable>
-
-
-        
+        </Datatable>        
       )
     }
   }

@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import Select from 'react-select'
 
 const Api = require('./Api.js')
+
+const options = [
+  { value: 1, label: 'Fiis' },
+  { value: 2, label: 'Criptomoedas' },
+  { value: 3, label: 'Ações Br' }
+]
 
 class FiiForm extends Component {
   constructor(props) {
@@ -158,7 +165,7 @@ class FiiForm extends Component {
                   )}
                 </div>
               }
-
+              <Select options={options} />
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <Label for="category_id">Category</Label>

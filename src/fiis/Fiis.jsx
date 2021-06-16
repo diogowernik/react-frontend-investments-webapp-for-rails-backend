@@ -57,11 +57,12 @@ class Fiis extends Component {
 
       return (
         <Container>
+          <Link className="btn btn-primary float-right" to="/fiis/new">Add Fii</Link>
+
           <h4 className="mt-4 mb-4">Fundos Imobiliários nos Portfolios</h4>
           <Row>
             <Col>
               <FiisTable fiis={fiis}></FiisTable>
-              <Link className="btn btn-primary" to="/fiis/new">Add Fii</Link>
             </Col>
           </Row>
         </Container>
