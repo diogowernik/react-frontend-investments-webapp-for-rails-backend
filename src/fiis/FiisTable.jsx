@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-
 import $ from 'jquery';
-
 import Datatable from './Datatable.js';
+import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 
 class FiisTable extends Component {
   constructor(props) {
@@ -118,16 +117,29 @@ class FiisTable extends Component {
                         <th>Category</th>
                         <th className="sort-numeric">Portfolio</th>
                         <th className="sort-alpha" data-priority="2">Amount</th>
+
+                        <th>Cost</th>
+                        <th>Total Cost</th>
+                        <th>Total Today</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 {fiis.map(fii => (
                     <tr key= {fii.id}>
                         <td>{fii.id}</td>
-                        <td>{fii.radarfii.ticker}</td>
+                        <td><a href={`/radarfii/${fii.radarfii.id}`}>{fii.radarfii.ticker}</a>{' '}</td>
                         <td>{fii.category.title}</td>
                         <td>{fii.portfolio.title}</td>
                         <td>{fii.amount}</td>
+
+                        <td>{fii.cost}</td>
+                        <td>{fii.total_cost}</td>
+                        <td>{fii.total}</td>
+                        <td>
+                          <a className="btn btn-success" href={`/fii/${fii.id}/edit`}><FaPencilAlt /></a>{' '}
+                          <a className="btn btn-danger" href={`/fii/${fii.id}/delete`}><FaTrashAlt /></a>
+                        </td>
                     </tr>
                 ))}
                 </tbody>
@@ -142,3 +154,4 @@ class FiisTable extends Component {
 }
 
 export default FiisTable
+

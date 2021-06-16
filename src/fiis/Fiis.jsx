@@ -57,7 +57,7 @@ class Fiis extends Component {
 
       return (
         <Container>
-          <h4 className="mt-4 mb-4">Criptomoedas nos Portfolios</h4>
+          <h4 className="mt-4 mb-4">Fundos Imobiliários nos Portfolios</h4>
           <Row>
             <Col>
               <FiisTable fiis={fiis}></FiisTable>
