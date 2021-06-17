@@ -183,7 +183,7 @@ class FiiForm extends Component {
               <Form onSubmit={this.handleSubmit}>
                 <Row>
                   <Col md={ 4 }>
-                    {/* Trocar o campo category Input por Select (Selected fii.category_id, onChange setPortfolio) */}
+                    {/* Trocar o campo category Input por Select (Selected "1", onChange setPortfolio) */}
                       <Label for="category_id">Category</Label>
                       <Select name="category_id" id="category_id" options={category_options} />
                       <Input type="text" name="category_id" id="category_id" value={fii.category_id} placeholder="Enter category_id" onChange={this.setCategory_id} />
