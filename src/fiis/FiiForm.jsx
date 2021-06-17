@@ -1,14 +1,29 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Container, Row, Col, Alert, Button, Form, Label, Input } from 'reactstrap'
 import Select from 'react-select'
+import { apiHost } from '../apiHost.js';
 
 const Api = require('./Api.js')
 
-const options = [
-  { value: 1, label: 'Fiis' },
-  { value: 2, label: 'Criptomoedas' },
-  { value: 3, label: 'Ações Br' }
+
+const category_options = [
+  // fetch(`${apiHost}/api/categories/`) 
+  //{value = id, label = title}
+  { value: "1", label: 'Fiis' },
+  { value: "2", label: 'Criptomoedas' },
+  { value: "3", label: 'Ações Br' }
+]
+
+const portfolio_options = [
+  { value: "1", label: 'Diogo Wernik' },
+  { value: "2", label: 'Marcello Mattos' },
+  // fetch(`${apiHost}/api/portfolios/`) 
+  //{value = id, label = title}
+]
+const radarfii_options = [
+  // fetch(`${apiHost}/api/radarfiis/`) 
+  // {valeu = id, label = ticker}
 ]
 
 class FiiForm extends Component {
@@ -85,7 +100,6 @@ class FiiForm extends Component {
     this.setFieldState('total_cost', newVal)
   }
 
-
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
@@ -154,7 +168,7 @@ class FiiForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3>Edit Fii</h3>
+              <h3 className="mt-4 mb-4">Editar / Adicionar Fundo Imobiliário a uma Carteira</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -165,36 +179,46 @@ class FiiForm extends Component {
                   )}
                 </div>
               }
-              <Select options={options} />
+              
               <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label for="category_id">Category</Label>
-                  <Input type="text" name="category_id" id="category_id" value={fii.category_id} placeholder="Enter category_id" onChange={this.setCategory_id} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="portfolio_id">Portfolio</Label>
-                  <Input type="text" name="portfolio_id" id="portfolio_id" value={fii.portfolio_id} placeholder="Enter portfolio_id" onChange={this.setPortfolio_id} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="radarfii_id">Radarfii</Label>
-                  <Input type="text" name="radarfii_id" id="radarfii_id" value={fii.radarfii_id} placeholder="Enter radarfii_id" onChange={this.setRadarfii_id} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="amount">Amount</Label>
-                  <Input type="text" name="amount" id="amount" value={fii.amount} placeholder="Enter amount" onChange={this.setAmount} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="cost">Cost</Label>
-                  <Input type="text" name="cost" id="cost" value={fii.cost} placeholder="Enter cost" onChange={this.setCost} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="total_cost">Total cost</Label>
-                  <Input type="text" name="total_cost" id="total_cost" value={fii.total_cost} placeholder="Enter total_cost" onChange={this.setTotal_cost} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="total">Total hoje</Label>
-                  <Input type="text" name="total" id="total" value={fii.total} placeholder="Enter total" onChange={this.setTotal} />
-                </FormGroup>
+                <Row>
+                  <Col md={ 4 }>
+                    {/* Trocar o campo category Input por Select (Selected fii.category_id, onChange setPortfolio) */}
+                      <Label for="category_id">Category</Label>
+                      <Select name="category_id" id="category_id" options={category_options} />
+                      <Input type="text" name="category_id" id="category_id" value={fii.category_id} placeholder="Enter category_id" onChange={this.setCategory_id} />
+                  </Col>
+                  <Col md={ 4 }>
+                      <Label for="portfolio_id">Portfolio</Label>
+                      {/* Trocar o campo portfolio Input por Select (Selected fii.portfolio_id, onChange setPortfolio) */}
+                      <Select name="portfolio_id" id="portfolio_id" options={portfolio_options} />
+                      <Input type="text" name="portfolio_id" id="portfolio_id" value={fii.portfolio_id} placeholder="Enter portfolio_id" onChange={this.setPortfolio_id} />
+                    </Col>
+                  <Col md={ 4 }>
+                      <Label for="radarfii_id">Radarfii</Label>
+                      {/* Trocar o campo radarfii Input por Select (Selected fii.radarfii_id, onChange setPortfolio) */}
+                      <Select name="radarfii_id" id="radarfii_id" options={radarfii_options} />
+                      <Input type="text" name="radarfii_id" id="radarfii_id" value={fii.radarfii_id} placeholder="Enter radarfii_id" onChange={this.setRadarfii_id} />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={ 3 } >
+                    <Label for="amount">Amount</Label>
+                    <Input type="text" name="amount" id="amount" value={fii.amount} placeholder="Enter amount" onChange={this.setAmount} />
+                  </Col>
+                  <Col md={ 3 }>
+                    <Label for="cost">Cost</Label>
+                    <Input type="text" name="cost" id="cost" value={fii.cost} placeholder="Enter cost" onChange={this.setCost} />
+                    </Col>
+                  <Col md={ 3 }>
+                    <Label for="total_cost">Total cost</Label>
+                    <Input type="text" name="total_cost" id="total_cost" value={fii.total_cost} placeholder="Enter total_cost" onChange={this.setTotal_cost} />
+                    </Col>
+                  <Col md={ 3 }>
+                    <Label for="total">Total hoje</Label>
+                    <Input type="text" name="total" id="total" value={fii.total} placeholder="Enter total" onChange={this.setTotal} />
+                  </Col>
+                </Row>
                 <Button color="success">Submit</Button>
               </Form>
             </Col>
