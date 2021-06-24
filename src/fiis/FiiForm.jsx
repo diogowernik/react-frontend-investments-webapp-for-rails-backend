@@ -7,6 +7,7 @@ import { apiHost } from '../apiHost.js';
 const Api = require('./Api.js')
 
 
+
 const category_options = [
   // fetch(`${apiHost}/api/categories/`) 
   //{value = id, label = title}
@@ -25,6 +26,7 @@ const radarfii_options = [
   // fetch(`${apiHost}/api/radarfiis/`) 
   // {valeu = id, label = ticker}
 ]
+
 
 class FiiForm extends Component {
   constructor(props) {
@@ -66,12 +68,12 @@ class FiiForm extends Component {
   }
 
   setCategory_id(event) {
-    let newVal = event.target.value || ''
+    let newVal = event.value || ''
     this.setFieldState('category_id', newVal)
   }
 
   setPortfolio_id(event) {
-    let newVal = event.target.value || ''
+    let newVal = event.value || ''
     this.setFieldState('portfolio_id', newVal)
   }
 
@@ -183,16 +185,13 @@ class FiiForm extends Component {
               <Form onSubmit={this.handleSubmit}>
                 <Row>
                   <Col md={ 4 }>
-                    {/* Trocar o campo category Input por Select (Selected "1", onChange setPortfolio) */}
-                      <Label for="category_id">Category</Label>
-                      <Select name="category_id" id="category_id" options={category_options} />
-                      <Input type="text" name="category_id" id="category_id" value={fii.category_id} placeholder="Enter category_id" onChange={this.setCategory_id} />
+                      <Label for="category_id">Category</Label> 
+                      <Select name="category_id" id="category_id" options={category_options} onChange={this.setCategory_id} value={{value : 1, label : "Fiis"}} />
                   </Col>
                   <Col md={ 4 }>
                       <Label for="portfolio_id">Portfolio</Label>
-                      {/* Trocar o campo portfolio Input por Select (Selected fii.portfolio_id, onChange setPortfolio) */}
-                      <Select name="portfolio_id" id="portfolio_id" options={portfolio_options} />
-                      <Input type="text" name="portfolio_id" id="portfolio_id" value={fii.portfolio_id} placeholder="Enter portfolio_id" onChange={this.setPortfolio_id} />
+                      {/* Depois de Selecionado, aparecer o label e não o id */}
+                      <Select name="portfolio_id" id="portfolio_id" options={portfolio_options} onChange={this.setPortfolio_id} value={{value : fii.portfolio_id, label: fii.portfolio_id}} />
                     </Col>
                   <Col md={ 4 }>
                       <Label for="radarfii_id">Radarfii</Label>
