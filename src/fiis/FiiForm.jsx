@@ -1,30 +1,29 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Button, Form, Label, Input } from 'reactstrap'
-import Select from 'react-select'
-import { apiHost } from '../apiHost.js';
+//import { apiHost } from '../apiHost.js';
 
 const Api = require('./Api.js')
 
 
 
 const category_options = [
-  // fetch(`${apiHost}/api/categories/`) 
-  //{value = id, label = title}
   { value: "1", label: 'Fiis' },
   { value: "2", label: 'Criptomoedas' },
-  { value: "3", label: 'Ações Br' }
+  { value: "3", label: 'Açoes Br' },
+  // fetch(`${apiHost}/api/portfolios/`) 
 ]
 
 const portfolio_options = [
   { value: "1", label: 'Diogo Wernik' },
   { value: "2", label: 'Marcello Mattos' },
   // fetch(`${apiHost}/api/portfolios/`) 
-  //{value = id, label = title}
 ]
 const radarfii_options = [
+  { value: "1", label: 'DEVA11' },
+  { value: "2", label: 'HGLG11' },
+  { value: "3", label: 'KNIP11' },
   // fetch(`${apiHost}/api/radarfiis/`) 
-  // {valeu = id, label = ticker}
 ]
 
 
@@ -59,6 +58,12 @@ class FiiForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+
+  handleChange(e) {
+    console.log("Category Selected!!");
+    this.setState({ category_id: e.target.value });
+  }
+
   getFiiId(props) {
     try {
       return props.match.params.id
@@ -68,12 +73,12 @@ class FiiForm extends Component {
   }
 
   setCategory_id(event) {
-    let newVal = event.value || ''
+    let newVal = event.target.value || ''
     this.setFieldState('category_id', newVal)
   }
 
   setPortfolio_id(event) {
-    let newVal = event.value || ''
+    let newVal = event.target.value || ''
     this.setFieldState('portfolio_id', newVal)
   }
 
@@ -186,18 +191,30 @@ class FiiForm extends Component {
                 <Row>
                   <Col md={ 4 }>
                       <Label for="category_id">Category</Label> 
-                      <Select name="category_id" id="category_id" options={category_options} onChange={this.setCategory_id} value={{value : 1, label : "Fiis"}} />
+                      <select value={fii.category_id} onChange={this.setCategory_id} className="form-control">
+                      <option value="" disabled selected>Select your option</option>
+                        {category_options.map((option) => (
+                          <option value={option.value}>{option.label}</option>
+                        ))}
+                      </select>
                   </Col>
                   <Col md={ 4 }>
                       <Label for="portfolio_id">Portfolio</Label>
-                      {/* Depois de Selecionado, aparecer o label e não o id */}
-                      <Select name="portfolio_id" id="portfolio_id" options={portfolio_options} onChange={this.setPortfolio_id} value={{value : fii.portfolio_id, label: fii.portfolio_id}} />
+                      <select value={fii.portfolio_id} onChange={this.setPortfolio_id} className="form-control">
+                      <option value="" disabled selected>Select your option</option>
+                        {portfolio_options.map((option) => (
+                          <option value={option.value}>{option.label}</option>
+                        ))}
+                      </select>
                     </Col>
                   <Col md={ 4 }>
                       <Label for="radarfii_id">Radarfii</Label>
-                      {/* Trocar o campo radarfii Input por Select (Selected fii.radarfii_id, onChange setPortfolio) */}
-                      <Select name="radarfii_id" id="radarfii_id" options={radarfii_options} />
-                      <Input type="text" name="radarfii_id" id="radarfii_id" value={fii.radarfii_id} placeholder="Enter radarfii_id" onChange={this.setRadarfii_id} />
+                      <select value={fii.radarfii_id} onChange={this.setRadarfii_id} className="form-control">
+                      <option value="" disabled selected>Select your option</option>
+                        {radarfii_options.map((option) => (
+                          <option value={option.value}>{option.label}</option>
+                        ))}
+                      </select>
                   </Col>
                 </Row>
                 <Row>
