@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Button, Form, Label, Input } from 'reactstrap'
-//import { apiHost } from '../apiHost.js';
+import { apiHost } from '../apiHost.js';
 
 const Api = require('./Api.js')
 
@@ -14,24 +14,13 @@ const category_options = [
   // fetch(`${apiHost}/api/category/options`) 
 ]
 
-const portfolio_options = [
-  { value: "1", label: 'Diogo Wernik' },
-  { value: "2", label: 'Marcello Mattos' },
-  // fetch(`${apiHost}/api/portfolio/options`) 
-]
-const radarfii_options = [
-  { value: "1", label: 'DEVA11' },
-  { value: "2", label: 'HGLG11' },
-  { value: "3", label: 'KNIP11' },
-  // fetch(`${apiHost}/api/radarfii/options`) 
-]
-
-
 class FiiForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      portfolio_options:[],
+      radarfii_options:[],
       fii: {
         id: this.getFiiId(props),
         category_id: '',
@@ -59,7 +48,30 @@ class FiiForm extends Component {
   }
 
 
-  handleChange(e) {
+  fetchData() {
+    var portofolio = (apiHost + '/api/portfolio/options');
+    var radarfii = (apiHost + '/api/radarfii/options');
+
+    Promise.all([fetch(portofolio), fetch(radarfii)])
+      .then(([res1, res2]) => {
+        return Promise.all([res1.json(), res2.json()])
+      })
+      .then(([res1, res2]) => {
+        this.setState({
+          portfolio_options: res1,
+          radarfii_options: res2
+        });
+      },
+        // handle errors here
+        (errors) => {
+          this.setState({
+            errors            
+          });console.log(errors)
+        }
+      );
+  }
+
+    handleChange(e) {
     console.log("Category Selected!!");
     this.setState({ category_id: e.target.value });
   }
@@ -144,6 +156,7 @@ class FiiForm extends Component {
   }
 
   componentDidMount() {
+        this.fetchData();
     if (this.state.fii.id) {
       Api.getFii(this.state.fii.id)
         .then(response => {
@@ -163,7 +176,7 @@ class FiiForm extends Component {
   }
 
   render() {
-    const { redirect, fii, errors } = this.state
+    const { redirect, fii, errors, radarfii_options,portfolio_options } = this.state
 
     if (redirect) {
       return (
