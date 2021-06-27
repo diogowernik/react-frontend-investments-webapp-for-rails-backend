@@ -23,7 +23,7 @@ const radarfii_options = [
   { value: "1", label: 'DEVA11' },
   { value: "2", label: 'HGLG11' },
   { value: "3", label: 'KNIP11' },
-  // fetch(`${apiHost}/api/radarfiis/`) 
+  // fetch(`${apiHost}/api/radarfii/options`) 
 ]
 
 
