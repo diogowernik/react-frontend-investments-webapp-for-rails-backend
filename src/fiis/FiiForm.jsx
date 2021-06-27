@@ -6,14 +6,6 @@ import { apiHost } from '../apiHost.js';
 const Api = require('./Api.js')
 
 
-
-const category_options = [
-  { value: "1", label: 'Fiis' },
-  { value: "2", label: 'Criptomoedas' },
-  { value: "3", label: 'Açoes Br' },
-  // fetch(`${apiHost}/api/category/options`) 
-]
-
 class FiiForm extends Component {
   constructor(props) {
     super(props)
@@ -21,6 +13,7 @@ class FiiForm extends Component {
     this.state = {
       portfolio_options:[],
       radarfii_options:[],
+      category_options:[],
       fii: {
         id: this.getFiiId(props),
         category_id: '',
@@ -51,15 +44,17 @@ class FiiForm extends Component {
   fetchData() {
     var portofolio = (apiHost + '/api/portfolio/options');
     var radarfii = (apiHost + '/api/radarfii/options');
+    var category = (apiHost + '/api/category/options');
 
-    Promise.all([fetch(portofolio), fetch(radarfii)])
-      .then(([res1, res2]) => {
-        return Promise.all([res1.json(), res2.json()])
+    Promise.all([fetch(portofolio), fetch(radarfii), fetch(category)])
+      .then(([res1, res2, res3]) => {
+        return Promise.all([res1.json(), res2.json(), res3.json()])
       })
-      .then(([res1, res2]) => {
+      .then(([res1, res2, res3]) => {
         this.setState({
           portfolio_options: res1,
-          radarfii_options: res2
+          radarfii_options: res2,
+          category_options: res3
         });
       },
         // handle errors here
@@ -69,11 +64,6 @@ class FiiForm extends Component {
           });console.log(errors)
         }
       );
-  }
-
-    handleChange(e) {
-    console.log("Category Selected!!");
-    this.setState({ category_id: e.target.value });
   }
 
   getFiiId(props) {
@@ -176,7 +166,7 @@ class FiiForm extends Component {
   }
 
   render() {
-    const { redirect, fii, errors, radarfii_options,portfolio_options } = this.state
+    const { redirect, fii, errors, radarfii_options, portfolio_options, category_options } = this.state
 
     if (redirect) {
       return (
