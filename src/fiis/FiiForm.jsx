@@ -207,7 +207,7 @@ class FiiForm extends Component {
                       <select value={fii.category_id} onChange={this.setCategory_id} className="form-control">
                       <option value="" disabled selected>Select your option</option>
                         {category_options.map((option) => (
-                          <option value={option.value}>{option.label}</option>
+                          <option value={option.value}  key={option.value}>{option.label}</option>
                         ))}
                       </select>
                   </Col>
@@ -216,7 +216,7 @@ class FiiForm extends Component {
                       <select value={fii.portfolio_id} onChange={this.setPortfolio_id} className="form-control">
                       <option value="" disabled selected>Select your option</option>
                         {portfolio_options.map((option) => (
-                          <option value={option.value}>{option.label}</option>
+                          <option value={option.value} key={option.value}>{option.label}</option>
                         ))}
                       </select>
                     </Col>
@@ -225,7 +225,7 @@ class FiiForm extends Component {
                       <select value={fii.radarfii_id} onChange={this.setRadarfii_id} className="form-control">
                       <option value="" disabled selected>Select your option</option>
                         {radarfii_options.map((option) => (
-                          <option value={option.value}>{option.label}</option>
+                          <option value={option.value} key={option.value}>{option.label}</option>
                         ))}
                       </select>
                   </Col>
