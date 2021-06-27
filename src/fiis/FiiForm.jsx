@@ -11,13 +11,13 @@ const category_options = [
   { value: "1", label: 'Fiis' },
   { value: "2", label: 'Criptomoedas' },
   { value: "3", label: 'Açoes Br' },
-  // fetch(`${apiHost}/api/portfolios/`) 
+  // fetch(`${apiHost}/api/category/options`) 
 ]
 
 const portfolio_options = [
   { value: "1", label: 'Diogo Wernik' },
   { value: "2", label: 'Marcello Mattos' },
-  // fetch(`${apiHost}/api/portfolios/`) 
+  // fetch(`${apiHost}/api/portfolio/options`) 
 ]
 const radarfii_options = [
   { value: "1", label: 'DEVA11' },
