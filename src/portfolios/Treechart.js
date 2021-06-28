@@ -12,10 +12,6 @@ class TreeChart extends React.Component {
           toolbar: {
             show: false,}
         },
-        title: {
-          text: 'Portfolio',
-          align: 'center'
-        },
         theme: {
           mode: 'light', 
           palette: 'palette8', 
@@ -40,7 +36,7 @@ class TreeChart extends React.Component {
         legend: {
           show: true,
           position: 'bottom',
-          horizontalAlign: 'right',
+          horizontalAlign: 'left',
           fontSize: '14px',
           fontFamily: 'Helvetica, Arial',
           fontWeight: 400,
@@ -82,7 +78,7 @@ class TreeChart extends React.Component {
         series={this.state.series}
         type='treemap'
         height="450"
-        width="850"
+        width="100%"
       />
     );
   }
