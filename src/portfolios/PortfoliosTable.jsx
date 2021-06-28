@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom"
-import { Table } from 'reactstrap'
+import Datatable from '../Datatable.js';
+import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 
 class PortfoliosTable extends Component {
   constructor(props) {
@@ -16,29 +16,31 @@ class PortfoliosTable extends Component {
       return <div></div>
     } else {
       return (
-        <Table>
+        <Datatable options={this.state.dtOptions2}>
+          <table className="table table-striped my-4 w-100">
           <thead>
             <tr>
               <th>ID</th>
               <th>Title</th>
               <th>Slug</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {portfolios.map(portfolio => (
               <tr key={portfolio.id}>
                 <td>{portfolio.id}</td>
-                <td>{portfolio.title}</td>
+                <td><a href={`/portfolio/${portfolio.id}`}>{portfolio.title}</a></td>
                 <td>{portfolio.slug}</td>
                 <td>
-                  <Link className="btn btn-primary" to={`/portfolio/${portfolio.id}`}>View</Link>{' '}
-                  <Link className="btn btn-success" to={`/portfolio/${portfolio.id}/edit`}>Edit</Link>{' '}
-                  <Link className="btn btn-danger" to={`/portfolio/${portfolio.id}/delete`}>Delete</Link>
-                </td>
+                    <a className="btn btn-danger float-right" href={`/portfolio/${portfolio.id}/delete`}><FaTrashAlt /></a>
+                    <a className="btn btn-success float-right mr-2" href={`/portfolio/${portfolio.id}/edit`}><FaPencilAlt /></a>{' '}
+                  </td>
               </tr>
             ))}
           </tbody>
-        </Table>
+          </table>
+        </Datatable>  
       )
     }
   }
