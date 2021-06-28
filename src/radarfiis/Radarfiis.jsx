@@ -57,11 +57,12 @@ class Radarfiis extends Component {
 
       return (
         <Container>
+              <Link className="btn btn-primary float-right" to="/radarfiis/new">Add Radarfii</Link>
+
           <h4 className="mt-4 mb-4">Radar Fiis</h4>
           <Row>
             <Col>
               <RadarfiisTable radarfiis={radarfiis}></RadarfiisTable>
-              <Link className="btn btn-primary" to="/radarfiis/new">Add Radarfii</Link>
             </Col>
           </Row>
         </Container>

@@ -57,11 +57,12 @@ class Radarcryptos extends Component {
 
       return (
         <Container>
+              <Link className="btn btn-primary float-right" to="/radarcryptos/new">Add Radarcrypto</Link>
+
           <h4 className="mt-4 mb-4">Radar Crypto</h4>
           <Row>
             <Col>
               <RadarcryptosTable radarcryptos={radarcryptos}></RadarcryptosTable>
-              <Link className="btn btn-primary" to="/radarcryptos/new">Add Radarcrypto</Link>
             </Col>
           </Row>
         </Container>

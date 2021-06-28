@@ -57,11 +57,11 @@ class Cryptos extends Component {
 
       return (
         <Container>
+          <Link className="btn btn-primary float-right" to="/cryptos/new">Add Crypto</Link>
           <h4 className="mt-4 mb-4">Criptomoedas nos Portfolios</h4>
           <Row>
             <Col>
               <CryptosTable cryptos={cryptos}></CryptosTable>
-              <Link className="btn btn-primary" to="/cryptos/new">Add Crypto</Link>
             </Col>
           </Row>
         </Container>

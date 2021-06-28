@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import $ from 'jquery';
-import Datatable from './Datatable.js';
+import Datatable from '../Datatable.js';
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 
 class FiisTable extends Component {
@@ -65,7 +65,6 @@ class FiisTable extends Component {
                         <th>Category</th>
                         <th className="sort-numeric">Portfolio</th>
                         <th className="sort-alpha" data-priority="2">Amount</th>
-
                         <th>Cost</th>
                         <th>Total Cost</th>
                         <th>Total Today</th>
