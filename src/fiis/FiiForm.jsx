@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert, Button, Form, Label, Input } from 'reactstrap'
+import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
 import { apiHost } from '../apiHost.js';
 
 const Api = require('./Api.js')
@@ -237,7 +237,7 @@ class FiiForm extends Component {
                     <Input type="text" name="total" id="total" value={fii.total} placeholder="Enter total" onChange={this.setTotal} />
                   </Col>
                 </Row>
-                <Button color="success">Submit</Button>
+                <button className="btn btn-success mt-4">Submit</button>
               </Form>
             </Col>
           </Row>

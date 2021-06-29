@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
 import { apiHost } from '../apiHost.js';
 
 const Api = require('./Api.js')
@@ -175,7 +175,7 @@ class CryptoForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3>Edit Crypto</h3>
+            <h3 className="mt-4 mb-4">Editar / Adicionar Criptomoeda a uma Carteira</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -187,7 +187,8 @@ class CryptoForm extends Component {
                 </div>
               }
               <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
+              <Row>
+                <Col md={ 4 }>
                   <Label for="category_id">Category</Label>
                   <select value={crypto.category_id} onChange={this.setCategory_id} className="form-control">
                   <option value="" disabled selected>Select your option</option>
@@ -195,8 +196,8 @@ class CryptoForm extends Component {
                       <option value={option.value}  key={option.value}>{option.label}</option>
                     ))}
                   </select>
-                </FormGroup>
-                <FormGroup>
+                </Col>
+                <Col md={ 4 }>
                   <Label for="portfolio_id">Portfolio</Label>
                   <select value={crypto.portfolio_id} onChange={this.setPortfolio_id} className="form-control">
                   <option value="" disabled selected>Select your option</option>
@@ -204,32 +205,36 @@ class CryptoForm extends Component {
                       <option value={option.value} key={option.value}>{option.label}</option>
                     ))}
                   </select>
-                </FormGroup>
-                <FormGroup>
+                </Col>
+                <Col md={ 4 }>
                   <Label for="radarcrypto_id">Radarcrypto</Label>
                   <select value={crypto.radarcrypto_id} onChange={this.setRadarcrypto_id} className="form-control">
                   <option value="" disabled selected>Select your option</option>
                     {radarcrypto_options.map((option) => (
                       <option value={option.value} key={option.value}>{option.label}</option>
                     ))}
-                  </select>                </FormGroup>
-                <FormGroup>
+                  </select>                
+                </Col>
+                </Row>
+                <Row>
+                <Col md={ 3 }>
                   <Label for="amount">Amount</Label>
                   <Input type="text" name="amount" id="amount" value={crypto.amount} placeholder="Enter amount" onChange={this.setAmount} />
-                </FormGroup>
-                <FormGroup>
+                </Col>
+                <Col md={ 3 }>
                   <Label for="cost">Cost</Label>
                   <Input type="text" name="cost" id="cost" value={crypto.cost} placeholder="Enter cost" onChange={this.setCost} />
-                </FormGroup>
-                <FormGroup>
+                </Col>
+                <Col md={ 3 }>
                   <Label for="total_cost">Total cost</Label>
                   <Input type="text" name="total_cost" id="total_cost" value={crypto.total_cost} placeholder="Enter total_cost" onChange={this.setTotal_cost} />
-                </FormGroup>
-                <FormGroup>
+                </Col>
+                <Col md={ 3 }>
                   <Label for="total">Total hoje</Label>
                   <Input type="text" name="total" id="total" value={crypto.total} placeholder="Enter total" onChange={this.setTotal} />
-                </FormGroup>
-                <Button color="success">Submit</Button>
+                </Col>
+                </Row>
+                <button className="btn btn-success mt-4">Submit</button>
               </Form>
             </Col>
           </Row>
