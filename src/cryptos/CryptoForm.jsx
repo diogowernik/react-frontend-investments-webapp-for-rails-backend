@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { apiHost } from '../apiHost.js';
 
 const Api = require('./Api.js')
 
@@ -9,6 +10,9 @@ class CryptoForm extends Component {
     super(props)
 
     this.state = {
+      portfolio_options:[],
+      radarcrypto_options:[],
+      category_options:[],
       crypto: {
         id: this.getCryptoId(props),
         category_id: '',
@@ -26,16 +30,39 @@ class CryptoForm extends Component {
     this.setCategory_id = this.setCategory_id.bind(this)
     this.setPortfolio_id = this.setPortfolio_id.bind(this)
     this.setAmount = this.setAmount.bind(this)
-
     this.setTotal = this.setTotal.bind(this)
     this.setTotal_cost = this.setTotal_cost.bind(this)
-
     this.setCost = this.setCost.bind(this)
     this.setRadarcrypto_id = this.setRadarcrypto_id.bind(this)
 
-
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
+  fetchData() {
+    var portofolio = (apiHost + '/api/portfolio/options');
+    var radarcrypto = (apiHost + '/api/radarcrypto/options');
+    var category = (apiHost + '/api/category/options');
+
+    Promise.all([fetch(portofolio), fetch(radarcrypto), fetch(category)])
+      .then(([res1, res2, res3]) => {
+        return Promise.all([res1.json(), res2.json(), res3.json()])
+      })
+      .then(([res1, res2, res3]) => {
+        this.setState({
+          portfolio_options: res1,
+          radarcrypto_options: res2,
+          category_options: res3
+        });
+      },
+        // handle errors here
+        (errors) => {
+          this.setState({
+            errors            
+          });console.log(errors)
+        }
+      );
+  }
+
 
   getCryptoId(props) {
     try {
@@ -55,7 +82,7 @@ class CryptoForm extends Component {
     this.setFieldState('portfolio_id', newVal)
   }
 
-    setRadarcrypto_id(event) {
+  setRadarcrypto_id(event) {
     let newVal = event.target.value || ''
     this.setFieldState('radarcrypto_id', newVal)
   }
@@ -136,7 +163,7 @@ class CryptoForm extends Component {
   }
 
   render() {
-    const { redirect, crypto, errors } = this.state
+    const { redirect, crypto, errors, radarcrypto_options, portfolio_options, category_options } = this.state
 
     if (redirect) {
       return (
@@ -159,20 +186,33 @@ class CryptoForm extends Component {
                   )}
                 </div>
               }
-
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <Label for="category_id">Category</Label>
-                  <Input type="text" name="category_id" id="category_id" value={crypto.category_id} placeholder="Enter category_id" onChange={this.setCategory_id} />
+                  <select value={crypto.category_id} onChange={this.setCategory_id} className="form-control">
+                  <option value="" disabled selected>Select your option</option>
+                    {category_options.map((option) => (
+                      <option value={option.value}  key={option.value}>{option.label}</option>
+                    ))}
+                  </select>
                 </FormGroup>
                 <FormGroup>
                   <Label for="portfolio_id">Portfolio</Label>
-                  <Input type="text" name="portfolio_id" id="portfolio_id" value={crypto.portfolio_id} placeholder="Enter portfolio_id" onChange={this.setPortfolio_id} />
+                  <select value={crypto.portfolio_id} onChange={this.setPortfolio_id} className="form-control">
+                  <option value="" disabled selected>Select your option</option>
+                    {portfolio_options.map((option) => (
+                      <option value={option.value} key={option.value}>{option.label}</option>
+                    ))}
+                  </select>
                 </FormGroup>
                 <FormGroup>
                   <Label for="radarcrypto_id">Radarcrypto</Label>
-                  <Input type="text" name="radarcrypto_id" id="radarcrypto_id" value={crypto.radarcrypto_id} placeholder="Enter radarcrypto_id" onChange={this.setRadarcrypto_id} />
-                </FormGroup>
+                  <select value={crypto.radarcrypto_id} onChange={this.setRadarcrypto_id} className="form-control">
+                  <option value="" disabled selected>Select your option</option>
+                    {radarcrypto_options.map((option) => (
+                      <option value={option.value} key={option.value}>{option.label}</option>
+                    ))}
+                  </select>                </FormGroup>
                 <FormGroup>
                   <Label for="amount">Amount</Label>
                   <Input type="text" name="amount" id="amount" value={crypto.amount} placeholder="Enter amount" onChange={this.setAmount} />

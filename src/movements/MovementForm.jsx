@@ -11,7 +11,7 @@ class MovementForm extends Component {
     this.state = {
       movement: {
         id: this.getMovementId(props),
-        title: '',
+        category_id: '',
         slug: '',
         coingecko_id: '',
         ticker: ''
@@ -20,7 +20,7 @@ class MovementForm extends Component {
       errors: []
     }
 
-    this.setTitle = this.setTitle.bind(this)
+    this.setCategory_id = this.setCategory_id.bind(this)
     this.setSlug = this.setSlug.bind(this)
     this.setCoingecko_id = this.setCoingecko_id.bind(this)
     this.setTicker = this.setTicker.bind(this)
@@ -35,9 +35,9 @@ class MovementForm extends Component {
     }
   }
 
-  setTitle(event) {
+  setCategory_id(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('title', newVal)
+    this.setFieldState('category_id', newVal)
   }
 
   setSlug(event) {
@@ -67,7 +67,7 @@ class MovementForm extends Component {
     event.preventDefault()
 
     let movement = {
-      title: this.state.movement.title,
+      category_id: this.state.movement.category_id,
       slug: this.state.movement.slug,
       coingecko_id: this.state.movement.coingecko_id,
       ticker: this.state.movement.ticker,
@@ -134,8 +134,8 @@ class MovementForm extends Component {
 
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
-                  <Label for="title">Title</Label>
-                  <Input type="text" name="title" id="title" value={movement.title} placeholder="Enter title" onChange={this.setTitle} />
+                  <Label for="category_id">Category_id</Label>
+                  <Input type="text" name="category_id" id="category_id" value={movement.category_id} placeholder="Enter category_id" onChange={this.setCategory_id} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="slug">Slug</Label>

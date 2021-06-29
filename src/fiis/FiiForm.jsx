@@ -36,7 +36,6 @@ class FiiForm extends Component {
     this.setTotal = this.setTotal.bind(this)
     this.setTotal_cost = this.setTotal_cost.bind(this)
 
-
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 

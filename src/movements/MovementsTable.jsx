@@ -20,7 +20,7 @@ class MovementsTable extends Component {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Title</th>
+              <th>Category_id</th>
               <th>Slug</th>
               <th>Ticker</th>
               <th>Coingecko Id</th>
@@ -31,7 +31,7 @@ class MovementsTable extends Component {
             {movements.map(movement => (
               <tr key={movement.id}>
                 <td>{movement.id}</td>
-                <td>{movement.title}</td>
+                <td>{movement.category_id}</td>
                 <td>{movement.slug}</td>
                 <td>{movement.ticker}</td>
                 <td>{movement.coingecko_id}</td>

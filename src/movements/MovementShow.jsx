@@ -17,7 +17,7 @@ class MovementForm extends Component {
       errors: []
     }
 
-    this.setTitle = this.setTitle.bind(this)
+    this.setCategory_id = this.setCategory_id.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -29,7 +29,7 @@ class MovementForm extends Component {
     }
   }
 
-  setTitle(event) {
+  setCategory_id(event) {
     let newVal = event.target.value || ''
     this.setFieldState('title', newVal)
   }

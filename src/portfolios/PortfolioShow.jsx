@@ -172,13 +172,14 @@ class PortfolioForm extends Component {
                         <Card outline color="gray" className="mb-3 mt-3">
                             <CardBody>
                                 <CardText>
-                                    <a className="h5 m-4" href="dashboardv1">Dashboard</a>
-                                    <a className="h5 m-4" href="dashboardv2">Portfolio</a>
-                                    <a className="h5 m-4" href="dashboardv1">Onde</a>
-                                    <a className="h5 m-4" href="dashboardv1">Proventos</a>
-                                    <a className="h5 m-4" href="dashboardv1">Operações</a>
-                                    <a className="h5 m-4" href="dashboardv1">Impostos</a>
-                                    <a className="h5 m-4" href="dashboardv1">Radar</a>
+                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Dashboard</a>
+                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Composição</a>
+                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Localização</a>
+                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Tokens</a>
+                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Proventos</a>
+                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Operações</a>
+                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Impostos</a>
+                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Radar</a>
                                 </CardText>
                             </CardBody>
                         </Card>
