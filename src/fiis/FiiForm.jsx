@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
 import { apiHost } from '../apiHost.js';
+import SelectPortfolio from '../components/Selects/SelectPortfolio'
 
 const Api = require('./Api.js')
 
@@ -192,7 +193,7 @@ class FiiForm extends Component {
               <Form onSubmit={this.handleSubmit}>
                 <Row>
                   <Col md={ 4 }>
-                      <Label for="category_id">Category</Label> 
+                      <Label for="category_id">Category</Label>
                       <select value={fii.category_id} onChange={this.setCategory_id} className="form-control">
                       <option value="" disabled selected>Select your option</option>
                         {category_options.map((option) => (
@@ -201,13 +202,7 @@ class FiiForm extends Component {
                       </select>
                   </Col>
                   <Col md={ 4 }>
-                      <Label for="portfolio_id">Portfolio</Label>
-                      <select value={fii.portfolio_id} onChange={this.setPortfolio_id} className="form-control">
-                      <option value="" disabled selected>Select your option</option>
-                        {portfolio_options.map((option) => (
-                          <option value={option.value} key={option.value}>{option.label}</option>
-                        ))}
-                      </select>
+                            <SelectPortfolio portfolio_options={portfolio_options} asset={fii}/>
                     </Col>
                   <Col md={ 4 }>
                       <Label for="radarfii_id">Radarfii</Label>
