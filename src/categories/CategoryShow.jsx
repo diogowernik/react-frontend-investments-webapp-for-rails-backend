@@ -97,9 +97,8 @@ class CategoryForm extends Component {
           <Row>
             <Col>
               <h3 className="mt-3 mb-3">{category.title}</h3>
-              <p>
-                <b>Url:</b> https://meusite.com/{category.slug} <br />             
-              </p>
+              
+              
 
               {errors.length > 0 &&
                 <div>
