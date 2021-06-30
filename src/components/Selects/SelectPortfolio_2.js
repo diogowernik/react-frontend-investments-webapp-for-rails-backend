@@ -6,7 +6,7 @@ class SelectPortfolio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        asset: props.asset,
+        // asset: this.props.asset,
         portfolio_options:[]
     };
   }
@@ -35,7 +35,7 @@ class SelectPortfolio extends React.Component {
 }
 
 render() {
-  const { error, isLoaded, asset,portfolio_options  } = this.state;
+  const { error, isLoaded, portfolio_options  } = this.state;
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -44,7 +44,7 @@ render() {
     return (
       <>
       <Label for="portfolio_id">Portfolio</Label>
-      <select value={asset.portfolio_id} className="form-control">
+      <select value={this.props.asset.portfolio_id} className="form-control">
         <option value="" disabled selected>Select your option</option>
         {portfolio_options.map((option) => (
           <option value={option.value} key={option.value}>{option.label}</option>
