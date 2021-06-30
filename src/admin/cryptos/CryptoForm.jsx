@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
-import { apiHost } from '../apiHost.js';
-import SelectPortfolio from '../components/selects/SelectPortfolio'
+import { apiHost } from '../../config/apiHost';
+import SelectPortfolio from '../../components/selects/SelectPortfolio'
+import SelectCategory from '../../components/selects/SelectCategory'
 
 const Api = require('./Api.js')
 
@@ -191,13 +192,7 @@ class CryptoForm extends Component {
               <Form onSubmit={this.handleSubmit}>
               <Row>
                 <Col md={ 4 }>
-                  <Label for="category_id">Category</Label>
-                  <select value={crypto.category_id} onChange={this.setCategory_id} className="form-control">
-                  <option value="" disabled selected>Select your option</option>
-                    {category_options.map((option) => (
-                      <option value={option.value}  key={option.value}>{option.label}</option>
-                    ))}
-                  </select>
+                  <SelectCategory category_options={category_options} asset={crypto}/>
                 </Col>
                 <Col md={ 4 }>
                   <SelectPortfolio portfolio_options={portfolio_options} asset={crypto}/>

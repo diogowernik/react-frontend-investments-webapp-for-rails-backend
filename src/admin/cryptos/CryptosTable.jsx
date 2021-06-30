@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Datatable from '../Datatable.js';
+import Datatable from '../../components/datatable/Datatable';
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 
 class CryptosTable extends Component {

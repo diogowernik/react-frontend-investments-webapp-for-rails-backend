@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import FiisTable from './FiisTable'
-import '../Custom.css'; 
+import '../../Custom.css'; 
 
 const Api = require('./Api.js')
 
