@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
 import { apiHost } from '../../config/apiHost.js';
-import SelectPortfolio from '../../components/selects/SelectPortfolio'
+import SelectPortfolio from '../../components/selects/SelectPortfolio_2'
 import SelectCategory from '../../components/selects/SelectCategory'
 
 const Api = require('./Api.js')
