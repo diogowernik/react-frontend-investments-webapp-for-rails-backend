@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
 import { apiHost } from '../apiHost.js';
-import SelectPortfolio from '../components/Selects/SelectPortfolio'
+import SelectPortfolio from '../components/selects/SelectPortfolio'
 
 const Api = require('./Api.js')
 
@@ -146,7 +146,7 @@ class FiiForm extends Component {
   }
 
   componentDidMount() {
-        this.fetchData();
+    this.fetchData();
     if (this.state.fii.id) {
       Api.getFii(this.state.fii.id)
         .then(response => {

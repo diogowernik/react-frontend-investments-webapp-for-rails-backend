@@ -1,4 +1,4 @@
-import { apiHost } from '../apiHost.js';
+import { apiHost } from '../../apiHost.js';
 
 // TODO: base radarcryptos url
 

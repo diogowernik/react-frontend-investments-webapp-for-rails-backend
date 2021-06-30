@@ -1,6 +1,6 @@
-import { apiHost } from '../apiHost.js';
+import { apiHost } from '../../apiHost.js';
 
-// TODO: base years url
+// TODO: base fiis url
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -24,9 +24,9 @@ const collectErrors = (response) => {
   return errors
 }
 
-const deleteYear = (id) => {
+const deleteFii = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/years/${id}`, {
+  return fetch(`${apiHost}/api/fiis/${id}`, {
     method: 'delete',
     headers: {
       'Content-Type': 'application/json'
@@ -49,9 +49,9 @@ const deleteYear = (id) => {
   })
 }
 
-const getYears = () => {
+const getFiis = () => {
   let response_ok = null
-  return fetch(`${apiHost}/api/years`, {
+  return fetch(`${apiHost}/api/fiis`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json'
@@ -70,9 +70,9 @@ const getYears = () => {
     })
 }
 
-const getYear = (id) => {
+const getFii = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/years/${id}`, {
+  return fetch(`${apiHost}/api/fiis/${id}`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
@@ -91,8 +91,8 @@ const getYear = (id) => {
   })
 }
 
-const saveYear = (data, id=null) => {
-  let apiUrl = `${apiHost}/api/years`
+const saveFii = (data, id=null) => {
+  let apiUrl = `${apiHost}/api/fiis`
   let apiMethod = 'post'
   if (id) {
     apiUrl = `${apiUrl}/${id}`
@@ -100,13 +100,14 @@ const saveYear = (data, id=null) => {
   }
 
   const body = JSON.stringify({
-    year: data
+    fii: data
   })
 
   let response_ok = null
   return fetch(apiUrl, {
     method: apiMethod,
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
     body: body
@@ -125,10 +126,8 @@ const saveYear = (data, id=null) => {
 }
 
 export {
-  saveYear,
-  getYear,
-  deleteYear,
-  getYears
+  saveFii,
+  getFii,
+  deleteFii,
+  getFiis
 }
-
-

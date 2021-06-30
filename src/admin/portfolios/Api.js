@@ -1,6 +1,6 @@
-import { apiHost } from '../apiHost.js';
+import { apiHost } from '../../apiHost.js';
 
-// TODO: base cryptos url
+// TODO: base portfolios url
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -24,9 +24,9 @@ const collectErrors = (response) => {
   return errors
 }
 
-const deleteCrypto = (id) => {
+const deletePortfolio = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/cryptos/${id}`, {
+  return fetch(`${apiHost}/api/portfolios/${id}`, {
     method: 'delete',
     headers: {
       'Content-Type': 'application/json'
@@ -49,9 +49,9 @@ const deleteCrypto = (id) => {
   })
 }
 
-const getCryptos = () => {
+const getPortfolios = () => {
   let response_ok = null
-  return fetch(`${apiHost}/api/cryptos`, {
+  return fetch(`${apiHost}/api/portfolios`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json'
@@ -70,9 +70,9 @@ const getCryptos = () => {
     })
 }
 
-const getCrypto = (id) => {
+const getPortfolio = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/cryptos/${id}`, {
+  return fetch(`${apiHost}/api/portfolios/${id}`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
@@ -91,8 +91,8 @@ const getCrypto = (id) => {
   })
 }
 
-const saveCrypto = (data, id=null) => {
-  let apiUrl = `${apiHost}/api/cryptos`
+const savePortfolio = (data, id=null) => {
+  let apiUrl = `${apiHost}/api/portfolios`
   let apiMethod = 'post'
   if (id) {
     apiUrl = `${apiUrl}/${id}`
@@ -100,7 +100,7 @@ const saveCrypto = (data, id=null) => {
   }
 
   const body = JSON.stringify({
-    crypto: data
+    portfolio: data
   })
 
   let response_ok = null
@@ -126,8 +126,8 @@ const saveCrypto = (data, id=null) => {
 }
 
 export {
-  saveCrypto,
-  getCrypto,
-  deleteCrypto,
-  getCryptos
+  savePortfolio,
+  getPortfolio,
+  deletePortfolio,
+  getPortfolios
 }

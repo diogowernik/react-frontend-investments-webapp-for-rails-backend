@@ -1,6 +1,6 @@
-import { apiHost } from '../apiHost.js';
+import { apiHost } from '../../apiHost.js';
 
-// TODO: base movements url
+// TODO: base portfolios url
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -24,9 +24,9 @@ const collectErrors = (response) => {
   return errors
 }
 
-const deleteMovement = (id) => {
+const deletePortfolio = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/movements/${id}`, {
+  return fetch(`${apiHost}/api/portfolios/${id}`, {
     method: 'delete',
     headers: {
       'Content-Type': 'application/json'
@@ -49,9 +49,9 @@ const deleteMovement = (id) => {
   })
 }
 
-const getMovements = () => {
+const getPortfolios = () => {
   let response_ok = null
-  return fetch(`${apiHost}/api/movements`, {
+  return fetch(`${apiHost}/api/portfolios`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json'
@@ -70,9 +70,9 @@ const getMovements = () => {
     })
 }
 
-const getMovement = (id) => {
+const getPortfolio = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/movements/${id}`, {
+  return fetch(`${apiHost}/api/portfolios/${id}`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
@@ -91,8 +91,8 @@ const getMovement = (id) => {
   })
 }
 
-const saveMovement = (data, id=null) => {
-  let apiUrl = `${apiHost}/api/movements`
+const savePortfolio = (data, id=null) => {
+  let apiUrl = `${apiHost}/api/portfolios`
   let apiMethod = 'post'
   if (id) {
     apiUrl = `${apiUrl}/${id}`
@@ -100,7 +100,7 @@ const saveMovement = (data, id=null) => {
   }
 
   const body = JSON.stringify({
-    movement: data
+    portfolio: data
   })
 
   let response_ok = null
@@ -125,9 +125,9 @@ const saveMovement = (data, id=null) => {
   })
 }
 
-module.exports = {
-  saveMovement: saveMovement,
-  getMovement: getMovement,
-  deleteMovement: deleteMovement,
-  getMovements: getMovements
+export {
+  savePortfolio,
+  getPortfolio,
+  deletePortfolio,
+  getPortfolios
 }

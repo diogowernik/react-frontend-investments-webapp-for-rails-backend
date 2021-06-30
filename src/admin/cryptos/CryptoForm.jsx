@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
 import { apiHost } from '../apiHost.js';
+import SelectPortfolio from '../components/selects/SelectPortfolio'
 
 const Api = require('./Api.js')
 
@@ -144,6 +145,7 @@ class CryptoForm extends Component {
   }
 
   componentDidMount() {
+    this.fetchData();
     if (this.state.crypto.id) {
       Api.getCrypto(this.state.crypto.id)
         .then(response => {
@@ -198,13 +200,7 @@ class CryptoForm extends Component {
                   </select>
                 </Col>
                 <Col md={ 4 }>
-                  <Label for="portfolio_id">Portfolio</Label>
-                  <select value={crypto.portfolio_id} onChange={this.setPortfolio_id} className="form-control">
-                  <option value="" disabled selected>Select your option</option>
-                    {portfolio_options.map((option) => (
-                      <option value={option.value} key={option.value}>{option.label}</option>
-                    ))}
-                  </select>
+                  <SelectPortfolio portfolio_options={portfolio_options} asset={crypto}/>
                 </Col>
                 <Col md={ 4 }>
                   <Label for="radarcrypto_id">Radarcrypto</Label>

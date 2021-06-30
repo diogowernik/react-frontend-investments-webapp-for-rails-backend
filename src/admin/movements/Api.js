@@ -1,6 +1,6 @@
-import { apiHost } from '../apiHost.js';
+import { apiHost } from '../../apiHost.js';
 
-// TODO: base portfolios url
+// TODO: base movements url
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -24,9 +24,9 @@ const collectErrors = (response) => {
   return errors
 }
 
-const deletePortfolio = (id) => {
+const deleteMovement = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/portfolios/${id}`, {
+  return fetch(`${apiHost}/api/movements/${id}`, {
     method: 'delete',
     headers: {
       'Content-Type': 'application/json'
@@ -49,9 +49,9 @@ const deletePortfolio = (id) => {
   })
 }
 
-const getPortfolios = () => {
+const getMovements = () => {
   let response_ok = null
-  return fetch(`${apiHost}/api/portfolios`, {
+  return fetch(`${apiHost}/api/movements`, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json'
@@ -70,9 +70,9 @@ const getPortfolios = () => {
     })
 }
 
-const getPortfolio = (id) => {
+const getMovement = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/portfolios/${id}`, {
+  return fetch(`${apiHost}/api/movements/${id}`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
@@ -91,8 +91,8 @@ const getPortfolio = (id) => {
   })
 }
 
-const savePortfolio = (data, id=null) => {
-  let apiUrl = `${apiHost}/api/portfolios`
+const saveMovement = (data, id=null) => {
+  let apiUrl = `${apiHost}/api/movements`
   let apiMethod = 'post'
   if (id) {
     apiUrl = `${apiUrl}/${id}`
@@ -100,7 +100,7 @@ const savePortfolio = (data, id=null) => {
   }
 
   const body = JSON.stringify({
-    portfolio: data
+    movement: data
   })
 
   let response_ok = null
@@ -125,9 +125,9 @@ const savePortfolio = (data, id=null) => {
   })
 }
 
-export {
-  savePortfolio,
-  getPortfolio,
-  deletePortfolio,
-  getPortfolios
+module.exports = {
+  saveMovement: saveMovement,
+  getMovement: getMovement,
+  deleteMovement: deleteMovement,
+  getMovements: getMovements
 }
