@@ -16,10 +16,7 @@ require('datatables.net-buttons-bs')
 require('datatables.net-responsive')
 require('datatables.net-responsive-bs')
 require('datatables.net-responsive-bs/css/responsive.bootstrap.css')
-require('datatables.net-buttons/js/buttons.colVis.js') // Column visibility
-require('datatables.net-buttons/js/buttons.html5.js') // HTML 5 file export
-require('datatables.net-buttons/js/buttons.flash.js') // Flash file export
-require('datatables.net-buttons/js/buttons.print.js') // Print view button
+
 require('datatables.net-keytable');
 require('datatables.net-keytable-bs/css/keyTable.bootstrap.css')
 
