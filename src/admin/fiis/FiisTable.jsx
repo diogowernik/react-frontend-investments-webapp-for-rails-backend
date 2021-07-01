@@ -42,7 +42,6 @@ class FiisTable extends Component {
                         <td>{fii.total_cost}</td>
                         <td>{fii.total}</td>
                         <td>
-                          <button className="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever={`${fii.id}`}>modal test {fii.radarfii.id} </button>
                           <a className="btn btn-success" href={`/fii/${fii.id}/edit`}><FaPencilAlt /></a>{' '}
                           <a className="btn btn-danger" href={`/fii/${fii.id}/delete`}><FaTrashAlt /></a>
                         </td>

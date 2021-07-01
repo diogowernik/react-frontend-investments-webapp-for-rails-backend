@@ -44,7 +44,7 @@ render() {
     return (
       <>
       <Label for="portfolio_id">Portfolio</Label>
-      <select value={this.props.asset.portfolio_id} className="form-control">
+      <select value={this.props.asset.portfolio_id} onChange={this.setPortfolio_id} className="form-control">
         <option value="" disabled selected>Select your option</option>
         {portfolio_options.map((option) => (
           <option value={option.value} key={option.value}>{option.label}</option>
