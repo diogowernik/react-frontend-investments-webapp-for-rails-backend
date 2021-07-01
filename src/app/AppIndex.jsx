@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
-import PortfoliosTable from './PortfoliosTable'
+import PortfoliosTable from './portfolios/PortfoliosTable'
 import '../Custom.css'; 
 
-const Api = require('./Api.js')
+
+const Api = require('./portfolios/Api')
 
 class Portfolios extends Component {
   constructor(props) {

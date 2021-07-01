@@ -5,7 +5,7 @@ import TreeChart from './Treechart.js'
 
 const Api = require('./Api.js')
 
-class PortfolioForm extends Component {
+class AdminPortfolioForm extends Component {
   constructor(props) {
     super(props)
 
@@ -205,4 +205,4 @@ class PortfolioForm extends Component {
   }
 }
 
-export default PortfolioForm
+export default AdminPortfolioForm

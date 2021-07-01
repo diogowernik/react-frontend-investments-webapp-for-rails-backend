@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 
 const Api = require('./Api.js')
-class PortfolioDelete extends Component {
+class AdminPortfolioDelete extends Component {
   constructor(props) {
     super(props)
 
@@ -39,4 +39,4 @@ class PortfolioDelete extends Component {
 
 }
 
-export default PortfolioDelete
+export default AdminPortfolioDelete

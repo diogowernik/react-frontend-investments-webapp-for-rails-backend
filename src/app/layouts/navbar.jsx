@@ -7,13 +7,9 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from 'reactstrap';
 
-const NavBar = (props) => {
+const AppNavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -21,55 +17,14 @@ const NavBar = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Administrativo</NavbarBrand>
+        <NavbarBrand href="/">Minha Holding</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-
-            <NavItem>
-              <NavLink href="/portfolios">Portfolios</NavLink>
-            </NavItem>
             
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Admin Classes
-              </DropdownToggle>
-              <DropdownMenu right>
-                
-                
-                <DropdownItem>
-                  <a href="/cryptos">Criptos nos portfolios</a>
-                </DropdownItem>
-
-                <DropdownItem>
-                  <a href="/fiis">Fiis nos portfolios</a>
-                </DropdownItem>
-                
-                <DropdownItem divider />
-
-                <DropdownItem>
-                  <a href="/radarfiis">Radar Fiis</a>
-                </DropdownItem>
-                <DropdownItem>
-                  <a href="/radarcryptos">Radar Crypto</a>
-                </DropdownItem>
-
-                <DropdownItem divider />
-
-                <DropdownItem>
-                  <a href="/categories">Categorias de Investimentos</a>
-                </DropdownItem>
-                <DropdownItem>
-                  <a href="/movements">Operações Financeiras</a>
-                </DropdownItem>
-
-                <DropdownItem divider />
-                <DropdownItem>
-                  <a href="/years">Anos</a>
-                </DropdownItem>
-                
-              </DropdownMenu>
-            </UncontrolledDropdown>
+          <NavItem className="ml-auto">
+              <NavLink href="/portfolios">Portfolios</NavLink>
+          </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
@@ -77,4 +32,4 @@ const NavBar = (props) => {
   );
 }
 
-export default NavBar;
+export default AppNavBar;

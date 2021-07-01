@@ -1,6 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts'
-import { apiHost } from '../apiHost.js';
+import { apiHost } from '../../config/apiHost';
 
 class TreeChart extends React.Component {
   constructor(props) {

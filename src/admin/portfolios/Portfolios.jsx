@@ -6,7 +6,7 @@ import '../../Custom.css';
 
 const Api = require('./Api.js')
 
-class Portfolios extends Component {
+class AdminPortfolios extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -73,4 +73,4 @@ class Portfolios extends Component {
   }
 }
 
-export default Portfolios
+export default AdminPortfolios

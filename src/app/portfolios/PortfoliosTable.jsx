@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Datatable from '../Datatable.js';
+import Datatable from '../../components/datatable/Datatable';
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 
 class PortfoliosTable extends Component {
@@ -16,7 +16,7 @@ class PortfoliosTable extends Component {
       return <div></div>
     } else {
       return (
-        <Datatable options={this.state.dtOptions2}>
+        <Datatable>
           <table className="table table-striped my-4 w-100">
           <thead>
             <tr>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Datatable from '../../components/datatable/Datatable';
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 
-class PortfoliosTable extends Component {
+class AdminPortfoliosTable extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -46,4 +46,4 @@ class PortfoliosTable extends Component {
   }
 }
 
-export default PortfoliosTable
+export default AdminPortfoliosTable

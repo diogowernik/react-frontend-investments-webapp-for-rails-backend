@@ -4,7 +4,7 @@ import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } fro
 
 const Api = require('./Api.js')
 
-class PortfolioForm extends Component {
+class AdminPortfolioForm extends Component {
   constructor(props) {
     super(props)
 
@@ -138,4 +138,4 @@ class PortfolioForm extends Component {
   }
 }
 
-export default PortfolioForm
+export default AdminPortfolioForm
