@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
-import { apiHost } from '../../config/apiHost';
 import SelectPortfolio from '../../components/selects/SelectPortfolio'
 import SelectCategory from '../../components/selects/SelectCategory'
+import SelectRadarcrypto from '../../components/selects/SelectRadarcrypto'
 
 const Api = require('./Api.js')
 
@@ -38,31 +38,6 @@ class CryptoForm extends Component {
     this.setRadarcrypto_id = this.setRadarcrypto_id.bind(this)
 
     this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  fetchData() {
-    var portofolio = (apiHost + '/api/portfolio/options');
-    var radarcrypto = (apiHost + '/api/radarcrypto/options');
-    var category = (apiHost + '/api/category/options');
-
-    Promise.all([fetch(portofolio), fetch(radarcrypto), fetch(category)])
-      .then(([res1, res2, res3]) => {
-        return Promise.all([res1.json(), res2.json(), res3.json()])
-      })
-      .then(([res1, res2, res3]) => {
-        this.setState({
-          portfolio_options: res1,
-          radarcrypto_options: res2,
-          category_options: res3
-        });
-      },
-        // handle errors here
-        (errors) => {
-          this.setState({
-            errors            
-          });console.log(errors)
-        }
-      );
   }
 
 
@@ -146,7 +121,6 @@ class CryptoForm extends Component {
   }
 
   componentDidMount() {
-    this.fetchData();
     if (this.state.crypto.id) {
       Api.getCrypto(this.state.crypto.id)
         .then(response => {
@@ -191,21 +165,27 @@ class CryptoForm extends Component {
               }
               <Form onSubmit={this.handleSubmit}>
               <Row>
-                <Col md={ 4 }>
-                  <SelectCategory category_options={category_options} asset={crypto}/>
-                </Col>
-                <Col md={ 4 }>
-                  <SelectPortfolio portfolio_options={portfolio_options} asset={crypto}/>
-                </Col>
-                <Col md={ 4 }>
-                  <Label for="radarcrypto_id">Radarcrypto</Label>
-                  <select value={crypto.radarcrypto_id} onChange={this.setRadarcrypto_id} className="form-control">
-                  <option value="" disabled selected>Select your option</option>
-                    {radarcrypto_options.map((option) => (
-                      <option value={option.value} key={option.value}>{option.label}</option>
-                    ))}
-                  </select>                
-                </Col>
+                  <Col md={ 4 }>
+                    <SelectCategory 
+                      category_options={category_options} 
+                      asset={crypto}
+                      onChange={this.setCategory_id}
+                    />
+                  </Col>
+                  <Col md={ 4 }>
+                    <SelectPortfolio 
+                      portfolio_options={portfolio_options} 
+                      asset={crypto} 
+                      onChange={this.setPortfolio_id}
+                    />
+                  </Col>
+                  <Col md={ 4 }>
+                  <SelectRadarcrypto 
+                      portfolio_options={radarcrypto_options} 
+                      asset={crypto} 
+                      onChange={this.setRadarcrypto_id}
+                    />
+                  </Col>
                 </Row>
                 <Row>
                 <Col md={ 3 }>
