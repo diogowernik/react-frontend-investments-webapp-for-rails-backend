@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
-import { apiHost } from '../../config/apiHost.js';
-import SelectPortfolio from '../../components/selects/SelectPortfolio_2'
+import SelectPortfolio from '../../components/selects/SelectPortfolio'
 import SelectCategory from '../../components/selects/SelectCategory'
+import SelectRadarfii from '../../components/selects/SelectRadarfii'
 
 const Api = require('./Api.js')
 
@@ -41,31 +41,6 @@ class FiiForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-
-  fetchData() {
-    var portofolio = (apiHost + '/api/portfolio/options');
-    var radarfii = (apiHost + '/api/radarfii/options');
-    var category = (apiHost + '/api/category/options');
-
-    Promise.all([fetch(portofolio), fetch(radarfii), fetch(category)])
-      .then(([res1, res2, res3]) => {
-        return Promise.all([res1.json(), res2.json(), res3.json()])
-      })
-      .then(([res1, res2, res3]) => {
-        this.setState({
-          portfolio_options: res1,
-          radarfii_options: res2,
-          category_options: res3
-        });
-      },
-        // handle errors here
-        (errors) => {
-          this.setState({
-            errors            
-          });console.log(errors)
-        }
-      );
-  }
 
   getFiiId(props) {
     try {
@@ -147,7 +122,6 @@ class FiiForm extends Component {
   }
 
   componentDidMount() {
-    this.fetchData();
     if (this.state.fii.id) {
       Api.getFii(this.state.fii.id)
         .then(response => {
@@ -194,19 +168,25 @@ class FiiForm extends Component {
               <Form onSubmit={this.handleSubmit}>
                 <Row>
                   <Col md={ 4 }>
-                    <SelectCategory category_options={category_options} asset={fii}/>
+                    <SelectCategory 
+                      category_options={category_options} 
+                      asset={fii}
+                      onChange={this.setCategory_id}
+                    />
                   </Col>
                   <Col md={ 4 }>
-                    <SelectPortfolio portfolio_options={portfolio_options} asset={fii}/>
+                    <SelectPortfolio 
+                      portfolio_options={portfolio_options} 
+                      asset={fii} 
+                      onChange={this.setPortfolio_id}
+                    />
                   </Col>
                   <Col md={ 4 }>
-                      <Label for="radarfii_id">Radarfii</Label>
-                      <select value={fii.radarfii_id} onChange={this.setRadarfii_id} className="form-control">
-                      <option value="" disabled selected>Select your option</option>
-                        {radarfii_options.map((option) => (
-                          <option value={option.value} key={option.value}>{option.label}</option>
-                        ))}
-                      </select>
+                  <SelectRadarfii 
+                      portfolio_options={radarfii_options} 
+                      asset={fii} 
+                      onChange={this.setRadarfii_id}
+                    />
                   </Col>
                 </Row>
                 <Row>

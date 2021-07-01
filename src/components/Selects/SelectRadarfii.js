@@ -2,13 +2,14 @@ import React from 'react';
 import { Label, } from 'reactstrap'
 import { apiHost } from '../../config/apiHost.js';
 
-class SelectPortfolio extends React.Component {
+class SelectRadarfii extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
         // asset: this.props.asset,
-        portfolio_options:[]
+        radarfii_options:[]
     };
+    this.handleChange = props.onChange;
   }
 
   componentDidMount() {
@@ -16,13 +17,13 @@ class SelectPortfolio extends React.Component {
   }
   
   fetchData() {
-    fetch(apiHost + '/api/portfolio/options')
+    fetch(apiHost + '/api/radarfii/options')
     .then(res => res.json())
     .then(
       (result) => {
         this.setState({
           isLoaded: true,
-          portfolio_options: result
+          radarfii_options: result
         });
       },
       (error) => {
@@ -35,7 +36,7 @@ class SelectPortfolio extends React.Component {
 }
 
 render() {
-  const { error, isLoaded, portfolio_options  } = this.state;
+  const { error, isLoaded, radarfii_options  } = this.state;
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -43,10 +44,10 @@ render() {
   } else {
     return (
       <>
-      <Label for="portfolio_id">Portfolio</Label>
-      <select value={this.props.asset.portfolio_id} onChange={this.setPortfolio_id} className="form-control">
-        <option value="" disabled selected>Select your option</option>
-        {portfolio_options.map((option) => (
+      <Label for="radarfii_id">Radarfii</Label>
+      <select value={this.props.asset.radarfii_id} className="form-control" onChange={this.handleChange}>
+        <option value="" disabled defaultValue>Select your option</option>
+        {radarfii_options.map((option) => (
           <option value={option.value} key={option.value}>{option.label}</option>
         ))}
       </select>
@@ -56,4 +57,4 @@ render() {
 }
 }
 
-export default SelectPortfolio;
+export default SelectRadarfii;
