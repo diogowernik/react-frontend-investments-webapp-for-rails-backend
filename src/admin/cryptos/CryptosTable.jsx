@@ -34,16 +34,16 @@ class CryptosTable extends Component {
               {cryptos.map(crypto => (
                 <tr key={crypto.id}>
                   <td>{crypto.id}</td>
-                  <td><a href={`/radarcrypto/${crypto.radarcrypto.id}`}>{crypto.radarcrypto.ticker}</a></td>
-                  <td><a href={`/category/${crypto.category.id}`}>{crypto.category.title}</a></td>
-                  <td><a href={`/portfolio/${crypto.portfolio.id}`}>{crypto.portfolio.title}</a></td>
+                  <td><a href={`/admin/radarcrypto/${crypto.radarcrypto.id}`}>{crypto.radarcrypto.ticker}</a></td>
+                  <td><a href={`/admin/category/${crypto.category.id}`}>{crypto.category.title}</a></td>
+                  <td><a href={`/admin/portfolio/${crypto.portfolio.id}`}>{crypto.portfolio.title}</a></td>
                   <td>{crypto.amount}</td>
                   <td>{crypto.cost}</td>
                   <td>{crypto.total_cost}</td>
                   <td>{crypto.total}</td>
                   <td>
-                    <a className="btn btn-success" href={`/crypto/${crypto.id}/edit`}><FaPencilAlt /></a>{' '}
-                    <a className="btn btn-danger" href={`/crypto/${crypto.id}/delete`}><FaTrashAlt /></a>
+                    <a className="btn btn-success" href={`/admin/crypto/${crypto.id}/edit`}><FaPencilAlt /></a>{' '}
+                    <a className="btn btn-danger" href={`/admin/crypto/${crypto.id}/delete`}><FaTrashAlt /></a>
                   </td>
                 </tr>
               ))}

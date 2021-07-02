@@ -30,11 +30,11 @@ class AdminPortfoliosTable extends Component {
             {portfolios.map(portfolio => (
               <tr key={portfolio.id}>
                 <td>{portfolio.id}</td>
-                <td><a href={`/portfolio/${portfolio.id}`}>{portfolio.title}</a></td>
+                <td><a href={`/admin/portfolio/${portfolio.id}`}>{portfolio.title}</a></td>
                 <td>{portfolio.slug}</td>
                 <td>
-                    <a className="btn btn-danger float-right" href={`/portfolio/${portfolio.id}/delete`}><FaTrashAlt /></a>
-                    <a className="btn btn-success float-right mr-2" href={`/portfolio/${portfolio.id}/edit`}><FaPencilAlt /></a>{' '}
+                    <a className="btn btn-danger float-right" href={`/admin/portfolio/${portfolio.id}/delete`}><FaTrashAlt /></a>
+                    <a className="btn btn-success float-right mr-2" href={`/admin/portfolio/${portfolio.id}/edit`}><FaPencilAlt /></a>{' '}
                   </td>
               </tr>
             ))}

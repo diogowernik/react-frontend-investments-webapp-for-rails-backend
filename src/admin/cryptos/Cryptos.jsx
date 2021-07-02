@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import CryptosTable from './CryptosTable'
-import '../../Custom.css'; 
 
 const Api = require('./Api.js')
 
@@ -58,7 +57,7 @@ class Cryptos extends Component {
 
       return (
         <Container>
-          <Link className="btn btn-primary float-right" to="/cryptos/new">Add Crypto</Link>
+          <Link className="btn btn-primary float-right" to="/admin/cryptos/new">Add Crypto</Link>
           <h4 className="mt-4 mb-4">Criptomoedas nos Portfolios</h4>
           <Row>
             <Col>

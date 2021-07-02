@@ -32,8 +32,8 @@ class YearsTable extends Component {
                 <td>{year.title}</td>
                 <td>{year.slug}</td>
                 <td>
-                  <Link className="btn btn-success" to={`/years/${year.id}/edit`}>Edit</Link>{' '}
-                  <Link className="btn btn-danger" to={`/years/${year.id}/delete`}>Delete</Link>
+                  <Link className="btn btn-success" to={`/admin/years/${year.id}/edit`}>Edit</Link>{' '}
+                  <Link className="btn btn-danger" to={`/admin/years/${year.id}/delete`}>Delete</Link>
                 </td>
               </tr>
             ))}

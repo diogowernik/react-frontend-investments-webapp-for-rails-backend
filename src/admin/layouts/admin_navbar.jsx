@@ -33,34 +33,34 @@ const AdminNavBar = (props) => {
                 
                 
                 <DropdownItem>
-                  <a href="/cryptos">Criptos nos portfolios</a>
+                  <a href="/admin/cryptos">Criptos nos portfolios</a>
                 </DropdownItem>
 
                 <DropdownItem>
-                  <a href="/fiis">Fiis nos portfolios</a>
+                  <a href="/admin/fiis">Fiis nos portfolios</a>
                 </DropdownItem>
                 
                 <DropdownItem divider />
 
                 <DropdownItem>
-                  <a href="/radarfiis">Radar Fiis</a>
+                  <a href="/admin/radarfiis">Radar Fiis</a>
                 </DropdownItem>
                 <DropdownItem>
-                  <a href="/radarcryptos">Radar Crypto</a>
-                </DropdownItem>
-
-                <DropdownItem divider />
-
-                <DropdownItem>
-                  <a href="/categories">Categorias de Investimentos</a>
-                </DropdownItem>
-                <DropdownItem>
-                  <a href="/movements">Operações Financeiras</a>
+                  <a href="/admin/radarcryptos">Radar Crypto</a>
                 </DropdownItem>
 
                 <DropdownItem divider />
+
                 <DropdownItem>
-                  <a href="/years">Anos</a>
+                  <a href="/admin/categories">Categorias de Investimentos</a>
+                </DropdownItem>
+                <DropdownItem>
+                  <a href="/admin/movements">Operações Financeiras</a>
+                </DropdownItem>
+
+                <DropdownItem divider />
+                <DropdownItem>
+                  <a href="/admin/years">Anos</a>
                 </DropdownItem>
                 
               </DropdownMenu>

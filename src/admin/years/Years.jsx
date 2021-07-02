@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import YearsTable from './YearsTable'
-import '../../Custom.css'; 
 
 const Api = require('./Api.js')
 
@@ -62,7 +61,7 @@ class Years extends Component {
           <Row>
             <Col>
               <YearsTable years={years}></YearsTable>
-              <Link className="btn btn-primary" to="/years/new">Add Year</Link>
+              <Link className="btn btn-primary" to="/admin/years/new">Add Year</Link>
             </Col>
           </Row>
         </Container>

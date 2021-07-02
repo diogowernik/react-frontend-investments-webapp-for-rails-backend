@@ -62,7 +62,7 @@ class AdminPortfolios extends Component {
           <Row>
             <Col>
               <PortfoliosTable portfolios={portfolios}></PortfoliosTable>
-              <Link className="btn btn-primary" to="/portfolios/new">Add Portfolio</Link>
+              <Link className="btn btn-primary" to="/admin/portfolios/new">Add Portfolio</Link>
             </Col>
           </Row>
         </Container>

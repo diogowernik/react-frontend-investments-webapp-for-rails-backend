@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import CategoriesTable from './CategoriesTable'
-import '../../Custom.css'; 
 
 const Api = require('./Api.js')
 
@@ -62,7 +61,7 @@ class Categories extends Component {
           <Row>
             <Col>
               <CategoriesTable categories={categories}></CategoriesTable>
-              <Link className="btn btn-primary" to="/categories/new">Add Category</Link>
+              <Link className="btn btn-primary" to="/admin/categories/new">Add Category</Link>
             </Col>
           </Row>
         </Container>

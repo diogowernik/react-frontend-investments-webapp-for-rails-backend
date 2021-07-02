@@ -32,9 +32,9 @@ class CategoriesTable extends Component {
                 <td>{category.title}</td>
                 <td>{category.slug}</td>
                 <td>
-                  <Link className="btn btn-primary" to={`/category/${category.id}`}>View</Link>{' '}
-                  <Link className="btn btn-success" to={`/category/${category.id}/edit`}>Edit</Link>{' '}
-                  <Link className="btn btn-danger" to={`/category/${category.id}/delete`}>Delete</Link>
+                  <Link className="btn btn-primary" to={`/admin/category/${category.id}`}>View</Link>{' '}
+                  <Link className="btn btn-success" to={`/admin/category/${category.id}/edit`}>Edit</Link>{' '}
+                  <Link className="btn btn-danger" to={`/admin/category/${category.id}/delete`}>Delete</Link>
                 </td>
               </tr>
             ))}

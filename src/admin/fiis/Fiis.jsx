@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import FiisTable from './FiisTable'
-import '../../Custom.css'; 
 
 const Api = require('./Api.js')
 
@@ -58,7 +57,7 @@ class Fiis extends Component {
 
       return (
         <Container>
-          <Link className="btn btn-primary float-right" to="/fiis/new">Add Fii</Link>
+          <Link className="btn btn-primary float-right" to="/admin/fiis/new">Add Fii</Link>
 
           <h4 className="mt-4 mb-4">Fundos Imobiliários nos Portfolios</h4>
           <Row>

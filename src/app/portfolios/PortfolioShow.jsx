@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Card,CardHeader, CardBody, CardTitle, CardText, Table, Alert } from 'reactstrap'
-import AppNavBar from "../layouts/navbar"
+import { Row, Col, Card,CardHeader, CardBody, CardTitle, CardText, Table, Alert } from 'reactstrap'
+import AppNavBar from "../layouts/app_navbar"
 import TreeChart from './Treechart.js'
 import '../css/custom_app.css'
 
@@ -98,7 +98,7 @@ class AppShow extends Component {
       return (
         <>
         <AppNavBar/>
-        <Container>
+        <div className="container custom-container">
                 <Row>
                   {errors.length > 0 &&
                       <div>
@@ -202,7 +202,7 @@ class AppShow extends Component {
                     </Col>
 
                 </Row>
-            </Container>
+            </div>
         </>
       )
     }

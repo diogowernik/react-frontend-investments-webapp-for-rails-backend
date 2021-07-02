@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import RadarcryptosTable from './RadarcryptosTable'
-import '../../Custom.css'; 
 
 const Api = require('./Api.js')
 
@@ -58,7 +57,7 @@ class Radarcryptos extends Component {
 
       return (
         <Container>
-              <Link className="btn btn-primary float-right" to="/radarcryptos/new">Add Radarcrypto</Link>
+              <Link className="btn btn-primary float-right" to="/admin/radarcryptos/new">Add Radarcrypto</Link>
 
           <h4 className="mt-4 mb-4">Radar Crypto</h4>
           <Row>

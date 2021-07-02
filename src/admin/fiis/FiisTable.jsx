@@ -34,16 +34,16 @@ class FiisTable extends Component {
                 {fiis.map(fii => (
                     <tr key= {fii.id}>
                         <td>{fii.id}</td>
-                        <td><a href={`/radarfii/${fii.radarfii.id}`}>{fii.radarfii.ticker}</a>{' '}</td>
-                        <td><a href={`/category/${fii.category.id}`}>{fii.category.title}</a>{' '}</td>
-                        <td><a href={`/portfolio/${fii.portfolio.id}`}>{fii.portfolio.title}</a>{' '}</td>
+                        <td><a href={`/admin/radarfii/${fii.radarfii.id}`}>{fii.radarfii.ticker}</a>{' '}</td>
+                        <td><a href={`/admin/category/${fii.category.id}`}>{fii.category.title}</a>{' '}</td>
+                        <td><a href={`/admin/portfolio/${fii.portfolio.id}`}>{fii.portfolio.title}</a>{' '}</td>
                         <td>{fii.amount}</td>
                         <td>{fii.cost}</td>
                         <td>{fii.total_cost}</td>
                         <td>{fii.total}</td>
                         <td>
-                          <a className="btn btn-success" href={`/fii/${fii.id}/edit`}><FaPencilAlt /></a>{' '}
-                          <a className="btn btn-danger" href={`/fii/${fii.id}/delete`}><FaTrashAlt /></a>
+                          <a className="btn btn-success" href={`/admin/fii/${fii.id}/edit`}><FaPencilAlt /></a>{' '}
+                          <a className="btn btn-danger" href={`/admin/fii/${fii.id}/delete`}><FaTrashAlt /></a>
                         </td>
                     </tr>
                 ))}

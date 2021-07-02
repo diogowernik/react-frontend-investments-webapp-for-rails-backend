@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import PortfoliosTable from './portfolios/PortfoliosTable'
-import AppNavBar from "./layouts/navbar"
+import AppNavBar from "./layouts/app_navbar"
 
 const Api = require('./portfolios/Api')
 
