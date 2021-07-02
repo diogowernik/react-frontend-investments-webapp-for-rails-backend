@@ -13,7 +13,7 @@ import {
   DropdownItem,
 } from 'reactstrap';
 
-const NavBar = (props) => {
+const AdminNavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -21,15 +21,10 @@ const NavBar = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Administrativo</NavbarBrand>
+        <NavbarBrand>Administrativo</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-
-            <NavItem>
-              <NavLink href="/portfolios">Portfolios</NavLink>
-            </NavItem>
-            
+          <Nav className="mr-auto" navbar>  
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Admin Classes
@@ -72,9 +67,17 @@ const NavBar = (props) => {
             </UncontrolledDropdown>
           </Nav>
         </Collapse>
+        <Nav className="ml-auto" navbar>         
+          <NavItem className="ml-auto">
+            <NavLink href="/app">App</NavLink>
+          </NavItem>
+          <NavItem className="ml-auto">
+            <NavLink href="/admin">Admin</NavLink>
+          </NavItem>
+        </Nav>
       </Navbar>
     </div>
   );
 }
 
-export default NavBar;
+export default AdminNavBar;

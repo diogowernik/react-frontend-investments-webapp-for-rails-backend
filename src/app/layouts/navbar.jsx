@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
@@ -10,26 +8,24 @@ import {
 } from 'reactstrap';
 
 const AppNavBar = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Minha Holding</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            
+    
+      <div>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand>Minha Holding</NavbarBrand>
+        <Nav className="ml-auto" navbar>         
           <NavItem className="ml-auto">
-              <NavLink href="/portfolios">Portfolios</NavLink>
+            <NavLink href="/app">App</NavLink>
           </NavItem>
-          </Nav>
-        </Collapse>
+          <NavItem className="ml-auto">
+            <NavLink href="/admin">Admin</NavLink>
+          </NavItem>
+        </Nav>
       </Navbar>
-    </div>
-  );
+      </div>
+    );
 }
 
 export default AppNavBar;

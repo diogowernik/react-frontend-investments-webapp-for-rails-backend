@@ -43,6 +43,10 @@ import PortfolioForm from '../app/portfolios/PortfolioForm'
 import PortfolioDelete from '../app/portfolios/PortfolioDelete'
 import PortfolioShow from '../app/portfolios/PortfolioShow'
 
+import LandingPage from '../LandingPage'
+
+import AdminIndex from '../admin/AdminIndex'
+
 const Routes = (props) => {
   
 
@@ -91,12 +95,15 @@ const Routes = (props) => {
                 <Route exact path="/radarcrypto/:id/delete" render={(routeProps) => ( <RadarcryptoDelete {...routeProps} /> )} />
                 <Route exact path="/radarcrypto/:id" render={(routeProps) => ( <RadarcryptoShow {...routeProps} /> )} />
       
-                <Route exact path='/' component={AppIndex} />
+                <Route exact path='/app' component={AppIndex} />
                 <Route exact path='/portfolios/new' component={PortfolioForm} />
                 <Route exact path="/portfolio/:id/edit" render={(routeProps) => ( <PortfolioForm {...routeProps} /> )} />
                 <Route exact path="/portfolio/:id/delete" render={(routeProps) => ( <PortfolioDelete {...routeProps} /> )} />
                 <Route exact path="/portfolio/:id" render={(routeProps) => ( <PortfolioShow {...routeProps} /> )} />
 
+                <Route exact path='/' component={LandingPage} />
+
+                <Route exact path='/admin' component={AdminIndex} />
               </div>
             </Router>
     </>

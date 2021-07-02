@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import PortfoliosTable from './portfolios/PortfoliosTable'
-import '../Custom.css'; 
-
+import AppNavBar from "./layouts/navbar"
 
 const Api = require('./portfolios/Api')
 
@@ -58,6 +57,8 @@ class Portfolios extends Component {
     } else {
 
       return (
+        <>
+        <AppNavBar/>
         <Container>
           <h4 className="mt-4 mb-4">Portfolios</h4>
           <Row>
@@ -67,6 +68,7 @@ class Portfolios extends Component {
             </Col>
           </Row>
         </Container>
+        </>
       )
 
     }

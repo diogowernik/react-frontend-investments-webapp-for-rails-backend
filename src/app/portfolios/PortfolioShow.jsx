@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Card,CardHeader, CardBody, CardTitle, CardText, Table, Alert } from 'reactstrap'
+import AppNavBar from "../layouts/navbar"
 import TreeChart from './Treechart.js'
+import '../css/custom_app.css'
 
 const Api = require('./Api.js')
 
-class PortfolioForm extends Component {
+class AppShow extends Component {
   constructor(props) {
     super(props)
 
@@ -94,6 +96,8 @@ class PortfolioForm extends Component {
     } else {
 
       return (
+        <>
+        <AppNavBar/>
         <Container>
                 <Row>
                   {errors.length > 0 &&
@@ -199,10 +203,10 @@ class PortfolioForm extends Component {
 
                 </Row>
             </Container>
-
+        </>
       )
     }
   }
 }
 
-export default PortfolioForm
+export default AppShow
