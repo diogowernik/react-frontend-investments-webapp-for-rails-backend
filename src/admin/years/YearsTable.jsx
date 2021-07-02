@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
-import { Table } from 'reactstrap'
+import Datatable from '../../components/datatable/Datatable';
+import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
+
 
 class YearsTable extends Component {
   constructor(props) {
@@ -16,7 +18,8 @@ class YearsTable extends Component {
       return <div></div>
     } else {
       return (
-        <Table>
+        <Datatable>
+          <table className="table table-striped my-4 w-100">
           <thead>
             <tr>
               <th>ID</th>
@@ -32,13 +35,14 @@ class YearsTable extends Component {
                 <td>{year.title}</td>
                 <td>{year.slug}</td>
                 <td>
-                  <Link className="btn btn-success" to={`/admin/years/${year.id}/edit`}>Edit</Link>{' '}
-                  <Link className="btn btn-danger" to={`/admin/years/${year.id}/delete`}>Delete</Link>
+                  <Link className="btn btn-success" to={`/admin/years/${year.id}/edit`}><FaPencilAlt /></Link>{' '}
+                  <Link className="btn btn-danger" to={`/admin/years/${year.id}/delete`}><FaTrashAlt /></Link>
                 </td>
               </tr>
             ))}
           </tbody>
-        </Table>
+        </table>
+        </Datatable>
       )
     }
   }

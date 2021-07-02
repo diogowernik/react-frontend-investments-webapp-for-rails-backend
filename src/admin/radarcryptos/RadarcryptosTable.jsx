@@ -32,7 +32,7 @@ class RadarcryptosTable extends Component {
               {radarcryptos.map(radarcrypto => (
                 <tr key={radarcrypto.id}>
                   <td>{radarcrypto.id}</td>
-                  <td><a href={`/admin/radarcrypto/${radarcrypto.id}`}>{radarcrypto.ticker}</a></td>
+                  <td>{radarcrypto.ticker}</td>
                   <td>{radarcrypto.title}</td>
                   <td>{radarcrypto.slug}</td>
                   <td>{radarcrypto.price}</td>

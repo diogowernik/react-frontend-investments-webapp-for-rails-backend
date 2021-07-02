@@ -32,14 +32,14 @@ class RadarfiisTable extends Component {
             {radarfiis.map(radarfii => (
               <tr key={radarfii.id}>
                 <td>{radarfii.id}</td>
-                <td><a href={`/admin/radarfii/${radarfii.id}`}>{radarfii.ticker}</a></td>
+                <td>{radarfii.ticker}</td>
                 <td>{radarfii.title}</td>
                 <td>{radarfii.slug}</td>
                 <td>{radarfii.price}</td>
                 <td>
                     <a className="btn btn-success" href={`/admin/radarfii/${radarfii.id}/edit`}><FaPencilAlt /></a>{' '}
                     <a className="btn btn-danger" href={`/admin/radarfii/${radarfii.id}/delete`}><FaTrashAlt /></a>
-                  </td>
+                </td>
               </tr>
             ))}
           </tbody>

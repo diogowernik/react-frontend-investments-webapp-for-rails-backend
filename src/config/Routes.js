@@ -23,22 +23,18 @@ import RadarfiiShow from '../admin/radarfiis/RadarfiiShow'
 import Categories from '../admin/categories/Categories'
 import CategoryForm from '../admin/categories/CategoryForm'
 import CategoryDelete from '../admin/categories/CategoryDelete'
-import CategoryShow from '../admin/categories/CategoryShow'
 
 import AdminPortfolios from '../admin/portfolios/Portfolios'
 import AdminPortfolioForm from '../admin/portfolios/PortfolioForm'
 import AdminPortfolioDelete from '../admin/portfolios/PortfolioDelete'
-import AdminPortfolioShow from '../admin/portfolios/PortfolioShow'
 
 import Cryptos from '../admin/cryptos/Cryptos'
 import CryptoForm from '../admin/cryptos/CryptoForm'
 import CryptoDelete from '../admin/cryptos/CryptoDelete'
-import CryptoShow from '../admin/cryptos/CryptoShow'
 
 import Fiis from '../admin/fiis/Fiis'
 import FiiForm from '../admin/fiis/FiiForm'
 import FiiDelete from '../admin/fiis/FiiDelete'
-import FiiShow from '../admin/fiis/FiiShow'
 
 import Radarcryptos from '../admin/radarcryptos/Radarcryptos'
 import RadarcryptoForm from '../admin/radarcryptos/RadarcryptoForm'
@@ -81,31 +77,27 @@ const Routes = (props) => {
                 <Route exact path='/admin/categories/new' component={CategoryForm} />
                 <Route exact path="/admin/category/:id/edit" render={(routeProps) => ( <CategoryForm {...routeProps} /> )} />
                 <Route exact path="/admin/category/:id/delete" render={(routeProps) => ( <CategoryDelete {...routeProps} /> )} />
-                <Route exact path="/admin/category/:id" render={(routeProps) => ( <CategoryShow {...routeProps} /> )} />
       
                 <Route exact path='/admin/portfolios' component={AdminPortfolios} />
                 <Route exact path='/admin/portfolios/new' component={AdminPortfolioForm} />
                 <Route exact path="/admin/portfolio/:id/edit" render={(routeProps) => ( <AdminPortfolioForm {...routeProps} /> )} />
                 <Route exact path="/admin/portfolio/:id/delete" render={(routeProps) => ( <AdminPortfolioDelete {...routeProps} /> )} />
-                <Route exact path="/admin/portfolio/:id" render={(routeProps) => ( <AdminPortfolioShow {...routeProps} /> )} />
       
                 <Route exact path='/admin/cryptos' component={Cryptos} />
                 <Route exact path='/admin/cryptos/new' component={CryptoForm} />
                 <Route exact path="/admin/crypto/:id/edit" render={(routeProps) => ( <CryptoForm {...routeProps} /> )} />
                 <Route exact path="/admin/crypto/:id/delete" render={(routeProps) => ( <CryptoDelete {...routeProps} /> )} />
-                <Route exact path="/admin/crypto/:id" render={(routeProps) => ( <CryptoShow {...routeProps} /> )} />
       
                 <Route exact path='/admin/fiis' component={Fiis} />
                 <Route exact path='/admin/fiis/new' component={FiiForm} />
                 <Route exact path="/admin/fii/:id/edit" render={(routeProps) => ( <FiiForm {...routeProps} /> )} />
                 <Route exact path="/admin/fii/:id/delete" render={(routeProps) => ( <FiiDelete {...routeProps} /> )} />
-                <Route exact path="/admin/fii/:id" render={(routeProps) => ( <FiiShow {...routeProps} /> )} />
       
                 <Route exact path='/admin/radarcryptos' component={Radarcryptos} />
                 <Route exact path='/admin/radarcryptos/new' component={RadarcryptoForm} />
                 <Route exact path="/admin/radarcrypto/:id/edit" render={(routeProps) => ( <RadarcryptoForm {...routeProps} /> )} />
                 <Route exact path="/admin/radarcrypto/:id/delete" render={(routeProps) => ( <RadarcryptoDelete {...routeProps} /> )} />
-                <Route exact path="/admin/radarcrypto/:id" render={(routeProps) => ( <RadarcryptoShow {...routeProps} /> )} />
+                
 
                 {/* App       */}
                 <Route exact path='/app' component={AppIndex} />
@@ -113,6 +105,8 @@ const Routes = (props) => {
                 <Route exact path="/portfolio/:id/edit" render={(routeProps) => ( <PortfolioForm {...routeProps} /> )} />
                 <Route exact path="/portfolio/:id/delete" render={(routeProps) => ( <PortfolioDelete {...routeProps} /> )} />
                 <Route exact path="/portfolio/:id" render={(routeProps) => ( <PortfolioShow {...routeProps} /> )} />
+
+                <Route exact path="/crypto/:ticker/:id" render={(routeProps) => ( <RadarcryptoShow {...routeProps} /> )} />
 
               </div>
             </Router>

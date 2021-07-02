@@ -36,9 +36,9 @@ class FiisTable extends Component {
                 {fiis.map(fii => (
                     <tr key= {fii.id}>
                         <td>{fii.id}</td>
-                        <td><a href={`/admin/radarfii/${fii.radarfii.id}`}>{fii.radarfii.ticker}</a>{' '}</td>
-                        <td><a href={`/admin/category/${fii.category.id}`}>{fii.category.title}</a>{' '}</td>
-                        <td><a href={`/admin/portfolio/${fii.portfolio.id}`}>{fii.portfolio.title}</a>{' '}</td>
+                        <td>{fii.radarfii.ticker}{' '}</td>
+                        <td>{fii.category.title}{' '}</td>
+                        <td>{fii.portfolio.title}{' '}</td>
                         <td>{fii.amount}</td>
                         <td>{fii.cost}</td>
                         <td>{fii.total_cost}</td>

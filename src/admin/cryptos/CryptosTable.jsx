@@ -34,9 +34,9 @@ class CryptosTable extends Component {
               {cryptos.map(crypto => (
                 <tr key={crypto.id}>
                   <td>{crypto.id}</td>
-                  <td><a href={`/admin/radarcrypto/${crypto.radarcrypto.id}`}>{crypto.radarcrypto.ticker}</a></td>
-                  <td><a href={`/admin/category/${crypto.category.id}`}>{crypto.category.title}</a></td>
-                  <td><a href={`/admin/portfolio/${crypto.portfolio.id}`}>{crypto.portfolio.title}</a></td>
+                  <td>{crypto.radarcrypto.ticker}</td>
+                  <td>{crypto.category.title}</td>
+                  <td>{crypto.portfolio.title}</td>
                   <td>{crypto.amount}</td>
                   <td>{crypto.cost}</td>
                   <td>{crypto.total_cost}</td>

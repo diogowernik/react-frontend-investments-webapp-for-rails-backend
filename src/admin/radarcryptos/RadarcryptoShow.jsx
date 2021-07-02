@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert } from 'reactstrap'
+import AdminNavBar from "../layouts/admin_navbar"
+
 
 const Api = require('./Api.js')
 
@@ -93,13 +95,12 @@ class RadarcryptoForm extends Component {
     } else {
 
       return (
+        <>
+        <AdminNavBar/>
         <Container>
           <Row>
             <Col>
               <h3 className="mt-3 mb-3">{radarcrypto.title}</h3>
-              <p>
-                <b>Url:</b> https://meusite.com/{radarcrypto.slug} <br />             
-              </p>
 
               {errors.length > 0 &&
                 <div>
@@ -115,6 +116,7 @@ class RadarcryptoForm extends Component {
             </Col>
           </Row>
         </Container>
+        </>
       )
     }
   }

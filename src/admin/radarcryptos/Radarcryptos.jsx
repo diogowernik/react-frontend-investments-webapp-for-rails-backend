@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import RadarcryptosTable from './RadarcryptosTable'
+import AdminNavBar from "../layouts/admin_navbar"
 
 const Api = require('./Api.js')
 

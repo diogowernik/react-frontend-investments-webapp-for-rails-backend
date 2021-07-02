@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import YearsTable from './YearsTable'
+import AdminNavBar from "../layouts/admin_navbar"
+
 
 const Api = require('./Api.js')
 
@@ -56,15 +58,19 @@ class Years extends Component {
     } else {
 
       return (
+        <>
+        <AdminNavBar/>
         <Container>
+        <Link className="btn btn-primary float-right" to="/admin/years/new">Add Year</Link>
+
           <h4 className="mt-4 mb-4">Anos</h4>
           <Row>
             <Col>
               <YearsTable years={years}></YearsTable>
-              <Link className="btn btn-primary" to="/admin/years/new">Add Year</Link>
             </Col>
           </Row>
         </Container>
+        </>
       )
 
     }

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import RadarfiisTable from './RadarfiisTable'
+import AdminNavBar from "../layouts/admin_navbar"
+
 
 const Api = require('./Api.js')
 
@@ -56,6 +58,8 @@ class Radarfiis extends Component {
     } else {
 
       return (
+        <>
+        <AdminNavBar/>
         <Container>
               <Link className="btn btn-primary float-right" to="/admin/radarfiis/new">Add Radarfii</Link>
 
@@ -66,6 +70,7 @@ class Radarfiis extends Component {
             </Col>
           </Row>
         </Container>
+        </>
       )
 
     }

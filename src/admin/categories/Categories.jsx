@@ -60,11 +60,12 @@ class Categories extends Component {
         <>
         <AdminNavBar/>
         <Container>
+        <Link className="btn btn-primary float-right" to="/admin/categories/new">Add Category</Link>
+
           <h4 className="mt-4 mb-4">Categorias de investimentos</h4>
           <Row>
             <Col>
               <CategoriesTable categories={categories}></CategoriesTable>
-              <Link className="btn btn-primary" to="/admin/categories/new">Add Category</Link>
             </Col>
           </Row>
         </Container>
