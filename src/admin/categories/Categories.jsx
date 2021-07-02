@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import CategoriesTable from './CategoriesTable'
+import AdminNavBar from "../layouts/admin_navbar"
 
 const Api = require('./Api.js')
 
@@ -56,6 +57,8 @@ class Categories extends Component {
     } else {
 
       return (
+        <>
+        <AdminNavBar/>
         <Container>
           <h4 className="mt-4 mb-4">Categorias de investimentos</h4>
           <Row>
@@ -65,6 +68,7 @@ class Categories extends Component {
             </Col>
           </Row>
         </Container>
+        </>
       )
 
     }

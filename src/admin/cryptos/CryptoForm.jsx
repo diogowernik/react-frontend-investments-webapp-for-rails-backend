@@ -4,6 +4,8 @@ import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
 import SelectPortfolio from '../../components/selects/SelectPortfolio'
 import SelectCategory from '../../components/selects/SelectCategory'
 import SelectRadarcrypto from '../../components/selects/SelectRadarcrypto'
+import AdminNavBar from "../layouts/admin_navbar"
+
 
 const Api = require('./Api.js')
 
@@ -149,6 +151,8 @@ class CryptoForm extends Component {
     } else {
 
       return (
+        <>
+        <AdminNavBar/>
         <Container>
           <Row>
             <Col>
@@ -210,6 +214,7 @@ class CryptoForm extends Component {
             </Col>
           </Row>
         </Container>
+        </>
       )
     }
   }

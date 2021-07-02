@@ -55,7 +55,7 @@ const AdminNavBar = (props) => {
                   <a href="/admin/categories">Categorias de Investimentos</a>
                 </DropdownItem>
                 <DropdownItem>
-                  <a href="/admin/movements">Operações Financeiras</a>
+                  <a href="/admin/portfolios">Portfolios</a>
                 </DropdownItem>
 
                 <DropdownItem divider />

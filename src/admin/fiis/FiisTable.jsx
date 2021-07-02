@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Datatable from '../../components/datatable/Datatable';
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 
+
 class FiisTable extends Component {
   constructor(props) {
     super(props)
@@ -15,6 +16,7 @@ class FiisTable extends Component {
       return <div></div>
     } else {
       return (
+
         <Datatable>       
             <table className="table table-striped my-4 w-100">
                 <thead>
@@ -49,7 +51,7 @@ class FiisTable extends Component {
                 ))}
                 </tbody>
             </table>
-        </Datatable>        
+        </Datatable>    
       )
     }
   }

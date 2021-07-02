@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
+import AdminNavBar from "../layouts/admin_navbar"
 import SelectPortfolio from '../../components/selects/SelectPortfolio'
 import SelectCategory from '../../components/selects/SelectCategory'
 import SelectRadarfii from '../../components/selects/SelectRadarfii'
@@ -150,6 +151,8 @@ class FiiForm extends Component {
     } else {
 
       return (
+        <>
+        <AdminNavBar/>
         <Container>
           <Row>
             <Col>
@@ -212,6 +215,7 @@ class FiiForm extends Component {
             </Col>
           </Row>
         </Container>
+        </>
       )
     }
   }

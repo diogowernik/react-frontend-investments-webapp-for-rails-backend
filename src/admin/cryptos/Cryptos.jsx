@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import CryptosTable from './CryptosTable'
+import AdminNavBar from "../layouts/admin_navbar"
 
 const Api = require('./Api.js')
 
@@ -56,6 +57,8 @@ class Cryptos extends Component {
     } else {
 
       return (
+        <>
+        <AdminNavBar/>
         <Container>
           <Link className="btn btn-primary float-right" to="/admin/cryptos/new">Add Crypto</Link>
           <h4 className="mt-4 mb-4">Criptomoedas nos Portfolios</h4>
@@ -65,6 +68,7 @@ class Cryptos extends Component {
             </Col>
           </Row>
         </Container>
+        </>
       )
 
     }

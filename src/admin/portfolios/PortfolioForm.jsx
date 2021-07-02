@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import AdminNavBar from "../layouts/admin_navbar"
 
 const Api = require('./Api.js')
 
@@ -104,6 +105,8 @@ class AdminPortfolioForm extends Component {
     } else {
 
       return (
+        <>
+        <AdminNavBar/>
         <Container>
           <Row>
             <Col>
@@ -133,6 +136,7 @@ class AdminPortfolioForm extends Component {
             </Col>
           </Row>
         </Container>
+        </>
       )
     }
   }

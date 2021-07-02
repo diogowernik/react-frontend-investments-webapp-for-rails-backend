@@ -56,6 +56,8 @@ class Radarcryptos extends Component {
     } else {
 
       return (
+        <>
+        <AdminNavBar/>
         <Container>
               <Link className="btn btn-primary float-right" to="/admin/radarcryptos/new">Add Radarcrypto</Link>
 
@@ -66,6 +68,7 @@ class Radarcryptos extends Component {
             </Col>
           </Row>
         </Container>
+        </>
       )
 
     }

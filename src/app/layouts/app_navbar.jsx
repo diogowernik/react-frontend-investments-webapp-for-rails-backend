@@ -14,7 +14,7 @@ const AppNavBar = (props) => {
     
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand>Minha Holding</NavbarBrand>
+          <NavbarBrand>Meus Investimentos</NavbarBrand>
         <Nav className="ml-auto" navbar>         
           <NavItem className="ml-auto">
             <NavLink href="/app">App</NavLink>
