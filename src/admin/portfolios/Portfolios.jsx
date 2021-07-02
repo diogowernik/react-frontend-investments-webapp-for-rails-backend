@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
 import PortfoliosTable from './PortfoliosTable'
-import '../../Custom.css'; 
 
 const Api = require('./Api.js')
 

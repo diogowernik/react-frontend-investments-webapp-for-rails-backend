@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Container, Row } from 'reactstrap'
-import '../Custom.css'; 
 import AdminNavBar from "./layouts/admin_navbar"
 
 class LandingPage extends Component {
