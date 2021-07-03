@@ -2,17 +2,17 @@ import React, { Component } from 'react'
 import Datatable from '../../components/datatable/Datatable';
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 
-class RadarcryptosTable extends Component {
+class CriptosTable extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      radarcryptos: props.radarcryptos
+      criptos: props.criptos
     }
   }
 
   render() {
-    const radarcryptos = this.state.radarcryptos
-    if (radarcryptos.length === 0) {
+    const criptos = this.state.criptos
+    if (criptos.length === 0) {
       return <div></div>
     } else {
       return (
@@ -29,16 +29,16 @@ class RadarcryptosTable extends Component {
               </tr>
             </thead>
             <tbody>
-              {radarcryptos.map(radarcrypto => (
-                <tr key={radarcrypto.id}>
-                  <td>{radarcrypto.id}</td>
-                  <td>{radarcrypto.ticker}</td>
-                  <td>{radarcrypto.title}</td>
-                  <td>{radarcrypto.slug}</td>
-                  <td>{radarcrypto.price}</td>
+              {criptos.map(cripto => (
+                <tr key={cripto.id}>
+                  <td>{cripto.id}</td>
+                  <td>{cripto.ticker}</td>
+                  <td>{cripto.title}</td>
+                  <td>{cripto.slug}</td>
+                  <td>{cripto.price}</td>
                   <td>
-                    <a className="btn btn-success" href={`/admin/radarcrypto/${radarcrypto.id}/edit`}><FaPencilAlt /></a>{' '}
-                    <a className="btn btn-danger" href={`/admin/radarcrypto/${radarcrypto.id}/delete`}><FaTrashAlt /></a>
+                    <a className="btn btn-success" href={`/admin/cripto/${cripto.id}/edit`}><FaPencilAlt /></a>{' '}
+                    <a className="btn btn-danger" href={`/admin/cripto/${cripto.id}/delete`}><FaTrashAlt /></a>
                   </td>
 
                 </tr>
@@ -50,4 +50,4 @@ class RadarcryptosTable extends Component {
   }
 }
 
-export default RadarcryptosTable
+export default CriptosTable

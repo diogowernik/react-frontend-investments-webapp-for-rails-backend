@@ -3,29 +3,29 @@ import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
 import SelectPortfolio from '../../components/selects/SelectPortfolio'
 import SelectCategory from '../../components/selects/SelectCategory'
-import SelectRadarcrypto from '../../components/selects/SelectRadarcrypto'
+import SelectFii from '../../components/selects/SelectFii'
 import AdminNavBar from "../layouts/admin_navbar"
 
 
 const Api = require('./Api.js')
 
-class CryptoForm extends Component {
+class PortfoliofiiForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       portfolio_options:[],
-      radarcrypto_options:[],
+      fii_options:[],
       category_options:[],
-      crypto: {
-        id: this.getCryptoId(props),
+      portfoliofii: {
+        id: this.getPortfoliofiiId(props),
         category_id: '',
         portfolio_id: '',
         amount: '',
         cost: '',
         total_cost: '',
-        total: '',
-        radarcrypto_id: '',
+        total_today: '',
+        fii_id: '',
       },
       redirect: null,
       errors: []
@@ -34,16 +34,16 @@ class CryptoForm extends Component {
     this.setCategory_id = this.setCategory_id.bind(this)
     this.setPortfolio_id = this.setPortfolio_id.bind(this)
     this.setAmount = this.setAmount.bind(this)
-    this.setTotal = this.setTotal.bind(this)
+    this.setTotal_today = this.setTotal_today.bind(this)
     this.setTotal_cost = this.setTotal_cost.bind(this)
     this.setCost = this.setCost.bind(this)
-    this.setRadarcrypto_id = this.setRadarcrypto_id.bind(this)
+    this.setFii_id = this.setFii_id.bind(this)
 
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
 
-  getCryptoId(props) {
+  getPortfoliofiiId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -61,9 +61,9 @@ class CryptoForm extends Component {
     this.setFieldState('portfolio_id', newVal)
   }
 
-  setRadarcrypto_id(event) {
+  setFii_id(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('radarcrypto_id', newVal)
+    this.setFieldState('fii_id', newVal)
   }
 
   setAmount(event) {
@@ -76,9 +76,9 @@ class CryptoForm extends Component {
     this.setFieldState('cost', newVal)
   }
 
-  setTotal(event) {
+  setTotal_today(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('total', newVal)
+    this.setFieldState('total_today', newVal)
   }
 
   setTotal_cost(event) {
@@ -89,7 +89,7 @@ class CryptoForm extends Component {
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.crypto[field] = newVal
+      newState.portfoliofii[field] = newVal
       return newState
     })
   }
@@ -97,17 +97,17 @@ class CryptoForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let crypto = {
-      category_id: this.state.crypto.category_id,
-      portfolio_id: this.state.crypto.portfolio_id,
-      amount: this.state.crypto.amount,
-      cost: this.state.crypto.cost,
-      radarcrypto_id: this.state.crypto.radarcrypto_id,
-      total_cost: this.state.crypto.total_cost,
-      total: this.state.crypto.total,
+    let portfoliofii = {
+      category_id: this.state.portfoliofii.category_id,
+      portfolio_id: this.state.portfoliofii.portfolio_id,
+      amount: this.state.portfoliofii.amount,
+      cost: this.state.portfoliofii.cost,
+      fii_id: this.state.portfoliofii.fii_id,
+      total_cost: this.state.portfoliofii.total_cost,
+      total_today: this.state.portfoliofii.total_today,
     }
 
-    Api.saveCrypto(crypto, this.state.crypto.id)
+    Api.savePortfoliofii(portfoliofii, this.state.portfoliofii.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -116,15 +116,15 @@ class CryptoForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/cryptos'
+            redirect: '/admin/portfoliofiis'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.crypto.id) {
-      Api.getCrypto(this.state.crypto.id)
+    if (this.state.portfoliofii.id) {
+      Api.getPortfoliofii(this.state.portfoliofii.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -133,7 +133,7 @@ class CryptoForm extends Component {
             })
           } else {
             this.setState({
-              crypto: data,
+              portfoliofii: data,
               errors: []
             })
           }
@@ -142,7 +142,7 @@ class CryptoForm extends Component {
   }
 
   render() {
-    const { redirect, crypto, errors, radarcrypto_options, portfolio_options, category_options } = this.state
+    const { redirect, portfoliofii, errors, fii_options, portfolio_options, category_options } = this.state
 
     if (redirect) {
       return (
@@ -156,7 +156,7 @@ class CryptoForm extends Component {
         <Container>
           <Row>
             <Col>
-            <h3 className="mt-4 mb-4">Editar / Adicionar Criptomoeda a uma Carteira</h3>
+            <h3 className="mt-4 mb-4">Editar / Adicionar Fundo Impobiliário a um Portfolio</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -172,41 +172,41 @@ class CryptoForm extends Component {
                   <Col md={ 4 }>
                     <SelectCategory 
                       category_options={category_options} 
-                      asset={crypto}
+                      asset={portfoliofii}
                       onChange={this.setCategory_id}
                     />
                   </Col>
                   <Col md={ 4 }>
                     <SelectPortfolio 
                       portfolio_options={portfolio_options} 
-                      asset={crypto} 
+                      asset={portfoliofii} 
                       onChange={this.setPortfolio_id}
                     />
                   </Col>
                   <Col md={ 4 }>
-                  <SelectRadarcrypto 
-                      portfolio_options={radarcrypto_options} 
-                      asset={crypto} 
-                      onChange={this.setRadarcrypto_id}
+                  <SelectFii 
+                      portfolio_options={fii_options} 
+                      asset={portfoliofii} 
+                      onChange={this.setFii_id}
                     />
                   </Col>
                 </Row>
                 <Row>
                 <Col md={ 3 }>
                   <Label for="amount">Amount</Label>
-                  <Input type="text" name="amount" id="amount" value={crypto.amount} placeholder="Enter amount" onChange={this.setAmount} />
+                  <Input type="text" name="amount" id="amount" value={portfoliofii.amount} placeholder="Enter amount" onChange={this.setAmount} />
                 </Col>
                 <Col md={ 3 }>
                   <Label for="cost">Cost</Label>
-                  <Input type="text" name="cost" id="cost" value={crypto.cost} placeholder="Enter cost" onChange={this.setCost} />
+                  <Input type="text" name="cost" id="cost" value={portfoliofii.cost} placeholder="Enter cost" onChange={this.setCost} />
                 </Col>
                 <Col md={ 3 }>
                   <Label for="total_cost">Total cost</Label>
-                  <Input type="text" name="total_cost" id="total_cost" value={crypto.total_cost} placeholder="Enter total_cost" onChange={this.setTotal_cost} />
+                  <Input type="text" name="total_cost" id="total_cost" value={portfoliofii.total_cost} placeholder="Enter total_cost" onChange={this.setTotal_cost} />
                 </Col>
                 <Col md={ 3 }>
-                  <Label for="total">Total hoje</Label>
-                  <Input type="text" name="total" id="total" value={crypto.total} placeholder="Enter total" onChange={this.setTotal} />
+                  <Label for="total_today">Total hoje</Label>
+                  <Input type="text" name="total_today" id="total_today" value={portfoliofii.total_today} placeholder="Enter total_today" onChange={this.setTotal_today} />
                 </Col>
                 </Row>
                 <button className="btn btn-success mt-4">Submit</button>
@@ -220,4 +220,4 @@ class CryptoForm extends Component {
   }
 }
 
-export default CryptoForm
+export default PortfoliofiiForm

@@ -6,13 +6,13 @@ import AdminNavBar from "../layouts/admin_navbar"
 
 const Api = require('./Api.js')
 
-class RadarcryptoForm extends Component {
+class CriptoForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      radarcrypto: {
-        id: this.getRadarcryptoId(props),
+      cripto: {
+        id: this.getCriptoId(props),
         ticker: '',
         title: '',
         slug: '',
@@ -30,7 +30,7 @@ class RadarcryptoForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getRadarcryptoId(props) {
+  getCriptoId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -61,7 +61,7 @@ class RadarcryptoForm extends Component {
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.radarcrypto[field] = newVal
+      newState.cripto[field] = newVal
       return newState
     })
   }
@@ -69,14 +69,14 @@ class RadarcryptoForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let radarcrypto = {
-      title: this.state.radarcrypto.title,
-      slug: this.state.radarcrypto.slug,
-      ticker: this.state.radarcrypto.ticker,
-      price: this.state.radarcrypto.price,
+    let cripto = {
+      title: this.state.cripto.title,
+      slug: this.state.cripto.slug,
+      ticker: this.state.cripto.ticker,
+      price: this.state.cripto.price,
     }
 
-    Api.saveRadarcrypto(radarcrypto, this.state.radarcrypto.id)
+    Api.saveCripto(cripto, this.state.cripto.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -85,15 +85,15 @@ class RadarcryptoForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/radarcryptos'
+            redirect: '/criptos'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.radarcrypto.id) {
-      Api.getRadarcrypto(this.state.radarcrypto.id)
+    if (this.state.cripto.id) {
+      Api.getCripto(this.state.cripto.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -102,7 +102,7 @@ class RadarcryptoForm extends Component {
             })
           } else {
             this.setState({
-              radarcrypto: data,
+              cripto: data,
               errors: []
             })
           }
@@ -111,7 +111,7 @@ class RadarcryptoForm extends Component {
   }
 
   render() {
-    const { redirect, radarcrypto, errors } = this.state
+    const { redirect, cripto, errors } = this.state
 
     if (redirect) {
       return (
@@ -125,7 +125,7 @@ class RadarcryptoForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3>Edit Radarcrypto</h3>
+              <h3>Edit Cripto</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -140,19 +140,19 @@ class RadarcryptoForm extends Component {
               <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <Label for="ticker">Ticker</Label>
-                  <Input type="text" name="ticker" id="ticker" value={radarcrypto.ticker} placeholder="Enter ticker" onChange={this.setTicker} />
+                  <Input type="text" name="ticker" id="ticker" value={cripto.ticker} placeholder="Enter ticker" onChange={this.setTicker} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="slug">Slug</Label>
-                  <Input type="text" name="slug" id="slug" value={radarcrypto.slug} placeholder="Enter slug" onChange={this.setSlug} />
+                  <Input type="text" name="slug" id="slug" value={cripto.slug} placeholder="Enter slug" onChange={this.setSlug} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="title">Title</Label>
-                  <Input type="text" name="title" id="title" value={radarcrypto.title} placeholder="Enter title" onChange={this.setTitle} />
+                  <Input type="text" name="title" id="title" value={cripto.title} placeholder="Enter title" onChange={this.setTitle} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="price">Price</Label>
-                  <Input type="text" name="price" id="price" value={radarcrypto.price} placeholder="Enter price" onChange={this.setPrice} />
+                  <Input type="text" name="price" id="price" value={cripto.price} placeholder="Enter price" onChange={this.setPrice} />
                 </FormGroup>
                 
                 <Button color="success">Submit</Button>
@@ -166,4 +166,4 @@ class RadarcryptoForm extends Component {
   }
 }
 
-export default RadarcryptoForm
+export default CriptoForm

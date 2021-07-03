@@ -1,43 +1,42 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
-import RadarfiisTable from './RadarfiisTable'
+import CriptosTable from './CriptosTable'
 import AdminNavBar from "../layouts/admin_navbar"
-
 
 const Api = require('./Api.js')
 
-class Radarfiis extends Component {
+class Criptos extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      radarfiis: [],
+      criptos: [],
       isLoaded: false,
       error: null
     }
   }
 
   componentDidMount() {
-    Api.getRadarfiis()
+    Api.getCriptos()
       .then(response => {
         const [error, data] = response
         if (error) {
           this.setState({
             isLoaded: true,
-            radarfiis: [],
+            criptos: [],
             error: data
           })
         } else {
           this.setState({
             isLoaded: true,
-            radarfiis: data
+            criptos: data
           })
         }
       })
   }
 
   render() {
-    const { error, isLoaded, radarfiis } = this.state
+    const { error, isLoaded, criptos } = this.state
 
     if (error) {
 
@@ -61,12 +60,12 @@ class Radarfiis extends Component {
         <>
         <AdminNavBar/>
         <Container>
-              <Link className="btn btn-primary float-right" to="/admin/radarfiis/new">Add Radarfii</Link>
+              <Link className="btn btn-primary float-right" to="/admin/criptos/new">Add Cripto</Link>
 
-          <h4 className="mt-4 mb-4">Radar Fiis</h4>
+          <h4 className="mt-4 mb-4">Radar Crypto</h4>
           <Row>
             <Col>
-              <RadarfiisTable radarfiis={radarfiis}></RadarfiisTable>
+              <CriptosTable criptos={criptos}></CriptosTable>
             </Col>
           </Row>
         </Container>
@@ -78,4 +77,4 @@ class Radarfiis extends Component {
   }
 }
 
-export default Radarfiis
+export default Criptos

@@ -3,7 +3,8 @@ import { Redirect } from 'react-router'
 import { Row, Col, Card,CardHeader, CardBody, CardTitle, CardText, Table, Alert } from 'reactstrap'
 import AppNavBar from "../layouts/app_navbar"
 import TreeChart from './Treechart.js'
-import '../css/custom_app.css'
+// import './css/custom_app.css'
+
 
 const Api = require('./Api.js')
 

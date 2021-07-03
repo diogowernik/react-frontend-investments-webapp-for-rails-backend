@@ -2,12 +2,12 @@ import React from 'react';
 import { Label, } from 'reactstrap'
 import { apiHost } from '../../config/apiHost.js';
 
-class SelectRadarcrypto extends React.Component {
+class SelectCripto extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
         // asset: this.props.asset,
-        radarcrypto_options:[]
+        cripto_options:[]
     };
     this.handleChange = props.onChange;
   }
@@ -17,13 +17,13 @@ class SelectRadarcrypto extends React.Component {
   }
   
   fetchData() {
-    fetch(apiHost + '/api/radarcrypto/options')
+    fetch(apiHost + '/api/cripto/options')
     .then(res => res.json())
     .then(
       (result) => {
         this.setState({
           isLoaded: true,
-          radarcrypto_options: result
+          cripto_options: result
         });
       },
       (error) => {
@@ -36,7 +36,7 @@ class SelectRadarcrypto extends React.Component {
 }
 
 render() {
-  const { error, isLoaded, radarcrypto_options  } = this.state;
+  const { error, isLoaded, cripto_options  } = this.state;
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -44,10 +44,10 @@ render() {
   } else {
     return (
       <>
-      <Label for="radarcrypto_id">Radarcrypto</Label>
-      <select value={this.props.asset.radarcrypto_id} className="form-control" onChange={this.handleChange}>
+      <Label for="cripto_id">Cripto</Label>
+      <select value={this.props.asset.cripto_id} className="form-control" onChange={this.handleChange}>
         <option value="" disabled defaultValue>Select your option</option>
-        {radarcrypto_options.map((option) => (
+        {cripto_options.map((option) => (
           <option value={option.value} key={option.value}>{option.label}</option>
         ))}
       </select>
@@ -57,4 +57,4 @@ render() {
 }
 }
 
-export default SelectRadarcrypto;
+export default SelectCripto;

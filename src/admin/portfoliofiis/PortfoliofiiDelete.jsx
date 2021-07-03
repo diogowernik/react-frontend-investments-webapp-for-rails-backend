@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 const Api = require('./Api.js')
 
-class CryptoDelete extends Component {
+class PortfoliofiiDelete extends Component {
   constructor(props) {
     super(props)
 
@@ -13,14 +13,14 @@ class CryptoDelete extends Component {
   }
 
   componentDidMount() {
-    Api.deleteCrypto(this.state.id)
+    Api.deletePortfoliofii(this.state.id)
       .then(response => {
         const [error] = response
         if (error) {
           // TODO: set flash
         }
         this.setState({
-          redirect: '/cryptos'
+          redirect: '/admin/portfoliofiis'
         })
       })
   }
@@ -39,4 +39,4 @@ class CryptoDelete extends Component {
 
 }
 
-export default CryptoDelete
+export default PortfoliofiiDelete

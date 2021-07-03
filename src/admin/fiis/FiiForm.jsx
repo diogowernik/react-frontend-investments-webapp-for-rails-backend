@@ -1,47 +1,34 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
+import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 import AdminNavBar from "../layouts/admin_navbar"
-import SelectPortfolio from '../../components/selects/SelectPortfolio'
-import SelectCategory from '../../components/selects/SelectCategory'
-import SelectRadarfii from '../../components/selects/SelectRadarfii'
+
 
 const Api = require('./Api.js')
-
 
 class FiiForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      portfolio_options:[],
-      radarfii_options:[],
-      category_options:[],
       fii: {
         id: this.getFiiId(props),
-        category_id: '',
-        portfolio_id: '',
-        amount: '',
-        cost: '',
-        radarfii_id: '',
-        total_cost: '',
-        total: '',
+        ticker: '',
+        title: '',
+        slug: '',
+        price: '',
       },
       redirect: null,
       errors: []
     }
 
-    this.setCategory_id = this.setCategory_id.bind(this)
-    this.setPortfolio_id = this.setPortfolio_id.bind(this)
-    this.setAmount = this.setAmount.bind(this)
-    this.setCost = this.setCost.bind(this)
-    this.setRadarfii_id = this.setRadarfii_id.bind(this)
-    this.setTotal = this.setTotal.bind(this)
-    this.setTotal_cost = this.setTotal_cost.bind(this)
+    this.setTitle = this.setTitle.bind(this)
+    this.setSlug = this.setSlug.bind(this)
+    this.setTicker = this.setTicker.bind(this)
+    this.setPrice = this.setPrice.bind(this)
 
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-
 
   getFiiId(props) {
     try {
@@ -51,39 +38,24 @@ class FiiForm extends Component {
     }
   }
 
-  setCategory_id(event) {
+  setTitle(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('category_id', newVal)
+    this.setFieldState('title', newVal)
   }
 
-  setPortfolio_id(event) {
+  setSlug(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('portfolio_id', newVal)
+    this.setFieldState('slug', newVal)
   }
 
-  setRadarfii_id(event) {
+  setTicker(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('radarfii_id', newVal)
+    this.setFieldState('ticker', newVal)
   }
 
-  setAmount(event) {
+  setPrice(event) {
     let newVal = event.target.value || ''
-    this.setFieldState('amount', newVal)
-  }
-
-  setCost(event) {
-    let newVal = event.target.value || ''
-    this.setFieldState('cost', newVal)
-  }
-
-  setTotal(event) {
-    let newVal = event.target.value || ''
-    this.setFieldState('total', newVal)
-  }
-
-  setTotal_cost(event) {
-    let newVal = event.target.value || ''
-    this.setFieldState('total_cost', newVal)
+    this.setFieldState('price', newVal)
   }
 
   setFieldState(field, newVal) {
@@ -98,13 +70,10 @@ class FiiForm extends Component {
     event.preventDefault()
 
     let fii = {
-      category_id: this.state.fii.category_id,
-      portfolio_id: this.state.fii.portfolio_id,
-      amount: this.state.fii.amount,
-      cost: this.state.fii.cost,
-      radarfii_id: this.state.fii.radarfii_id,
-      total_cost: this.state.fii.total_cost,
-      total: this.state.fii.total,
+      title: this.state.fii.title,
+      slug: this.state.fii.slug,
+      ticker: this.state.fii.ticker,
+      price: this.state.fii.price,
     }
 
     Api.saveFii(fii, this.state.fii.id)
@@ -142,7 +111,7 @@ class FiiForm extends Component {
   }
 
   render() {
-    const { redirect, fii, errors, radarfii_options, portfolio_options, category_options } = this.state
+    const { redirect, fii, errors } = this.state
 
     if (redirect) {
       return (
@@ -156,7 +125,7 @@ class FiiForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3 className="mt-4 mb-4">Editar / Adicionar Fundo Imobiliário a uma Carteira</h3>
+              <h3>Edit Fii</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -167,50 +136,26 @@ class FiiForm extends Component {
                   )}
                 </div>
               }
-              
+
               <Form onSubmit={this.handleSubmit}>
-                <Row>
-                  <Col md={ 4 }>
-                    <SelectCategory 
-                      category_options={category_options} 
-                      asset={fii}
-                      onChange={this.setCategory_id}
-                    />
-                  </Col>
-                  <Col md={ 4 }>
-                    <SelectPortfolio 
-                      portfolio_options={portfolio_options} 
-                      asset={fii} 
-                      onChange={this.setPortfolio_id}
-                    />
-                  </Col>
-                  <Col md={ 4 }>
-                  <SelectRadarfii 
-                      portfolio_options={radarfii_options} 
-                      asset={fii} 
-                      onChange={this.setRadarfii_id}
-                    />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col md={ 3 } >
-                    <Label for="amount">Amount</Label>
-                    <Input type="text" name="amount" id="amount" value={fii.amount} placeholder="Enter amount" onChange={this.setAmount} />
-                  </Col>
-                  <Col md={ 3 }>
-                    <Label for="cost">Cost</Label>
-                    <Input type="text" name="cost" id="cost" value={fii.cost} placeholder="Enter cost" onChange={this.setCost} />
-                    </Col>
-                  <Col md={ 3 }>
-                    <Label for="total_cost">Total cost</Label>
-                    <Input type="text" name="total_cost" id="total_cost" value={fii.total_cost} placeholder="Enter total_cost" onChange={this.setTotal_cost} />
-                    </Col>
-                  <Col md={ 3 }>
-                    <Label for="total">Total hoje</Label>
-                    <Input type="text" name="total" id="total" value={fii.total} placeholder="Enter total" onChange={this.setTotal} />
-                  </Col>
-                </Row>
-                <button className="btn btn-success mt-4">Submit</button>
+                <FormGroup>
+                  <Label for="ticker">Ticker</Label>
+                  <Input type="text" name="ticker" id="ticker" value={fii.ticker} placeholder="Enter ticker" onChange={this.setTicker} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="slug">Slug</Label>
+                  <Input type="text" name="slug" id="slug" value={fii.slug} placeholder="Enter slug" onChange={this.setSlug} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="title">Title</Label>
+                  <Input type="text" name="title" id="title" value={fii.title} placeholder="Enter title" onChange={this.setTitle} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="price">Price</Label>
+                  <Input type="text" name="price" id="price" value={fii.price} placeholder="Enter price" onChange={this.setPrice} />
+                </FormGroup>
+                
+                <Button color="success">Submit</Button>
               </Form>
             </Col>
           </Row>

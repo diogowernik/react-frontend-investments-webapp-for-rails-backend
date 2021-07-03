@@ -1,42 +1,42 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
-import CryptosTable from './CryptosTable'
+import PortfoliofiisTable from './PortfoliofiisTable'
 import AdminNavBar from "../layouts/admin_navbar"
 
 const Api = require('./Api.js')
 
-class Cryptos extends Component {
+class Portfoliofiis extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      cryptos: [],
+      portfoliofiis: [],
       isLoaded: false,
       error: null
     }
   }
 
   componentDidMount() {
-    Api.getCryptos()
+    Api.getPortfoliofiis()
       .then(response => {
         const [error, data] = response
         if (error) {
           this.setState({
             isLoaded: true,
-            cryptos: [],
+            portfoliofiis: [],
             error: data
           })
         } else {
           this.setState({
             isLoaded: true,
-            cryptos: data
+            portfoliofiis: data
           })
         }
       })
   }
 
   render() {
-    const { error, isLoaded, cryptos } = this.state
+    const { error, isLoaded, portfoliofiis } = this.state
 
     if (error) {
 
@@ -60,11 +60,11 @@ class Cryptos extends Component {
         <>
         <AdminNavBar/>
         <Container>
-          <Link className="btn btn-primary float-right" to="/admin/cryptos/new">Add Crypto</Link>
-          <h4 className="mt-4 mb-4">Criptomoedas nos Portfolios</h4>
+          <Link className="btn btn-primary float-right" to="/admin/portfoliofiis/new">Add Portfoliofii</Link>
+          <h4 className="mt-4 mb-4">Fiis nos Portfolios</h4>
           <Row>
             <Col>
-              <CryptosTable cryptos={cryptos}></CryptosTable>
+              <PortfoliofiisTable portfoliofiis={portfoliofiis}></PortfoliofiisTable>
             </Col>
           </Row>
         </Container>
@@ -76,4 +76,4 @@ class Cryptos extends Component {
   }
 }
 
-export default Cryptos
+export default Portfoliofiis

@@ -32,31 +32,31 @@ const deleteFii = (id) => {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => {
-    response_ok = response.ok
-    if (response.status === 204) {
-      return ''
-    } else {
-      return response.json()
-    }
-  })
-  .then(response => {
-    if (response_ok) {
-      return [false, response]
-    } else {
-      return [true, collectErrors(response)]
-    }
-  })
+    .then(response => {
+      response_ok = response.ok
+      if (response.status === 204) {
+        return ''
+      } else {
+        return response.json()
+      }
+    })
+    .then(response => {
+      if (response_ok) {
+        return [false, response]
+      } else {
+        return [true, collectErrors(response)]
+      }
+    })
 }
 
 const getFiis = () => {
   let response_ok = null
   return fetch(`${apiHost}/api/fiis`, {
-      method: 'get',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
     .then(response => {
       response_ok = response.ok
       return response.json()
@@ -78,20 +78,20 @@ const getFii = (id) => {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => {
-    response_ok = response.ok
-    return response.json()
-  })
-  .then(response => {
-    if (response_ok) {
-      return [false, response]
-    } else {
-      return [true, collectErrors(response)]
-    }
-  })
+    .then(response => {
+      response_ok = response.ok
+      return response.json()
+    })
+    .then(response => {
+      if (response_ok) {
+        return [false, response]
+      } else {
+        return [true, collectErrors(response)]
+      }
+    })
 }
 
-const saveFii = (data, id=null) => {
+const saveFii = (data, id = null) => {
   let apiUrl = `${apiHost}/api/fiis`
   let apiMethod = 'post'
   if (id) {
@@ -112,19 +112,18 @@ const saveFii = (data, id=null) => {
     },
     body: body
   })
-  .then(response => {
-    response_ok = response.ok
-    return response.json()
-  })
-  .then(response => {
-    if (response_ok) {
-      return [false, null]
-    } else {
-      return [true, collectErrors(response)]
-    }
-  })
+    .then(response => {
+      response_ok = response.ok
+      return response.json()
+    })
+    .then(response => {
+      if (response_ok) {
+        return [false, null]
+      } else {
+        return [true, collectErrors(response)]
+      }
+    })
 }
-
 export {
   saveFii,
   getFii,

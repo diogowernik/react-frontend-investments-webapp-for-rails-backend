@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert } from 'reactstrap'
-import AdminNavBar from "../layouts/admin_navbar"
+import AdminNavBar from "../../admin/layouts/admin_navbar"
 
 
-const Api = require('./Api.js')
+const Api = require('../../admin/criptos/Api.js')
 
-class RadarfiiForm extends Component {
+class CriptoForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      radarfii: {
-        id: this.getRadarfiiId(props),
+      cripto: {
+        id: this.getCriptoId(props),
         title: '',
       },
       redirect: null,
@@ -23,7 +23,7 @@ class RadarfiiForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getRadarfiiId(props) {
+  getCriptoId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -39,7 +39,7 @@ class RadarfiiForm extends Component {
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.radarfii[field] = newVal
+      newState.cripto[field] = newVal
       return newState
     })
   }
@@ -47,11 +47,11 @@ class RadarfiiForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let radarfii = {
-      title: this.state.radarfii.title,
+    let cripto = {
+      title: this.state.cripto.title,
     }
 
-    Api.saveRadarfii(radarfii, this.state.radarfii.id)
+    Api.saveCripto(cripto, this.state.cripto.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -60,15 +60,15 @@ class RadarfiiForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/radarfiis'
+            redirect: '/criptos'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.radarfii.id) {
-      Api.getRadarfii(this.state.radarfii.id)
+    if (this.state.cripto.id) {
+      Api.getCripto(this.state.cripto.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -77,7 +77,7 @@ class RadarfiiForm extends Component {
             })
           } else {
             this.setState({
-              radarfii: data,
+              cripto: data,
               errors: []
             })
           }
@@ -86,7 +86,7 @@ class RadarfiiForm extends Component {
   }
 
   render() {
-    const { redirect, radarfii, errors } = this.state
+    const { redirect, cripto, errors } = this.state
 
     if (redirect) {
       return (
@@ -100,8 +100,7 @@ class RadarfiiForm extends Component {
         <Container>
           <Row>
             <Col>
-              <h3 className="mt-3 mb-3">{radarfii.ticker}</h3>
-
+              <h3 className="mt-3 mb-3">{cripto.title}</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -123,4 +122,4 @@ class RadarfiiForm extends Component {
   }
 }
 
-export default RadarfiiForm
+export default CriptoForm

@@ -1,42 +1,43 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Alert } from 'reactstrap'
-import RadarcryptosTable from './RadarcryptosTable'
+import PortfoliocriptosTable from './PortfoliocriptosTable'
 import AdminNavBar from "../layouts/admin_navbar"
+
 
 const Api = require('./Api.js')
 
-class Radarcryptos extends Component {
+class Portfoliocriptos extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      radarcryptos: [],
+      portfoliocriptos: [],
       isLoaded: false,
       error: null
     }
   }
 
   componentDidMount() {
-    Api.getRadarcryptos()
+    Api.getPortfoliocriptos()
       .then(response => {
         const [error, data] = response
         if (error) {
           this.setState({
             isLoaded: true,
-            radarcryptos: [],
+            portfoliocriptos: [],
             error: data
           })
         } else {
           this.setState({
             isLoaded: true,
-            radarcryptos: data
+            portfoliocriptos: data
           })
         }
       })
   }
 
   render() {
-    const { error, isLoaded, radarcryptos } = this.state
+    const { error, isLoaded, portfoliocriptos } = this.state
 
     if (error) {
 
@@ -60,12 +61,12 @@ class Radarcryptos extends Component {
         <>
         <AdminNavBar/>
         <Container>
-              <Link className="btn btn-primary float-right" to="/admin/radarcryptos/new">Add Radarcrypto</Link>
+          <Link className="btn btn-primary float-right" to="/admin/portfoliocriptos/new">Add Portfoliocripto</Link>
 
-          <h4 className="mt-4 mb-4">Radar Crypto</h4>
+          <h4 className="mt-4 mb-4">Criptomoedas nos Portfolios</h4>
           <Row>
             <Col>
-              <RadarcryptosTable radarcryptos={radarcryptos}></RadarcryptosTable>
+              <PortfoliocriptosTable portfoliocriptos={portfoliocriptos}></PortfoliocriptosTable>
             </Col>
           </Row>
         </Container>
@@ -77,4 +78,4 @@ class Radarcryptos extends Component {
   }
 }
 
-export default Radarcryptos
+export default Portfoliocriptos

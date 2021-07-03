@@ -1,6 +1,6 @@
 import { apiHost } from '../../config/apiHost.js';
 
-// TODO: base radarcryptos url
+// TODO: base criptos url
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -24,9 +24,9 @@ const collectErrors = (response) => {
   return errors
 }
 
-const deleteRadarcrypto = (id) => {
+const deleteCripto = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/radarcryptos/${id}`, {
+  return fetch(`${apiHost}/api/criptos/${id}`, {
     method: 'delete',
     headers: {
       'Content-Type': 'application/json'
@@ -49,9 +49,9 @@ const deleteRadarcrypto = (id) => {
     })
 }
 
-const getRadarcryptos = () => {
+const getCriptos = () => {
   let response_ok = null
-  return fetch(`${apiHost}/api/radarcryptos`, {
+  return fetch(`${apiHost}/api/criptos`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
@@ -70,9 +70,9 @@ const getRadarcryptos = () => {
     })
 }
 
-const getRadarcrypto = (id) => {
+const getCripto = (id) => {
   let response_ok = null
-  return fetch(`${apiHost}/api/radarcryptos/${id}`, {
+  return fetch(`${apiHost}/api/criptos/${id}`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
@@ -91,8 +91,8 @@ const getRadarcrypto = (id) => {
     })
 }
 
-const saveRadarcrypto = (data, id = null) => {
-  let apiUrl = `${apiHost}/api/radarcryptos`
+const saveCripto = (data, id = null) => {
+  let apiUrl = `${apiHost}/api/criptos`
   let apiMethod = 'post'
   if (id) {
     apiUrl = `${apiUrl}/${id}`
@@ -100,7 +100,7 @@ const saveRadarcrypto = (data, id = null) => {
   }
 
   const body = JSON.stringify({
-    radarcrypto: data
+    cripto: data
   })
 
   let response_ok = null
@@ -125,8 +125,8 @@ const saveRadarcrypto = (data, id = null) => {
     })
 }
 export {
-  saveRadarcrypto,
-  getRadarcrypto,
-  deleteRadarcrypto,
-  getRadarcryptos
+  saveCripto,
+  getCripto,
+  deleteCripto,
+  getCriptos
 }

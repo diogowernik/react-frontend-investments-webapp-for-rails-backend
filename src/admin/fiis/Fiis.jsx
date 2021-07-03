@@ -61,9 +61,9 @@ class Fiis extends Component {
         <>
         <AdminNavBar/>
         <Container>
-          <Link className="btn btn-primary float-right" to="/admin/fiis/new">Add Fii</Link>
+              <Link className="btn btn-primary float-right" to="/admin/fiis/new">Add Fii</Link>
 
-          <h4 className="mt-4 mb-4">Fundos Imobiliários nos Portfolios</h4>
+          <h4 className="mt-4 mb-4">Radar Fiis</h4>
           <Row>
             <Col>
               <FiisTable fiis={fiis}></FiisTable>
