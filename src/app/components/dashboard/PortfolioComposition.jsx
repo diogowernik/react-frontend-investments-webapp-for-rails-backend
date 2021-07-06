@@ -1,8 +1,9 @@
 import React from 'react';
 import Chart from 'react-apexcharts'
+import {  Card, CardHeader} from 'reactstrap'
 import { apiHost } from '../../../config/apiHost';
 
-class TreeChart extends React.Component {
+class PortfolioCompostition extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,14 +74,21 @@ class TreeChart extends React.Component {
 
   render() {
     return (
-      <Chart
-        options={this.state.options}
-        series={this.state.series}
-        type='treemap'
-        height="450"
-        width="100%"
-      />
+        <>
+        <Card outline color="gray" className="mb-3">
+            <CardHeader className="bg-gray-lighter">Composição do Portfolio</CardHeader>
+            <Card body>
+                <Chart
+                    options={this.state.options}
+                    series={this.state.series}
+                    type='treemap'
+                    height="450"
+                    width="100%"
+                />
+                </Card>
+        </Card>
+        </>
     );
   }
 }
-export default TreeChart;
+export default PortfolioCompostition;

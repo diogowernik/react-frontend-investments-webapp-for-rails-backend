@@ -1,39 +1,75 @@
 import React, { Component } from 'react'
-import { Card, CardBody, CardText, Col, Row } from 'reactstrap'
+import { Link } from "react-router-dom"
+import { Alert } from 'reactstrap'
 import {AppIndexLayout} from './layouts/IndexLayout';
+import PortfoliosCard from './components/portfolios/PortfoliosCards'
 
 
-class AdminIndex extends Component {
+const Api = require('../app/api/PortfolioApi')
 
-  render() {
-      return (
-        <>
-        <AppIndexLayout>
-          <h4 className="mt-4 mb-4">Bem vindo ao App.</h4>
-          <Row>
-          <Col xl={ 3 }>
-                <Card outline color="gray" className="mb-3 mt-3">
-                    <CardBody>
-                        <CardText>
-                            <b>Diogo Wernik</b>
-                        </CardText>
-                    </CardBody>
-                </Card>
-          </Col>
-          <Col xl={ 3 }>
-                <Card outline color="gray" className="mb-3 mt-3">
-                    <CardBody>
-                        <CardText>
-                            <b>Marcello Mattos</b>
-                        </CardText>
-                    </CardBody>
-                </Card>
-          </Col>
-          </Row>
-        </AppIndexLayout>
-        </>
-      )
-  }
-}
-
-export default AdminIndex
+class AppIndex extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+          portfolios: [],
+          isLoaded: false,
+          error: null
+        }
+      }
+      componentDidMount() {
+        Api.getPortfolios()
+          .then(response => {
+            const [error, data] = response
+            if (error) {
+              this.setState({
+                isLoaded: true,
+                portfolios: [],
+                error: data
+              })
+            } else {
+              this.setState({
+                isLoaded: true,
+                portfolios: data
+              })
+            }
+          })
+      }
+    
+      render() {
+        const { error, isLoaded, portfolios } = this.state
+    
+        if (error) {
+    
+          return (
+            <Alert color="danger">
+              Error: {error}
+            </Alert>
+          )
+    
+        } else if (!isLoaded) {
+    
+          return (
+            <Alert color="primary">
+              Loading...
+            </Alert>
+          )
+    
+        } else {
+    
+          return (
+            <>
+            <AppIndexLayout>
+              <Link className="btn btn-primary float-right" to="/admin/portfolios/new">Adicionar</Link>
+              <h4 className="mt-4 mb-4">Portfolios</h4>
+              <PortfoliosCard portfolios={portfolios}></PortfoliosCard>
+            </AppIndexLayout>
+            </>
+          )
+    
+        }
+    
+      }
+    }
+    
+    export default AppIndex
+    
