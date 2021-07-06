@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Row, Col, Card, CardBody, CardText, Alert } from 'reactstrap'
-import {MainLayout} from './layouts/MainLayout';
-import Performance from './components/sidemodules/Performance'
-import SideModule from './components/sidemodules/SideModuleExample'
-import HistoricalRentability from './components/dashboard/HistoricalRentability'
-import PortfolioCompostition from './components/dashboard/PortfolioComposition';
+import { Card, CardBody, CardText, Alert } from 'reactstrap'
 
 const Api = require('../admin/portfolios/Api')
 
