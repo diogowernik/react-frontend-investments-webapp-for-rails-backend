@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
-import { Container, Row, Col, Alert } from 'reactstrap'
+import { Alert } from 'reactstrap'
 import PortfoliofiisTable from './PortfoliofiisTable'
-import AdminNavBar from "../layouts/admin_navbar"
+import {DashboardLayout} from '../layouts/Layout';
 
 const Api = require('./Api.js')
 
@@ -58,16 +58,11 @@ class Portfoliofiis extends Component {
 
       return (
         <>
-        <AdminNavBar/>
-        <Container>
-          <Link className="btn btn-primary float-right" to="/admin/portfoliofiis/new">Add Portfoliofii</Link>
+        <DashboardLayout>
+          <Link className="btn btn-primary float-right" to="/admin/portfoliofiis/new">Adicionar</Link>
           <h4 className="mt-4 mb-4">Fiis nos Portfolios</h4>
-          <Row>
-            <Col>
-              <PortfoliofiisTable portfoliofiis={portfoliofiis}></PortfoliofiisTable>
-            </Col>
-          </Row>
-        </Container>
+          <PortfoliofiisTable portfoliofiis={portfoliofiis}></PortfoliofiisTable>
+        </DashboardLayout>
         </>
       )
 

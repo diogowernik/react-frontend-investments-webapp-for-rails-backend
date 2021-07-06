@@ -34,9 +34,9 @@ class PortfoliofiisTable extends Component {
               {portfoliofiis.map(portfoliofii => (
                 <tr key={portfoliofii.id}>
                   <td>{portfoliofii.id}</td>
-                  <td>{portfoliofii.fii_id}</td>
-                  <td>{portfoliofii.category_id}</td>
-                  <td>{portfoliofii.portfolio_id}</td>
+                  <td>{portfoliofii.fii_ticker}</td>
+                  <td>{portfoliofii.category_title}</td>
+                  <td>{portfoliofii.portfolio_title}</td>
                   <td>{portfoliofii.amount}</td>
                   <td>{portfoliofii.cost}</td>
                   <td>{portfoliofii.total_cost}</td>

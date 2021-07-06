@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
-import AdminNavBar from "../layouts/admin_navbar"
+import { Row, Col, Alert, Form, Label, Input } from 'reactstrap'
 import SelectPortfolio from '../../components/selects/SelectPortfolio'
 import SelectCategory from '../../components/selects/SelectCategory'
 import SelectCripto from '../../components/selects/SelectCripto'
+import {DashboardLayout} from '../layouts/Layout';
+
 
 const Api = require('./Api.js')
 
@@ -116,7 +117,7 @@ class PortfoliocriptoForm extends Component {
           })
         } else {
           this.setState({
-            redirect: 'admin/portfoliocriptos'
+            redirect: '/admin/portfoliocriptos'
           })
         }
       })
@@ -152,12 +153,8 @@ class PortfoliocriptoForm extends Component {
 
       return (
         <>
-        <AdminNavBar/>
-        <Container>
-          <Row>
-            <Col>
+        <DashboardLayout>
               <h3 className="mt-4 mb-4">Editar / Adicionar Criptomoeda a uma Carteira</h3>
-
               {errors.length > 0 &&
                 <div>
                   {errors.map((error, index) =>
@@ -167,7 +164,6 @@ class PortfoliocriptoForm extends Component {
                   )}
                 </div>
               }
-              
               <Form onSubmit={this.handleSubmit}>
                 <Row>
                   <Col md={ 4 }>
@@ -212,9 +208,7 @@ class PortfoliocriptoForm extends Component {
                 </Row>
                 <button className="btn btn-success mt-4">Submit</button>
               </Form>
-            </Col>
-          </Row>
-        </Container>
+        </DashboardLayout>
         </>
       )
     }

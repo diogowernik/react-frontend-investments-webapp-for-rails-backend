@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert, Form, Label, Input } from 'reactstrap'
+import { Row, Col, Alert, Form, Label, Input } from 'reactstrap'
 import SelectPortfolio from '../../components/selects/SelectPortfolio'
 import SelectCategory from '../../components/selects/SelectCategory'
 import SelectFii from '../../components/selects/SelectFii'
-import AdminNavBar from "../layouts/admin_navbar"
+import {DashboardLayout} from '../layouts/Layout';
 
 
 const Api = require('./Api.js')
@@ -152,10 +152,7 @@ class PortfoliofiiForm extends Component {
 
       return (
         <>
-        <AdminNavBar/>
-        <Container>
-          <Row>
-            <Col>
+        <DashboardLayout>
             <h3 className="mt-4 mb-4">Editar / Adicionar Fundo Impobiliário a um Portfolio</h3>
 
               {errors.length > 0 &&
@@ -211,9 +208,7 @@ class PortfoliofiiForm extends Component {
                 </Row>
                 <button className="btn btn-success mt-4">Submit</button>
               </Form>
-            </Col>
-          </Row>
-        </Container>
+            </DashboardLayout>
         </>
       )
     }

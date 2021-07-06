@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
-import { Container, Row, Col, Alert } from 'reactstrap'
+import { Alert } from 'reactstrap'
 import PortfoliocriptosTable from './PortfoliocriptosTable'
-import AdminNavBar from "../layouts/admin_navbar"
-
+import {DashboardLayout} from '../layouts/Layout';
 
 const Api = require('./Api.js')
 
@@ -38,38 +37,27 @@ class Portfoliocriptos extends Component {
 
   render() {
     const { error, isLoaded, portfoliocriptos } = this.state
-
     if (error) {
-
       return (
         <Alert color="danger">
           Error: {error}
         </Alert>
       )
-
     } else if (!isLoaded) {
-
       return (
         <Alert color="primary">
           Loading...
         </Alert>
-      )
-
+    )
     } else {
 
       return (
         <>
-        <AdminNavBar/>
-        <Container>
-          <Link className="btn btn-primary float-right" to="/admin/portfoliocriptos/new">Add Portfoliocripto</Link>
-
-          <h4 className="mt-4 mb-4">Criptomoedas nos Portfolios</h4>
-          <Row>
-            <Col>
-              <PortfoliocriptosTable portfoliocriptos={portfoliocriptos}></PortfoliocriptosTable>
-            </Col>
-          </Row>
-        </Container>
+        <DashboardLayout>
+            <Link className="btn btn-primary float-right" to="/admin/portfoliocriptos/new">Adicionar</Link>
+            <h4 className="mt-4 mb-4">Criptomoedas nos Portfolios</h4>
+            <PortfoliocriptosTable portfoliocriptos={portfoliocriptos}></PortfoliocriptosTable>
+        </DashboardLayout>
         </>
       )
 

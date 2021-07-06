@@ -36,16 +36,16 @@ class PortfoliocriptosTable extends Component {
                 {portfoliocriptos.map(portfoliocripto => (
                     <tr key= {portfoliocripto.id}>
                         <td>{portfoliocripto.id}</td>
-                        <td>{portfoliocripto.cripto_id}{' '}</td>
-                        <td>{portfoliocripto.category_id}{' '}</td>
-                        <td>{portfoliocripto.portfolio_id}{' '}</td>
+                        <td>{portfoliocripto.cripto_ticker}{' '}</td>
+                        <td>{portfoliocripto.category_title}{' '}</td>
+                        <td>{portfoliocripto.portfolio_title}{' '}</td>
                         <td>{portfoliocripto.amount}</td>
                         <td>{portfoliocripto.cost}</td>
                         <td>{portfoliocripto.total_cost}</td>
                         <td>{portfoliocripto.total_today}</td>
                         <td>
-                          <a className="btn btn-success" href={`/admin/portfoliocripto/${portfoliocripto.id}/edit`}><FaPencilAlt /></a>{' '}
-                          <a className="btn btn-danger" href={`/admin/portfoliocripto/${portfoliocripto.id}/delete`}><FaTrashAlt /></a>
+                          <a className="btn btn-danger float-right" href={`/admin/portfoliocripto/${portfoliocripto.id}/delete`}><FaTrashAlt /></a>
+                          <a className="btn btn-success float-right mr-2" href={`/admin/portfoliocripto/${portfoliocripto.id}/edit`}><FaPencilAlt /></a>{' '}
                         </td>
                     </tr>
                 ))}

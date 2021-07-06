@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { Container, Row } from 'reactstrap'
-import AdminNavBar from "./layouts/admin_navbar"
+import { Row } from 'reactstrap'
+import {DashboardLayout} from './layouts/Layout';
+
 
 class LandingPage extends Component {
 
   render() {
       return (
         <>
-        <AdminNavBar/>
-        <Container>
+        <DashboardLayout>
           <h4 className="mt-4 mb-4">Bem vindo a Area Administrativa.</h4>
           <Row>
           {/* <Col xl={ 3 }>
@@ -30,7 +30,7 @@ class LandingPage extends Component {
                 </Card>
             </Col> */}
           </Row>
-        </Container>
+        </DashboardLayout>
         </>
       )
   }
