@@ -20,7 +20,7 @@ class PortfoliocriptoDelete extends Component {
           // TODO: set flash
         }
         this.setState({
-          redirect: 'admin/portfoliocriptos'
+          redirect: '/admin/portfoliocriptos'
         })
       })
   }

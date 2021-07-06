@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
-import AdminNavBar from "../layouts/admin_navbar"
+import { Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import {DashboardLayout} from '../layouts/Layout';
 
 
 const Api = require('./Api.js')
@@ -85,7 +85,7 @@ class FiiForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/fiis'
+            redirect: '/admin/fiis'
           })
         }
       })
@@ -121,8 +121,7 @@ class FiiForm extends Component {
 
       return (
         <>
-        <AdminNavBar/>
-        <Container>
+        <DashboardLayout>
           <Row>
             <Col>
               <h3>Edit Fii</h3>
@@ -159,7 +158,7 @@ class FiiForm extends Component {
               </Form>
             </Col>
           </Row>
-        </Container>
+        </DashboardLayout>
         </>
       )
     }

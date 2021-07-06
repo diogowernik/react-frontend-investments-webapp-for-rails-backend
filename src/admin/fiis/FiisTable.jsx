@@ -9,7 +9,6 @@ class FiisTable extends Component {
       fiis: props.fiis
     }
   }
-
   render() {
     const fiis = this.state.fiis
     if (fiis.length === 0) {
@@ -37,8 +36,8 @@ class FiisTable extends Component {
                 <td>{fii.slug}</td>
                 <td>{fii.price}</td>
                 <td>
-                    <a className="btn btn-success" href={`/admin/fii/${fii.id}/edit`}><FaPencilAlt /></a>{' '}
-                    <a className="btn btn-danger" href={`/admin/fii/${fii.id}/delete`}><FaTrashAlt /></a>
+                    <a className="btn btn-danger float-right" href={`/admin/fii/${fii.id}/delete`}><FaTrashAlt /></a>
+                    <a className="btn btn-success float-right mr-2" href={`/admin/fii/${fii.id}/edit`}><FaPencilAlt /></a>{' '}
                 </td>
               </tr>
             ))}

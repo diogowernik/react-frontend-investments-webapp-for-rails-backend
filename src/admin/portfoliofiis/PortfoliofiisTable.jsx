@@ -42,8 +42,8 @@ class PortfoliofiisTable extends Component {
                   <td>{portfoliofii.total_cost}</td>
                   <td>{portfoliofii.total_today}</td>
                   <td>
-                    <a className="btn btn-success" href={`/admin/portfoliofii/${portfoliofii.id}/edit`}><FaPencilAlt /></a>{' '}
-                    <a className="btn btn-danger" href={`/admin/portfoliofii/${portfoliofii.id}/delete`}><FaTrashAlt /></a>
+                    <a className="btn btn-danger float-right" href={`/admin/portfoliofii/${portfoliofii.id}/delete`}><FaTrashAlt /></a>
+                    <a className="btn btn-success float-right mr-2" href={`/admin/portfoliofii/${portfoliofii.id}/edit`}><FaPencilAlt /></a>{' '}              
                   </td>
                 </tr>
               ))}

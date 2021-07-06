@@ -15,36 +15,34 @@ export const DashboardLayout = ({ children }) => {
                             <CardHeader className="bg-gray-lighter">Menu Administrativo</CardHeader>
                             <CardBody>
                             <Nav className="mr-auto" navbar>  
-                                    <DropdownItem>
-                                    <a href="/admin/portfoliocriptos">Criptos nos portfolios</a>
-                                    </DropdownItem>
-
-                                    <DropdownItem>
-                                    <a href="/admin/portfoliofiis">Fiis nos portfolios</a>
-                                    </DropdownItem>
-                                    
-                                    <DropdownItem divider />
-
-                                    <DropdownItem>
-                                    <a href="/admin/fiis">Fundos Imobiliários</a>
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                    <a href="/admin/criptos">Criptomoedas</a>
-                                    </DropdownItem>
-
-                                    <DropdownItem divider />
-
-                                    <DropdownItem>
+                                
+                                <DropdownItem>
                                     <a href="/admin/categories">Categorias de Investimentos</a>
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                    <a href="/admin/portfolios">Portfolios</a>
-                                    </DropdownItem>
+                                </DropdownItem>
 
-                                    <DropdownItem divider />
-                                    <DropdownItem>
-                                    <a href="/admin/years">Anos</a>
-                                    </DropdownItem>      
+                                <DropdownItem divider />
+                                <DropdownItem>
+                                    <a href="/admin/fiis">Fundos Imobiliários</a>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <a href="/admin/criptos">Criptomoedas</a>
+                                </DropdownItem>
+
+                                <DropdownItem divider />
+                                <DropdownItem>
+                                <a href="/admin/portfolios">Portfolios</a>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <a href="/admin/portfoliocriptos">Criptos nos portfolios</a>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <a href="/admin/portfoliofiis">Fiis nos portfolios</a>
+                                </DropdownItem>
+
+                                <DropdownItem divider />
+                                <DropdownItem>
+                                <a href="/admin/years">Anos</a>
+                                </DropdownItem>      
                             </Nav>
                             </CardBody>
                         </Card>
