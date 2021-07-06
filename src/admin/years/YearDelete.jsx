@@ -20,7 +20,7 @@ class YearDelete extends Component {
           // TODO: set flash
         }
         this.setState({
-          redirect: '/years'
+          redirect: '/admin/years'
         })
       })
   }

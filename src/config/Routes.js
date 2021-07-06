@@ -43,12 +43,12 @@ import CriptoDelete from '../admin/criptos/CriptoDelete'
 // App 
 import AppIndex from '../app/AppIndex'
 
-import PortfolioForm from '../app/portfolios/PortfolioForm'
-import PortfolioDelete from '../app/portfolios/PortfolioDelete'
+// import PortfolioForm from '../app/portfolios/PortfolioForm'
+// import PortfolioDelete from '../app/portfolios/PortfolioDelete'
 
-import PortfolioShow from '../app/portfolios/PortfolioShow'
-import CriptoShow from '../app/criptos/CriptoShow'
-import FiiShow from '../app/fiis/FiiShow'
+// import PortfolioShow from '../app/portfolios/PortfolioShow'
+// import CriptoShow from '../app/criptos/CriptoShow'
+// import FiiShow from '../app/fiis/FiiShow'
 
 
 const Routes = (props) => {
@@ -103,13 +103,13 @@ const Routes = (props) => {
                 {/* App       */}
                 <Route exact path='/app' component={AppIndex} />
 
-                <Route exact path='/portfolios/new' component={PortfolioForm} />
+                {/* <Route exact path='/portfolios/new' component={PortfolioForm} />
                 <Route exact path="/portfolio/:id/edit" render={(routeProps) => ( <PortfolioForm {...routeProps} /> )} />
                 <Route exact path="/portfolio/:id/delete" render={(routeProps) => ( <PortfolioDelete {...routeProps} /> )} />
 
                 <Route exact path="/cripto/:slug/:id" render={(routeProps) => ( <CriptoShow {...routeProps} /> )} />
                 <Route exact path="/fii/:slug/:id" render={(routeProps) => ( <FiiShow {...routeProps} /> )} />
-                <Route exact path="/portfolio/:slug/:id" render={(routeProps) => ( <PortfolioShow {...routeProps} /> )} />
+                <Route exact path="/portfolio/:slug/:id" render={(routeProps) => ( <PortfolioShow {...routeProps} /> )} /> */}
 
 
               </div>

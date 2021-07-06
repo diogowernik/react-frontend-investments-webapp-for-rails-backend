@@ -1,79 +1,39 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom"
-import { Container, Row, Col, Alert } from 'reactstrap'
-import PortfoliosTable from './portfolios/PortfoliosTable'
-import AppNavBar from "./layouts/app_navbar"
+import { Card, CardBody, CardText, Col, Row } from 'reactstrap'
+import {AppIndexLayout} from './layouts/IndexLayout';
 
-const Api = require('./portfolios/Api')
 
-class Portfolios extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      portfolios: [],
-      isLoaded: false,
-      error: null
-    }
-  }
-
-  componentDidMount() {
-    Api.getPortfolios()
-      .then(response => {
-        const [error, data] = response
-        if (error) {
-          this.setState({
-            isLoaded: true,
-            portfolios: [],
-            error: data
-          })
-        } else {
-          this.setState({
-            isLoaded: true,
-            portfolios: data
-          })
-        }
-      })
-  }
+class AdminIndex extends Component {
 
   render() {
-    const { error, isLoaded, portfolios } = this.state
-
-    if (error) {
-
-      return (
-        <Alert color="danger">
-          Error: {error}
-        </Alert>
-      )
-
-    } else if (!isLoaded) {
-
-      return (
-        <Alert color="primary">
-          Loading...
-        </Alert>
-      )
-
-    } else {
-
       return (
         <>
-        <AppNavBar/>
-        <Container>
-          <h4 className="mt-4 mb-4">Portfolios</h4>
+        <AppIndexLayout>
+          <h4 className="mt-4 mb-4">Bem vindo ao App.</h4>
           <Row>
-            <Col>
-              <PortfoliosTable portfolios={portfolios}></PortfoliosTable>
-              <Link className="btn btn-primary" to="/portfolios/new">Add Portfolio</Link>
-            </Col>
+          <Col xl={ 3 }>
+                <Card outline color="gray" className="mb-3 mt-3">
+                    <CardBody>
+                        <CardText>
+                            <b>Diogo Wernik</b>
+                        </CardText>
+                    </CardBody>
+                </Card>
+          </Col>
+          <Col xl={ 3 }>
+                <Card outline color="gray" className="mb-3 mt-3">
+                    <CardBody>
+                        <CardText>
+                            <b>Marcello Mattos</b>
+                        </CardText>
+                    </CardBody>
+                </Card>
+          </Col>
           </Row>
-        </Container>
+        </AppIndexLayout>
         </>
       )
-
-    }
-
   }
 }
 
-export default Portfolios
+export default AdminIndex

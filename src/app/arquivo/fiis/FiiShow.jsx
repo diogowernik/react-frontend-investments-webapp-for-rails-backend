@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Container, Row, Col, Alert } from 'reactstrap'
 
-const Api = require('./Api.js')
+const Api = require('../../../admin/fiis/Api.js')
 
-class PortfolioForm extends Component {
+class FiiForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      portfolio: {
-        id: this.getPortfolioId(props),
+      fii: {
+        id: this.getFiiId(props),
         title: '',
       },
       redirect: null,
@@ -18,12 +18,10 @@ class PortfolioForm extends Component {
     }
 
     this.setTitle = this.setTitle.bind(this)
-    this.setSlug = this.setSlug.bind(this)
-
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getPortfolioId(props) {
+  getFiiId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -36,17 +34,10 @@ class PortfolioForm extends Component {
     this.setFieldState('title', newVal)
   }
 
-  setSlug(event) {
-    let newVal = event.target.value || ''
-    this.setFieldState('slug', newVal)
-  }
-
-
-
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.portfolio[field] = newVal
+      newState.fii[field] = newVal
       return newState
     })
   }
@@ -54,13 +45,11 @@ class PortfolioForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let portfolio = {
-      title: this.state.portfolio.title,
-      slug: this.state.portfolio.slug,
-
+    let fii = {
+      title: this.state.fii.title,
     }
 
-    Api.savePortfolio(portfolio, this.state.portfolio.id)
+    Api.saveFii(fii, this.state.fii.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -69,15 +58,15 @@ class PortfolioForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/portfolios'
+            redirect: '/fiis'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.portfolio.id) {
-      Api.getPortfolio(this.state.portfolio.id)
+    if (this.state.fii.id) {
+      Api.getFii(this.state.fii.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -86,7 +75,7 @@ class PortfolioForm extends Component {
             })
           } else {
             this.setState({
-              portfolio: data,
+              fii: data,
               errors: []
             })
           }
@@ -95,7 +84,7 @@ class PortfolioForm extends Component {
   }
 
   render() {
-    const { redirect, portfolio, errors } = this.state
+    const { redirect, fii, errors } = this.state
 
     if (redirect) {
       return (
@@ -104,10 +93,12 @@ class PortfolioForm extends Component {
     } else {
 
       return (
+        <>
         <Container>
           <Row>
             <Col>
-              <h3>Edit Portfolio</h3>
+              <h3 className="mt-3 mb-3">{fii.ticker}</h3>
+
 
               {errors.length > 0 &&
                 <div>
@@ -119,23 +110,14 @@ class PortfolioForm extends Component {
                 </div>
               }
 
-              <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label for="title">Title</Label>
-                  <Input type="text" name="title" id="title" value={portfolio.title} placeholder="Enter title" onChange={this.setTitle} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="slug">Slug</Label>
-                  <Input type="text" name="slug" id="slug" value={portfolio.slug} placeholder="Enter slug" onChange={this.setSlug} />
-                </FormGroup>
-                <Button color="success">Submit</Button>
-              </Form>
+
             </Col>
           </Row>
         </Container>
+        </>
       )
     }
   }
 }
 
-export default PortfolioForm
+export default FiiForm

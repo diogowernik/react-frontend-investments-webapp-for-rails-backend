@@ -1,93 +1,91 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Row, Col, Card,CardHeader, CardBody, CardTitle, CardText, Table, Alert } from 'reactstrap'
-import AppNavBar from "../layouts/app_navbar"
-import TreeChart from './Treechart.js'
+// import TreeChart from './Treechart.js'
 
-
-const Api = require('./Api.js')
+// const Api = require('../admin/portfolios/Api')
 
 class AppShow extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      portfolio: {
-        id: this.getPortfolioId(props),
-        title: '',
-      },
-      redirect: null,
-      errors: []
-    }
+    // this.state = {
+    //   portfolio: {
+    //     id: this.getPortfolioId(props),
+    //     title: '',
+    //   },
+    //   redirect: null,
+    //   errors: []
+    // }
 
-    this.setTitle = this.setTitle.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    // this.setTitle = this.setTitle.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getPortfolioId(props) {
-    try {
-      return props.match.params.id
-    } catch (error) {
-      return null
-    }
-  }
+//   getPortfolioId(props) {
+//     try {
+//       return props.match.params.id
+//     } catch (error) {
+//       return null
+//     }
+//   }
 
-  setTitle(event) {
-    let newVal = event.target.value || ''
-    this.setFieldState('title', newVal)
-  }
+//   setTitle(event) {
+//     let newVal = event.target.value || ''
+//     this.setFieldState('title', newVal)
+//   }
 
-  setFieldState(field, newVal) {
-    this.setState((prevState) => {
-      let newState = prevState
-      newState.portfolio[field] = newVal
-      return newState
-    })
-  }
+//   setFieldState(field, newVal) {
+//     this.setState((prevState) => {
+//       let newState = prevState
+//       newState.portfolio[field] = newVal
+//       return newState
+//     })
+//   }
 
-  handleSubmit(event) {
-    event.preventDefault()
+//   handleSubmit(event) {
+//     event.preventDefault()
 
-    let portfolio = {
-      title: this.state.portfolio.title,
-    }
+//     let portfolio = {
+//       title: this.state.portfolio.title,
+//     }
 
-    Api.savePortfolio(portfolio, this.state.portfolio.id)
-      .then(response => {
-        const [error, errors] = response
-        if (error) {
-          this.setState({
-            errors: errors
-          })
-        } else {
-          this.setState({
-            redirect: '/portfolios'
-          })
-        }
-      })
-  }
+//     Api.savePortfolio(portfolio, this.state.portfolio.id)
+//       .then(response => {
+//         const [error, errors] = response
+//         if (error) {
+//           this.setState({
+//             errors: errors
+//           })
+//         } else {
+//           this.setState({
+//             redirect: '/portfolios'
+//           })
+//         }
+//       })
+//   }
 
-  componentDidMount() {
-    if (this.state.portfolio.id) {
-      Api.getPortfolio(this.state.portfolio.id)
-        .then(response => {
-          const [error, data] = response
-          if (error) {
-            this.setState({
-              errors: data
-            })
-          } else {
-            this.setState({
-              portfolio: data,
-              errors: []
-            })
-          }
-        })
-    }
-  }
+//   componentDidMount() {
+//     if (this.state.portfolio.id) {
+//       Api.getPortfolio(this.state.portfolio.id)
+//         .then(response => {
+//           const [error, data] = response
+//           if (error) {
+//             this.setState({
+//               errors: data
+//             })
+//           } else {
+//             this.setState({
+//               portfolio: data,
+//               errors: []
+//             })
+//           }
+//         })
+//     }
+//   }
 
   render() {
-    const { redirect, portfolio, errors } = this.state
+    const { redirect, errors } = this.state
 
     if (redirect) {
       return (
@@ -97,7 +95,6 @@ class AppShow extends Component {
 
       return (
         <>
-        <AppNavBar/>
         <div className="container custom-container">
                 <Row>
                   {errors.length > 0 &&
@@ -113,7 +110,8 @@ class AppShow extends Component {
                         <Card outline color="gray" className="mb-3 mt-3">
                             <CardBody>
                                 <CardText>
-                                    <b>{portfolio.title}</b>
+                                    {/* <b>{portfolio.title}</b> */}
+                                    Diogo
                                 </CardText>
                             </CardBody>
                         </Card>
@@ -176,14 +174,14 @@ class AppShow extends Component {
                         <Card outline color="gray" className="mb-3 mt-3">
                             <CardBody>
                                 <CardText>
-                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Dashboard</a>
-                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Composição</a>
-                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Localização</a>
-                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Tokens</a>
-                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Proventos</a>
-                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Operações</a>
-                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Impostos</a>
-                                    <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Radar</a>
+                                    <a className="h5 m-4" href={`/portfolio/1`}>Dashboard</a>
+                                    <a className="h5 m-4" href={`/portfolio/1`}>Composição</a>
+                                    <a className="h5 m-4" href={`/portfolio/1`}>Localização</a>
+                                    <a className="h5 m-4" href={`/portfolio/1`}>Tokens</a>
+                                    <a className="h5 m-4" href={`/portfolio/1`}>Proventos</a>
+                                    <a className="h5 m-4" href={`/portfolio/1`}>Operações</a>
+                                    <a className="h5 m-4" href={`/portfolio/1`}>Impostos</a>
+                                    <a className="h5 m-4" href={`/portfolio/1`}>Radar</a>
                                 </CardText>
                             </CardBody>
                         </Card>
@@ -196,7 +194,7 @@ class AppShow extends Component {
                         <Card outline color="gray" className="mb-3">
                           <CardHeader className="bg-gray-lighter">Composição do Portfolio</CardHeader>
                           <Card body>
-                              <TreeChart id={this.props.match.params.id} />
+                              {/* <TreeChart id={this.props.match.params.id} /> */}
                           </Card>
                         </Card>
                     </Col>

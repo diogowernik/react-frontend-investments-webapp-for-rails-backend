@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
-import AdminNavBar from "../layouts/admin_navbar"
+import { Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import {DashboardLayout} from '../layouts/Layout';
 
 const Api = require('./Api.js')
 
@@ -67,7 +67,7 @@ class CategoryForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/categories'
+            redirect: '/admin/categories'
           })
         }
       })
@@ -103,11 +103,10 @@ class CategoryForm extends Component {
 
       return (
         <>
-        <AdminNavBar/>
-        <Container>
+        <DashboardLayout>
           <Row>
             <Col>
-              <h3>Edit Category</h3>
+              <h3>Editar / Adicionar</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -132,7 +131,7 @@ class CategoryForm extends Component {
               </Form>
             </Col>
           </Row>
-        </Container>
+        </DashboardLayout>
         </>
       )
     }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
-import { Container, Row, Col, Alert } from 'reactstrap'
+import { Alert } from 'reactstrap'
 import YearsTable from './YearsTable'
-import AdminNavBar from "../layouts/admin_navbar"
+import {DashboardLayout} from '../layouts/Layout';
 
 
 const Api = require('./Api.js')
@@ -59,17 +59,11 @@ class Years extends Component {
 
       return (
         <>
-        <AdminNavBar/>
-        <Container>
-        <Link className="btn btn-primary float-right" to="/admin/years/new">Add Year</Link>
-
+        <DashboardLayout>
+          <Link className="btn btn-primary float-right" to="/admin/years/new">Adicionar</Link>
           <h4 className="mt-4 mb-4">Anos</h4>
-          <Row>
-            <Col>
-              <YearsTable years={years}></YearsTable>
-            </Col>
-          </Row>
-        </Container>
+          <YearsTable years={years}></YearsTable>
+        </DashboardLayout>
         </>
       )
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
-import { Container, Row, Col, Alert } from 'reactstrap'
+import { Alert } from 'reactstrap'
 import CategoriesTable from './CategoriesTable'
-import AdminNavBar from "../layouts/admin_navbar"
+import {DashboardLayout} from '../layouts/Layout';
 
 const Api = require('./Api.js')
 
@@ -58,17 +58,11 @@ class Categories extends Component {
 
       return (
         <>
-        <AdminNavBar/>
-        <Container>
-        <Link className="btn btn-primary float-right" to="/admin/categories/new">Add Category</Link>
-
-          <h4 className="mt-4 mb-4">Categorias de investimentos</h4>
-          <Row>
-            <Col>
-              <CategoriesTable categories={categories}></CategoriesTable>
-            </Col>
-          </Row>
-        </Container>
+         <DashboardLayout>
+            <Link className="btn btn-primary float-right" to="/admin/categories/new">Adicionar</Link>
+            <h4 className="mt-4 mb-4">Categorias de investimentos</h4>
+            <CategoriesTable categories={categories}></CategoriesTable>
+        </DashboardLayout>
         </>
       )
 

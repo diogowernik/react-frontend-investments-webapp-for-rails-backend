@@ -23,9 +23,9 @@ class CriptosTable extends Component {
                 <th>ID</th>
                 <th>Ticker</th>
                 <th>Title</th>
-                <th>Slug</th>
+                <th>Url (Slug)</th>
                 <th>Price</th>
-                <th>Actions</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -37,8 +37,8 @@ class CriptosTable extends Component {
                   <td>{cripto.slug}</td>
                   <td>{cripto.price}</td>
                   <td>
-                    <a className="btn btn-success" href={`/admin/cripto/${cripto.id}/edit`}><FaPencilAlt /></a>{' '}
-                    <a className="btn btn-danger" href={`/admin/cripto/${cripto.id}/delete`}><FaTrashAlt /></a>
+                    <a className="btn btn-danger float-right" href={`/admin/cripto/${cripto.id}/delete`}><FaTrashAlt /></a>
+                    <a className="btn btn-success float-right mr-2" href={`/admin/cripto/${cripto.id}/edit`}><FaPencilAlt /></a>{' '}
                   </td>
 
                 </tr>

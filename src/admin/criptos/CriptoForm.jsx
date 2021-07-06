@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
-import AdminNavBar from "../layouts/admin_navbar"
+import { Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import {DashboardLayout} from '../layouts/Layout';
 
 
 const Api = require('./Api.js')
@@ -85,7 +85,7 @@ class CriptoForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/criptos'
+            redirect: '/admin/criptos'
           })
         }
       })
@@ -121,11 +121,10 @@ class CriptoForm extends Component {
 
       return (
         <>
-        <AdminNavBar/>
-        <Container>
+        <DashboardLayout>
           <Row>
             <Col>
-              <h3>Edit Cripto</h3>
+              <h3>Adicionar / Editar</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -159,7 +158,7 @@ class CriptoForm extends Component {
               </Form>
             </Col>
           </Row>
-        </Container>
+          </DashboardLayout>
         </>
       )
     }

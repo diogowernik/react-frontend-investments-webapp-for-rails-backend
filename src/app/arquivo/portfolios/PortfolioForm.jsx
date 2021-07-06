@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert } from 'reactstrap'
-import AdminNavBar from "../../admin/layouts/admin_navbar"
+import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
+const Api = require('./Api.js')
 
-const Api = require('../../admin/criptos/Api.js')
-
-class CriptoForm extends Component {
+class PortfolioForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      cripto: {
-        id: this.getCriptoId(props),
+      portfolio: {
+        id: this.getPortfolioId(props),
         title: '',
       },
       redirect: null,
@@ -20,10 +18,12 @@ class CriptoForm extends Component {
     }
 
     this.setTitle = this.setTitle.bind(this)
+    this.setSlug = this.setSlug.bind(this)
+
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getCriptoId(props) {
+  getPortfolioId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -36,10 +36,17 @@ class CriptoForm extends Component {
     this.setFieldState('title', newVal)
   }
 
+  setSlug(event) {
+    let newVal = event.target.value || ''
+    this.setFieldState('slug', newVal)
+  }
+
+
+
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.cripto[field] = newVal
+      newState.portfolio[field] = newVal
       return newState
     })
   }
@@ -47,11 +54,13 @@ class CriptoForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let cripto = {
-      title: this.state.cripto.title,
+    let portfolio = {
+      title: this.state.portfolio.title,
+      slug: this.state.portfolio.slug,
+
     }
 
-    Api.saveCripto(cripto, this.state.cripto.id)
+    Api.savePortfolio(portfolio, this.state.portfolio.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -60,15 +69,15 @@ class CriptoForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/criptos'
+            redirect: '/portfolios'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.cripto.id) {
-      Api.getCripto(this.state.cripto.id)
+    if (this.state.portfolio.id) {
+      Api.getPortfolio(this.state.portfolio.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -77,7 +86,7 @@ class CriptoForm extends Component {
             })
           } else {
             this.setState({
-              cripto: data,
+              portfolio: data,
               errors: []
             })
           }
@@ -86,7 +95,7 @@ class CriptoForm extends Component {
   }
 
   render() {
-    const { redirect, cripto, errors } = this.state
+    const { redirect, portfolio, errors } = this.state
 
     if (redirect) {
       return (
@@ -95,13 +104,10 @@ class CriptoForm extends Component {
     } else {
 
       return (
-        <>
-        <AdminNavBar/>
         <Container>
           <Row>
             <Col>
-              <h3 className="mt-3 mb-3">{cripto.title}</h3>
-
+              <h3>Edit Portfolio</h3>
               {errors.length > 0 &&
                 <div>
                   {errors.map((error, index) =>
@@ -111,15 +117,23 @@ class CriptoForm extends Component {
                   )}
                 </div>
               }
-
-
+              <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                  <Label for="title">Title</Label>
+                  <Input type="text" name="title" id="title" value={portfolio.title} placeholder="Enter title" onChange={this.setTitle} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="slug">Slug</Label>
+                  <Input type="text" name="slug" id="slug" value={portfolio.slug} placeholder="Enter slug" onChange={this.setSlug} />
+                </FormGroup>
+                <Button color="success">Submit</Button>
+              </Form>
             </Col>
           </Row>
         </Container>
-        </>
       )
     }
   }
 }
 
-export default CriptoForm
+export default PortfolioForm

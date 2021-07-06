@@ -24,8 +24,8 @@ class CategoriesTable extends Component {
             <tr>
               <th>ID</th>
               <th>Title</th>
-              <th>Slug</th>
-              <th>Actions</th>
+              <th>Url (Slug)</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -35,8 +35,8 @@ class CategoriesTable extends Component {
                 <td>{category.title}</td>
                 <td>{category.slug}</td>
                 <td>
-                  <Link className="btn btn-success" to={`/admin/category/${category.id}/edit`}><FaPencilAlt /></Link>{' '}
-                  <Link className="btn btn-danger" to={`/admin/category/${category.id}/delete`}><FaTrashAlt /></Link>
+                  <Link className="btn btn-danger float-right" to={`/admin/category/${category.id}/delete`}><FaTrashAlt /></Link>
+                  <Link className="btn btn-success float-right mr-2" to={`/admin/category/${category.id}/edit`}><FaPencilAlt /></Link>{' '}
                 </td>
               </tr>
             ))}

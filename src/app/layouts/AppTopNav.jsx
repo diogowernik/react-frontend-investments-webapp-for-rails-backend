@@ -1,15 +1,7 @@
 import React from 'react';
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from 'reactstrap';
+import {Navbar,NavbarBrand,Nav,NavItem,NavLink} from 'reactstrap';
 
-const AppNavBar = (props) => {
-
-
+const AppTopNavBar = () => {
   return (
     
       <div>
@@ -27,5 +19,4 @@ const AppNavBar = (props) => {
       </div>
     );
 }
-
-export default AppNavBar;
+export default AppTopNavBar;

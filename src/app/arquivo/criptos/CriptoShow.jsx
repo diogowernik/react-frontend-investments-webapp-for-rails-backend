@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert } from 'reactstrap'
-import AdminNavBar from "../../admin/layouts/admin_navbar"
+import { Row, Col, Alert } from 'reactstrap'
+import { DashboardLayout } from '../../../admin/layouts/Layout'
 
 
-const Api = require('../../admin/fiis/Api.js')
+const Api = require('../../../admin/criptos/Api.js')
 
-class FiiForm extends Component {
+class CriptoForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      fii: {
-        id: this.getFiiId(props),
+      cripto: {
+        id: this.getCriptoId(props),
         title: '',
       },
       redirect: null,
@@ -23,7 +23,7 @@ class FiiForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getFiiId(props) {
+  getCriptoId(props) {
     try {
       return props.match.params.id
     } catch (error) {
@@ -39,7 +39,7 @@ class FiiForm extends Component {
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
-      newState.fii[field] = newVal
+      newState.cripto[field] = newVal
       return newState
     })
   }
@@ -47,11 +47,11 @@ class FiiForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let fii = {
-      title: this.state.fii.title,
+    let cripto = {
+      title: this.state.cripto.title,
     }
 
-    Api.saveFii(fii, this.state.fii.id)
+    Api.saveCripto(cripto, this.state.cripto.id)
       .then(response => {
         const [error, errors] = response
         if (error) {
@@ -60,15 +60,15 @@ class FiiForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/fiis'
+            redirect: '/criptos'
           })
         }
       })
   }
 
   componentDidMount() {
-    if (this.state.fii.id) {
-      Api.getFii(this.state.fii.id)
+    if (this.state.cripto.id) {
+      Api.getCripto(this.state.cripto.id)
         .then(response => {
           const [error, data] = response
           if (error) {
@@ -77,7 +77,7 @@ class FiiForm extends Component {
             })
           } else {
             this.setState({
-              fii: data,
+              cripto: data,
               errors: []
             })
           }
@@ -86,7 +86,7 @@ class FiiForm extends Component {
   }
 
   render() {
-    const { redirect, fii, errors } = this.state
+    const { redirect, cripto, errors } = this.state
 
     if (redirect) {
       return (
@@ -96,12 +96,10 @@ class FiiForm extends Component {
 
       return (
         <>
-        <AdminNavBar/>
-        <Container>
+        <DashboardLayout>
           <Row>
             <Col>
-              <h3 className="mt-3 mb-3">{fii.ticker}</h3>
-
+              <h3 className="mt-3 mb-3">{cripto.title}</h3>
 
               {errors.length > 0 &&
                 <div>
@@ -116,11 +114,11 @@ class FiiForm extends Component {
 
             </Col>
           </Row>
-        </Container>
+          </DashboardLayout>
         </>
       )
     }
   }
 }
 
-export default FiiForm
+export default CriptoForm

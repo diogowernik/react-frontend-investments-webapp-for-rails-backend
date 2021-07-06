@@ -35,8 +35,8 @@ class YearsTable extends Component {
                 <td>{year.title}</td>
                 <td>{year.slug}</td>
                 <td>
-                  <Link className="btn btn-success" to={`/admin/years/${year.id}/edit`}><FaPencilAlt /></Link>{' '}
-                  <Link className="btn btn-danger" to={`/admin/years/${year.id}/delete`}><FaTrashAlt /></Link>
+                  <Link className="btn btn-danger float-right" to={`/admin/years/${year.id}/delete`}><FaTrashAlt /></Link>
+                  <Link className="btn btn-success float-right mr-2" to={`/admin/years/${year.id}/edit`}><FaPencilAlt /></Link>{' '}
                 </td>
               </tr>
             ))}

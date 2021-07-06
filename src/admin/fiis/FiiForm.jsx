@@ -124,7 +124,7 @@ class FiiForm extends Component {
         <DashboardLayout>
           <Row>
             <Col>
-              <h3>Edit Fii</h3>
+              <h3>Editar / Adicionar</h3>
 
               {errors.length > 0 &&
                 <div>

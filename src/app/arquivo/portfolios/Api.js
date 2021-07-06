@@ -1,4 +1,4 @@
-import { apiHost } from '../../config/apiHost';
+import { apiHost } from '../../../config/apiHost';
 
 // TODO: base portfolios url
 

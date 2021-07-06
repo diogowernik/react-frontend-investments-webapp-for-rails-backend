@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
-import AdminNavBar from "../layouts/admin_navbar"
+import { Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import {DashboardLayout} from '../layouts/Layout';
 
 
 const Api = require('./Api.js')
@@ -68,7 +68,7 @@ class YearForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/years'
+            redirect: '/admin/years'
           })
         }
       })
@@ -104,8 +104,7 @@ class YearForm extends Component {
 
       return (
         <>
-        <AdminNavBar/>
-        <Container>
+        <DashboardLayout>
           <Row>
             <Col>
               <h3>Edit Year</h3>
@@ -133,7 +132,7 @@ class YearForm extends Component {
               </Form>
             </Col>
           </Row>
-        </Container>
+        </DashboardLayout>
         </>
       )
     }

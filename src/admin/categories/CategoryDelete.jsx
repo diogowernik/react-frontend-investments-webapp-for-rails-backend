@@ -20,7 +20,7 @@ class CategoryDelete extends Component {
           // TODO: set flash
         }
         this.setState({
-          redirect: '/categories'
+          redirect: '/admin/categories'
         })
       })
   }

@@ -1,42 +1,40 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom"
 import { Alert } from 'reactstrap'
-import CriptosTable from './CriptosTable'
-import {DashboardLayout} from '../layouts/Layout';
 
-const Api = require('./Api.js')
+const Api = require('../admin/portfolios/Api')
 
-class Criptos extends Component {
+class Portfolios extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      criptos: [],
+      portfolios: [],
       isLoaded: false,
       error: null
     }
   }
-
   componentDidMount() {
-    Api.getCriptos()
+    Api.getPortfolios()
       .then(response => {
         const [error, data] = response
         if (error) {
           this.setState({
             isLoaded: true,
-            criptos: [],
+            portfolios: [],
             error: data
           })
         } else {
           this.setState({
             isLoaded: true,
-            criptos: data
+            portfolios: data
           })
         }
       })
   }
 
   render() {
-    const { error, isLoaded, criptos } = this.state
+    const { error, isLoaded, 
+      // portfolios 
+    } = this.state
 
     if (error) {
 
@@ -58,11 +56,7 @@ class Criptos extends Component {
 
       return (
         <>
-        <DashboardLayout>
-            <Link className="btn btn-primary float-right" to="/admin/criptos/new">Adicionar</Link>
-            <h4 className="mt-4 mb-4">Criptomoedas</h4>
-            <CriptosTable criptos={criptos}></CriptosTable>
-        </DashboardLayout>
+        Pagina Inicial do App
         </>
       )
 
@@ -71,4 +65,4 @@ class Criptos extends Component {
   }
 }
 
-export default Criptos
+export default Portfolios

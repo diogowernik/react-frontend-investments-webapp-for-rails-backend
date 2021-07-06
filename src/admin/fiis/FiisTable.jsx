@@ -22,9 +22,9 @@ class FiisTable extends Component {
               <th>ID</th>
               <th>Ticker</th>
               <th>Title</th>
-              <th>Slug</th>
+              <th>Url (Slug)</th>
               <th>Price</th>
-              <th>Actions</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>

@@ -27,7 +27,7 @@ class PortfoliofiisTable extends Component {
                 <th>Cost</th>
                 <th>Total Cost</th>
                 <th>Total Today</th>
-                <th>Actions</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>

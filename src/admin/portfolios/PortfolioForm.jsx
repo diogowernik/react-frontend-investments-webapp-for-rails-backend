@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
-import AdminNavBar from "../layouts/admin_navbar"
-
+import { Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import {DashboardLayout} from '../layouts/Layout';
 const Api = require('./Api.js')
 
 class AdminPortfolioForm extends Component {
@@ -13,6 +12,7 @@ class AdminPortfolioForm extends Component {
       portfolio: {
         id: this.getPortfolioId(props),
         title: '',
+        slug: '',
       },
       redirect: null,
       errors: []
@@ -70,7 +70,7 @@ class AdminPortfolioForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/portfolios'
+            redirect: '/admin/portfolios'
           })
         }
       })
@@ -106,8 +106,7 @@ class AdminPortfolioForm extends Component {
 
       return (
         <>
-        <AdminNavBar/>
-        <Container>
+        <DashboardLayout>
           <Row>
             <Col>
               <h3>Edit Portfolio</h3>
@@ -135,7 +134,7 @@ class AdminPortfolioForm extends Component {
               </Form>
             </Col>
           </Row>
-        </Container>
+        </DashboardLayout>
         </>
       )
     }

@@ -20,7 +20,7 @@ class CriptoDelete extends Component {
           // TODO: set flash
         }
         this.setState({
-          redirect: '/criptos'
+          redirect: '/admin/criptos'
         })
       })
   }
