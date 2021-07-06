@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Card, CardBody, CardText, Alert } from 'reactstrap'
 
-const Api = require('../admin/portfolios/Api')
+const Api = require('../../api/PortfolioApi')
 
 class AppShow extends Component {
   constructor(props) {

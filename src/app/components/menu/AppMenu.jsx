@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Card, CardBody, CardText, Alert } from 'reactstrap'
 
-const Api = require('../admin/portfolios/Api')
+const Api = require('../../api/PortfolioApi')
 
 class AppMenu extends Component {
   constructor(props) {
@@ -12,6 +12,7 @@ class AppMenu extends Component {
       portfolio: {
         id: this.getPortfolioId(props),
         title: '',
+        slug: ''
       },
       redirect: null,
       errors: []

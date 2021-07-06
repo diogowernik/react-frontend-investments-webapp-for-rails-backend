@@ -7,7 +7,7 @@ import SideModule from './components/sidemodules/SideModuleExample'
 import HistoricalRentability from './components/dashboard/HistoricalRentability'
 import PortfolioCompostition from './components/dashboard/PortfolioComposition';
 
-const Api = require('../admin/portfolios/Api')
+const Api = require('./api/PortfolioApi')
 
 class AppShow extends Component {
   constructor(props) {
