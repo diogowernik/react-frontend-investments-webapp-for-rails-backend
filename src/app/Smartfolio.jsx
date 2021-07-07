@@ -4,8 +4,10 @@ import { Row, Col, Card, CardBody, CardText, Alert } from 'reactstrap'
 import {MainLayout} from './layouts/MainLayout';
 import Performance from './components/sidemodules/Performance'
 import SideModule from './components/sidemodules/SideModuleExample'
+import PortfolioTitle from './components/sidemodules/PortfolioTitle';
 import HistoricalRentability from './components/dashboard/HistoricalRentability'
 import PortfolioCompostition from './components/dashboard/PortfolioComposition';
+import AppMenu from './components/menu/AppMenu';
 
 const Api = require('./api/PortfolioApi')
 
@@ -16,7 +18,6 @@ class AppShow extends Component {
     this.state = {
       portfolio: {
         id: this.getPortfolioId(props),
-        title: '',
       },
       redirect: null,
       errors: []
@@ -74,6 +75,7 @@ class AppShow extends Component {
                       </div>
                     }
                     <Col xl={ 3 }>
+                      <PortfolioTitle id={this.props.match.params.id} />
                         <Card outline color="gray" className="mb-3 mt-3">
                             <CardBody>
                                 <CardText>
@@ -85,6 +87,8 @@ class AppShow extends Component {
                         <SideModule />
                     </Col>
                     <Col xl={ 9 }>
+                        {/* <AppMenu asset={portfolio} /> */}
+                        <AppMenu id={this.props.match.params.id} />
                         <Card outline color="gray" className="mb-3 mt-3">
                             <CardBody>
                                 <CardText>

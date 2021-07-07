@@ -11,8 +11,6 @@ class AppMenu extends Component {
     this.state = {
       portfolio: {
         id: this.getPortfolioId(props),
-        title: '',
-        slug: ''
       },
       redirect: null,
       errors: []
@@ -46,8 +44,7 @@ class AppMenu extends Component {
   }
 
   render() {
-    const { redirect, portfolio, errors } = this.state
-
+    const { redirect, errors, portfolio } = this.state
     if (redirect) {
       return (
         <Redirect to={redirect} />
@@ -69,13 +66,13 @@ class AppMenu extends Component {
             <CardBody>
                 <CardText>
                     <a className="h5 m-4" href={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>Dashboard</a>
-                    <a className="h5 m-4" href={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>Composição</a>
+                    {/* <a className="h5 m-4" href={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>Composição</a>
                     <a className="h5 m-4" href={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>Localização</a>
                     <a className="h5 m-4" href={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>Tokens</a>
                     <a className="h5 m-4" href={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>Proventos</a>
                     <a className="h5 m-4" href={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>Operações</a>
                     <a className="h5 m-4" href={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>Impostos</a>
-                    <a className="h5 m-4" href={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>Radar</a>
+                    <a className="h5 m-4" href={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>Radar</a> */}
                 </CardText>
             </CardBody>
         </Card>

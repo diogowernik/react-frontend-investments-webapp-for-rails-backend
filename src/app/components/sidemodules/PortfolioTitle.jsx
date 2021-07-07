@@ -4,14 +4,13 @@ import { Card, CardBody, CardText, Alert } from 'reactstrap'
 
 const Api = require('../../api/PortfolioApi')
 
-class AppShow extends Component {
+class PortfolioTitle extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       portfolio: {
         id: this.getPortfolioId(props),
-        title: '',
       },
       redirect: null,
       errors: []
@@ -79,4 +78,4 @@ class AppShow extends Component {
   }
 }
 
-export default AppShow
+export default PortfolioTitle
