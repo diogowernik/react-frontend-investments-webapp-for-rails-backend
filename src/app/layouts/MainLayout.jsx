@@ -14,7 +14,9 @@ export const MainLayout = ({ children }) => {
         <Container>
             <section className="sm:flex-row flex flex-col flex-1">
             <div className="content-box" style={{ flexGrow: 2, flexBasis: "0%" }} >
+
                 {children}
+                
             </div>
             </section>
       </Container>
