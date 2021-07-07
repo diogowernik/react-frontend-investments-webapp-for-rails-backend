@@ -62,7 +62,7 @@ class Years extends Component {
         <DashboardLayout>
           <Link className="btn btn-primary float-right" to="/admin/years/new">Adicionar</Link>
           <h4 className="mt-4 mb-4">Anos</h4>
-          <YearsTable years={years}></YearsTable>
+          {/* <YearsTable years={years}></YearsTable> */}
         </DashboardLayout>
         </>
       )
