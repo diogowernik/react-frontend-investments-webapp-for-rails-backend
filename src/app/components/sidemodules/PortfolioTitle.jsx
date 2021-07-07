@@ -1,81 +1,17 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router'
-import { Card, CardBody, CardText, Alert } from 'reactstrap'
+import React from 'react'
+import { Card, CardBody, CardText } from 'reactstrap'
 
-const Api = require('../../api/PortfolioApi')
-
-class PortfolioTitle extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      portfolio: {
-        id: this.getPortfolioId(props),
-      },
-      redirect: null,
-      errors: []
-    }
-  }
-
-  getPortfolioId(props) {
-    try {
-      return props.match.params.id
-    } catch (error) {
-      return null
-    }
-  }
-
-
-  componentDidMount() {
-    if (this.state.portfolio.id) {
-      Api.getPortfolio(this.state.portfolio.id)
-        .then(response => {
-          const [error, data] = response
-          if (error) {
-            this.setState({
-              errors: data
-            })
-          } else {
-            this.setState({
-              portfolio: data,
-              errors: []
-            })
-          }
-        })
-    }
-  }
-
-  render() {
-    const { redirect, portfolio, errors } = this.state
-
-    if (redirect) {
-      return (
-        <Redirect to={redirect} />
-      )
-    } else {
-
-      return (
-        <>
-        {errors.length > 0 &&
-            <div>
-            {errors.map((error, index) =>
-                <Alert color="danger" key={index}>
-                {error}
-                </Alert>
-            )}
-            </div>
-        }
-         <Card outline color="gray" className="mb-3 mt-3">
-            <CardBody>
-                <CardText>
-                    <b>{portfolio.title}</b>
-                </CardText>
-            </CardBody>
-        </Card>
-        </>
-      )
-    }
-  }
+function PortfolioTitle(props) {
+  var title = props.portfolio.title;
+  return (
+    <Card outline color="gray" className="mb-3 mt-3">
+      <CardBody>
+        <CardText>
+          <b>{title}</b>
+        </CardText>
+      </CardBody>
+    </Card>
+)
 }
 
 export default PortfolioTitle

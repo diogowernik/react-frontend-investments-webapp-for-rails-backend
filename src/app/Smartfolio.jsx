@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Row, Col, Card, CardBody, CardText, Alert } from 'reactstrap'
+import { Row, Col, Alert } from 'reactstrap'
 import { MainLayout } from './layouts/MainLayout';
 import Performance from './components/sidemodules/Performance'
 import SideModule from './components/sidemodules/SideModuleExample'
@@ -75,14 +75,7 @@ class AppShow extends Component {
                 </div>
               }
               <Col xl={3}>
-                <PortfolioTitle id={this.props.match.params.id} />
-                <Card outline color="gray" className="mb-3 mt-3">
-                  <CardBody>
-                    <CardText>
-                      <b>{portfolio.title}</b>
-                    </CardText>
-                  </CardBody>
-                </Card>
+                <PortfolioTitle portfolio={portfolio} />              
                 <Performance />
                 <SideModule />
               </Col>
