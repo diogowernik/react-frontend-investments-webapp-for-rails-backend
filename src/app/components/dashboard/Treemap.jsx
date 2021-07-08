@@ -3,7 +3,7 @@ import Chart from 'react-apexcharts'
 import {  Card, CardHeader} from 'reactstrap'
 import { apiHost } from '../../../config/apiHost';
 
-class PortfolioCompostition extends React.Component {
+class TreeMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,7 +76,7 @@ class PortfolioCompostition extends React.Component {
     return (
         <>
         <Card outline color="gray" className="mb-3">
-            <CardHeader className="bg-gray-lighter">Composição do Portfolio</CardHeader>
+            <CardHeader className="bg-gray-lighter">Tree Map</CardHeader>
             <Card body>
                 <Chart
                     options={this.state.options}
@@ -91,4 +91,4 @@ class PortfolioCompostition extends React.Component {
     );
   }
 }
-export default PortfolioCompostition;
+export default TreeMap;

@@ -11,7 +11,7 @@ class Performance extends Component {
                 <CardBody>
                 <p className="text-center h3 m-3 text-primary">
                 
-                2,35 %
+                5,35 %
                 </p>
                 <p className="text-center text-muted m-3">
                 
@@ -39,7 +39,7 @@ class Performance extends Component {
                             </tr>
                             <tr className="mt-1">
                                 <th><div className="mt-2 strong">Lucro</div></th>
-                                <th><div className="float-right h3 text-primary">R$ 25.000,00</div></th>
+                                <th><div className="float-right h5 text-primary">R$ 35.000,00</div></th>
                             </tr>
                         </tbody>
                         
