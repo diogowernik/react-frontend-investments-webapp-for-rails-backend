@@ -3,7 +3,7 @@ import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert } from 'reactstrap'
 import PortfolioTitle from '../components/sidemodules/PortfolioTitle';
 import Performance from '../components/sidemodules/Performance'
-import SideModule from '../components/sidemodules/SideModuleExample'
+// import SideModule from '../components/sidemodules/SideModuleExample'
 import AppMenu from '../components/menu/AppMenu';
 import BodyWrapper from "./BodyWrapper";
 import AppTopNavBar from "./AppTopNav"
@@ -82,7 +82,7 @@ class MainLayout extends Component {
               <Col xl={3}>
                 <PortfolioTitle portfolio={portfolio} />              
                 <Performance />
-                <SideModule />             
+                {/* <SideModule />              */}
               </Col>
               <Col xl={9}>
                 <AppMenu portfolio={portfolio} />
