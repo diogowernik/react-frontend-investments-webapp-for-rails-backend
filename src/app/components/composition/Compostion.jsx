@@ -1,17 +1,14 @@
 import React from 'react'
-import  MainLayout from '../../layouts/MainLayout';
-import PortfoliosTables from './PortfoliosTables'
-import PizzaChart from './PizzaChart'
+import PortfoliosTables from './_PortfoliosTables'
+import PizzaChart from './_PizzaChart'
 
 function Composition(props) {
-   var id = props.match.params.id;
+  //  var id = props.match.params.id;
   return (
     <>
-    <MainLayout id={id}>
-          <PortfoliosTables />
-          <PizzaChart />
-    </MainLayout>
-  </>
+      <PortfoliosTables />
+      <PizzaChart />
+    </>
   )
 }
 

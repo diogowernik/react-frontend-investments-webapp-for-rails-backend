@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Row, Col, Alert, Form, Label, Input } from 'reactstrap'
-import SelectPortfolio from '../../components/selects/SelectPortfolio'
-import SelectCategory from '../../components/selects/SelectCategory'
-import SelectFii from '../../components/selects/SelectFii'
+import SelectPortfolio from '../../globalcomponents/selects/SelectPortfolio'
+import SelectCategory from '../../globalcomponents/selects/SelectCategory'
+import SelectFii from '../../globalcomponents/selects/SelectFii'
 import {DashboardLayout} from '../layouts/Layout';
 
 

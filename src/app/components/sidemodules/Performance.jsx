@@ -23,23 +23,23 @@ class Performance extends Component {
                         <tbody>
                             <tr>
                                 <td>Patrimônio</td>
-                                <td><div className="float-right strong">R$ 535.000,00</div></td>
+                                <td><div className="float-right strong">R$ 535.000</div></td>
                             </tr>
                             <tr>
                                 <td>Custo de aquisição</td>
-                                <td><div className="float-right strong">R$ 500.000,00</div></td>
+                                <td><div className="float-right strong">R$ 500.000</div></td>
                             </tr>
                             <tr>
                                 <td>Proventos Acumulado</td>
-                                <td><div className="float-right strong">R$ 20.000,00</div></td>
+                                <td><div className="float-right strong">R$ 20.000</div></td>
                             </tr>
                             <tr>
                                 <td>Lucros com operações</td>
-                                <td><div className="float-right strong">R$ 15.000,00</div></td>
+                                <td><div className="float-right strong">R$ 15.000</div></td>
                             </tr>
                             <tr className="mt-1">
                                 <th><div className="mt-2 strong">Lucro</div></th>
-                                <th><div className="float-right h5 text-primary">R$ 35.000,00</div></th>
+                                <th><div className="float-right h5 text-primary">R$ 35.000</div></th>
                             </tr>
                         </tbody>
                         

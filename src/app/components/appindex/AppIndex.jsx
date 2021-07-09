@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import { Alert } from 'reactstrap'
-import {AppIndexLayout} from './layouts/IndexLayout';
-import PortfoliosCard from './components/portfolios/PortfoliosCards'
+import {AppIndexLayout} from './IndexLayout';
+import PortfoliosCard from './PortfoliosCards'
 
 
-const Api = require('../app/api/PortfolioApi')
+const Api = require('../../api/PortfolioApi')
 
 class AppIndex extends Component {
     constructor(props) {

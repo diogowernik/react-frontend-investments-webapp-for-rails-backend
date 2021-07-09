@@ -1,12 +1,10 @@
 import React from "react";
 import { Row, Col, Card,CardBody, Container } from 'reactstrap'
-import BodyWrapper from "./BodyWrapper";
-import AppTopNavBar from "./AppTopNav"
-import "./CustomStyle.css"
+import AppTopNavBar from "../../layouts/AppTopNav"
 
 export const AppIndexLayout = ({ children }) => {
   return (
-    <BodyWrapper>
+    <>
         <AppTopNavBar/>
         <Container>
             <Row>
@@ -30,7 +28,7 @@ export const AppIndexLayout = ({ children }) => {
                     
             </Row>
       </Container>
-    </BodyWrapper>
+    </>
     
   );
 };

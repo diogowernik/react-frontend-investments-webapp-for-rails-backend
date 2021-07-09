@@ -1,17 +1,13 @@
 import React from 'react'
-import  MainLayout from '../../layouts/MainLayout';
-import DividendsList from './DividendsList'
-import DividendsTable from './DividendsTable'
+import DividendsList from './_DividendsList'
+import DividendsTable from './_DividendsTable'
 
 function Dividends(props) {
-  var id = props.match.params.id;
   return (
     <>
-    <MainLayout id={id}>
-          <DividendsTable />
-          <DividendsList />
-    </MainLayout>
-  </>
+      <DividendsTable />
+      <DividendsList />
+    </>
   )
 }
 

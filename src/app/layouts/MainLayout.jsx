@@ -3,11 +3,9 @@ import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert,Spinner } from 'reactstrap'
 import PortfolioTitle from '../components/sidemodules/PortfolioTitle';
 import Performance from '../components/sidemodules/Performance'
-// import SideModule from '../components/sidemodules/SideModuleExample'
-import AppMenu from '../components/menu/AppMenu';
-import BodyWrapper from "./BodyWrapper";
 import AppTopNavBar from "./AppTopNav";
-import "./CustomStyle.css"
+import ComponentNav from "../components/componentnav/ComponentNav";
+import "./_CustomStyle.css"
 
 const Api = require('../api/PortfolioApi')
 
@@ -47,7 +45,6 @@ class MainLayout extends Component {
 
   render() {
     const { redirect, portfolio, errors, isLoaded } = this.state
-    const { children } = this.props;
 
     if (redirect) {
       return (
@@ -57,7 +54,7 @@ class MainLayout extends Component {
     } else {
 
       return (
-        <BodyWrapper>
+        <>
         <AppTopNavBar/>
         <Container>
             <section className="sm:flex-row flex flex-col flex-1">
@@ -72,22 +69,18 @@ class MainLayout extends Component {
                   )}
                 </div>
               }
-              <Col xl={3}>
+              <Col md={3}>
                 <PortfolioTitle portfolio={portfolio} />          
                 <Performance />
-                {/* <SideModule />              */}
               </Col>
-              <Col xl={9}>
-                <AppMenu portfolio={portfolio} />
-                {/* Here goes the wrapped content */}
-                {children}
-
+              <Col md={9}>
+                <ComponentNav portfolio={portfolio} />
               </Col>
             </Row>
             </div>
             </section>
       </Container>
-    </BodyWrapper>
+    </>
       )
     }
   }

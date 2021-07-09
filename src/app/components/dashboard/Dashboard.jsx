@@ -1,21 +1,17 @@
 import React from 'react'
-import  MainLayout from '../../layouts/MainLayout';
-import LineChart from './LineChart'
-import TreeMap from './Treemap';
+import LineChart from './_LineChart'
+import TreeMap from './_Treemap';
 
 function Dashboard(props) {
-  var id = props.match.params.id;
+  var id = props.id;
   return (
     <>
-    <MainLayout id={id}>
-          <LineChart
-          // id={id} 
-          />
-          <TreeMap 
-           id={id} 
-          />
-    </MainLayout>
-  </>
+      <LineChart
+      />
+      <TreeMap 
+        id={id} 
+      />
+    </>
   )
 }
 

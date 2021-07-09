@@ -1,17 +1,14 @@
 import React from 'react'
-import  MainLayout from '../../layouts/MainLayout';
-import LocationsTable from './LocationsTable'
-import DonutChart from './DonutChart'
+import LocationsTable from './_LocationsTable'
+import DonutChart from './_DonutChart'
 
 function Location(props) {
-  var id = props.match.params.id;
+  // var id = props.match.params.id;
   return (
     <>
-    <MainLayout id={id}>
-          <LocationsTable />
-          <DonutChart />
-    </MainLayout>
-  </>
+      <LocationsTable />
+      <DonutChart />
+    </>
   )
 }
 
