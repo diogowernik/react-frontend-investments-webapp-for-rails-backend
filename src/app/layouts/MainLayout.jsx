@@ -3,8 +3,8 @@ import { Redirect } from 'react-router'
 import { Container, Row, Col, Alert,Spinner } from 'reactstrap'
 import PortfolioTitle from '../components/sidemodules/PortfolioTitle';
 import Performance from '../components/sidemodules/Performance'
-import AppTopNavBar from "./AppTopNav";
-import ComponentNav from "../components/componentnav/ComponentNav";
+import ComponentNav from "../components/menu/ComponentNav";
+import AppTopNavBar from "./_AppTopNav";
 import "./_CustomStyle.css"
 
 const Api = require('../api/PortfolioApi')

@@ -41,7 +41,7 @@ import CriptoDelete from '../admin/criptos/CriptoDelete'
 
 
 // App 
-import AppIndex from '../app/components/appindex/AppIndex'
+import Index from '../app/components/index/Index'
 import Smartfolio from '../app/components/smartfolio/Smartfolio'
 // import MainLayout from '../app/layouts/MainLayout'
 
@@ -97,10 +97,9 @@ const Routes = (props) => {
                 
 
                 {/* App       */}
-                <Route exact path='/app' component={AppIndex} />
+                <Route exact path='/app' component={Index} />
                 <Route exact path="/smartfolio/:slug/:id" render={(routeProps) => ( <Smartfolio {...routeProps} /> )} />
-                {/* <Route exact path="/smartfolio/:slug/:id" render={(routeProps) => ( <MainLayout {...routeProps} /> )} /> */}
-
+                
               </div>
             </Router>
     </>

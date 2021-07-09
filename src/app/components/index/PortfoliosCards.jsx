@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
-import { Row,Card,CardFooter, CardBody} from 'reactstrap'
+import { Row,Card,CardFooter, CardBody, Col} from 'reactstrap'
 
 
 class PortfolioCards extends Component {
@@ -19,6 +19,7 @@ class PortfolioCards extends Component {
       return (
             <>
             <Row>
+              <Col>
             {portfolios.map(portfolio => (
               <div key={portfolio.id}>                 
                   <Card outline color="gray" className="mb-3 mr-3">
@@ -32,6 +33,7 @@ class PortfolioCards extends Component {
                   </Card>           
               </div>
             ))}
+            </Col>
             </Row>
           </>
       )

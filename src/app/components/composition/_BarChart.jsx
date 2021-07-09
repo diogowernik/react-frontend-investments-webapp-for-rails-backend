@@ -3,50 +3,58 @@ import Chart from 'react-apexcharts'
 import {  Card, CardHeader} from 'reactstrap'
 // import { apiHost } from '../../../config/apiHost';
 
-class DonutChart extends React.Component {
+class BarChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
 
-      series: [44, 55, 41, 17, 15],
-      options: {
-        chart: {
-          width: 380,
-          type: 'donut',
-        },
-        plotOptions: {
-          pie: {
-            startAngle: -90,
-            endAngle: 270
-          }
-        },
-        labels: ["Banco do Brasil", "Itaú", "Imóveis Brasil", "Binance", "Degiro"],
-        dataLabels: {
-          enabled: false
-        },
-        fill: {
-          type: 'gradient',
-        },
-        legend: {
-          formatter: function(val, opts) {
-            return val + " - " + opts.w.globals.series[opts.seriesIndex]
-          }
-        },
-        title: {
-          text: 'Gradient Donut with custom Start-angle'
-        },
-        responsive: [{
-          breakpoint: 480,
+        series: [{
+            name: 'Aporte',
+            data: [44, 55, 49, 54, 22]
+          }, {
+            name: 'Valor Atual',
+            data: [53, 58, 49, 58, 25]
+          }],
           options: {
             chart: {
-              width: 200
+              type: 'bar',
+              height: 430
             },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-      },
+            plotOptions: {
+              bar: {
+                horizontal: true,
+                dataLabels: {
+                  position: 'top',
+                },
+              }
+            },
+            dataLabels: {
+              enabled: true,
+              offsetX: -6,
+              style: {
+                fontSize: '12px',
+                colors: ['#fff']
+              }
+            },
+            stroke: {
+              show: true,
+              width: 1,
+              colors: ['#fff']
+            },
+            tooltip: {
+              shared: true,
+              intersect: false
+            },
+            xaxis: {
+              categories: ["Fiis", "Criptos", "Imóveis", "ETF", "Ações"],
+            },
+            yaxis: {
+                reversed: true,
+                axisTicks: {
+                  show: true
+                }
+              }
+          },
     
     
     };
@@ -94,6 +102,7 @@ class DonutChart extends React.Component {
     //     }
     //   ]
     // }
+
   }
 
   // fetchData() {
@@ -119,7 +128,7 @@ class DonutChart extends React.Component {
     return (
         <>
         <Card outline color="gray" className="mb-3">
-            <CardHeader className="bg-gray-lighter">DonutChart</CardHeader>
+            <CardHeader className="bg-gray-lighter">BarChart</CardHeader>
             <Card body>
                 <Chart
                     // options={this.state.options}
@@ -129,8 +138,8 @@ class DonutChart extends React.Component {
                     // width="100%"
                     options={this.state.options} 
                     series={this.state.series} 
-                    type="donut" 
-                    height={450}
+                    type="bar"
+                    height="450"
                 />
                 </Card>
         </Card>
@@ -138,4 +147,4 @@ class DonutChart extends React.Component {
     );
   }
 }
-export default DonutChart;
+export default BarChart;

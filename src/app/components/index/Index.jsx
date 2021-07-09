@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
-import { Alert } from 'reactstrap'
+import { Alert} from 'reactstrap'
 import {AppIndexLayout} from './IndexLayout';
 import PortfoliosCard from './PortfoliosCards'
 
@@ -58,11 +58,14 @@ class AppIndex extends Component {
     
           return (
             <>
-            <AppIndexLayout>
-              <Link className="btn btn-primary float-right" to="/admin/portfolios/new">Adicionar</Link>
-              <h4 className="mt-4 mb-4">Portfolios</h4>
-              <PortfoliosCard portfolios={portfolios}></PortfoliosCard>
-            </AppIndexLayout>
+
+                <AppIndexLayout>
+                  <Link className="btn btn-primary float-right" to="/admin/portfolios/new">Adicionar</Link>
+                  <h4 className="mt-4 mb-4">Portfolios</h4>
+                  <PortfoliosCard portfolios={portfolios}></PortfoliosCard>
+                </AppIndexLayout>
+
+            
             </>
           )
     

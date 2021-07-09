@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Card,CardBody, Container } from 'reactstrap'
-import AppTopNavBar from "../../layouts/AppTopNav"
+import AppTopNavBar from "../../layouts/_AppTopNav"
 
 export const AppIndexLayout = ({ children }) => {
   return (
@@ -8,14 +8,14 @@ export const AppIndexLayout = ({ children }) => {
         <AppTopNavBar/>
         <Container>
             <Row>
-                <Col md={ 3 } className="mt-4">
+                <Col xl={ 3 } className="mt-4">
                         <Card outline color="gray" className="mb-3">
                             <CardBody>
                                 Administre ao lado seus portfolios
                             </CardBody>
                         </Card>
                 </Col>
-                <Col md={ 9 }>
+                <Col xl={ 9 }>
                     <section className="sm:flex-row flex flex-col flex-1">
                     <div
                         className="content-box"
