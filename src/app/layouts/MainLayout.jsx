@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
-import { Container, Row, Col, Alert } from 'reactstrap'
+import { Container, Row, Col, Alert,Spinner } from 'reactstrap'
 import PortfolioTitle from '../components/sidemodules/PortfolioTitle';
 import Performance from '../components/sidemodules/Performance'
 // import SideModule from '../components/sidemodules/SideModuleExample'
 import AppMenu from '../components/menu/AppMenu';
 import BodyWrapper from "./BodyWrapper";
-import AppTopNavBar from "./AppTopNav"
+import AppTopNavBar from "./AppTopNav";
 import "./CustomStyle.css"
 
 const Api = require('../api/PortfolioApi')
@@ -14,38 +14,31 @@ const Api = require('../api/PortfolioApi')
 class MainLayout extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       portfolio: {
-        id: this.getPortfolioId(props),
+        id: this.props.id,
       },
       redirect: null,
-      errors: []
+      errors: [],
+      isLoaded: false,
     }
   }
-
-  getPortfolioId(props) {
-    try {
-      return props.match.params.id
-    } catch (error) {
-      return null
-    }
-  }
-
 
   componentDidMount() {
     if (this.state.portfolio.id) {
       Api.getPortfolio(this.state.portfolio.id)
         .then(response => {
-          const [error, data] = response
+          const [error, data] = response;  
           if (error) {
             this.setState({
-              errors: data
+              errors: data,
+              isLoaded: true
             })
           } else {
             this.setState({
               portfolio: data,
-              errors: []
+              errors: [],
+              isLoaded: true
             })
           }
         })
@@ -53,14 +46,14 @@ class MainLayout extends Component {
   }
 
   render() {
-    const { redirect, portfolio, errors } = this.state
+    const { redirect, portfolio, errors, isLoaded } = this.state
     const { children } = this.props;
-
 
     if (redirect) {
       return (
         <Redirect to={redirect} />
       )
+    } else if (!isLoaded) { return (<div className="text-center pt-5"><Spinner size="sm" color="secondary" /><br/>Carregando...</div>)
     } else {
 
       return (
@@ -80,7 +73,7 @@ class MainLayout extends Component {
                 </div>
               }
               <Col xl={3}>
-                <PortfolioTitle portfolio={portfolio} />              
+                <PortfolioTitle portfolio={portfolio} />          
                 <Performance />
                 {/* <SideModule />              */}
               </Col>

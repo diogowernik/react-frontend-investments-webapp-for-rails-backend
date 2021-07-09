@@ -4,10 +4,10 @@ import LocationsTable from './LocationsTable'
 import DonutChart from './DonutChart'
 
 function Location(props) {
-  // var id = props.portfolio.id;
+  var id = props.match.params.id;
   return (
     <>
-    <MainLayout>
+    <MainLayout id={id}>
           <LocationsTable />
           <DonutChart />
     </MainLayout>

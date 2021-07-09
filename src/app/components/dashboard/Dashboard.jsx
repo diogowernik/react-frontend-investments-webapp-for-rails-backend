@@ -4,15 +4,15 @@ import LineChart from './LineChart'
 import TreeMap from './Treemap';
 
 function Dashboard(props) {
-  // var id = props.portfolio.id;
+  var id = props.match.params.id;
   return (
     <>
-    <MainLayout>
+    <MainLayout id={id}>
           <LineChart
           // id={id} 
           />
           <TreeMap 
-          // id={id} 
+           id={id} 
           />
     </MainLayout>
   </>
