@@ -4,7 +4,7 @@ import { Alert, Card, CardBody, CardHeader } from 'reactstrap'
 import Datatable from '../../../../globalcomponents/datatable/Datatable';
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 
-const Api = require('../../../../admin/portfoliocriptos/Api')
+const Api = require('../../../api/PortfoliocriptosApi')
 
 class Portfoliocriptos extends Component {
   constructor(props) {

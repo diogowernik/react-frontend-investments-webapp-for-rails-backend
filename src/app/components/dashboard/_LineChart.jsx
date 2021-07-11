@@ -51,15 +51,15 @@ class LineChart extends React.Component {
       //   }
       // ]
       series: [{
-        name: 'Income',
+        name: 'Valor atual',
         type: 'column',
-        data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6]
+        data: [1.4, 2, 2.5, 3, 3, 4, 3.8, 4.6]
       }, {
-        name: 'Cashflow',
+        name: 'Investimento inicial',
         type: 'column',
         data: [1.1, 3, 3.1, 4, 4.1, 4.9, 6.5, 8.5]
       }, {
-        name: 'Revenue',
+        name: 'Rentabilidade Histórica',
         type: 'line',
         data: [20, 29, 37, 36, 44, 45, 50, 58]
       }],
@@ -130,7 +130,7 @@ class LineChart extends React.Component {
             },
           },
           {
-            seriesName: 'Revenue',
+            seriesName: 'Rentabilidade histórica',
             opposite: true,
             axisTicks: {
               show: true,
@@ -194,13 +194,6 @@ class LineChart extends React.Component {
         <Card outline color="gray" className="mb-3">
             <CardHeader className="bg-gray-lighter">LineChart</CardHeader>
             <Card body>
-                {/* <Chart
-                    options={this.state.options}
-                    series={this.state.series}
-                    type='treemap'
-                    height="450"
-                    width="100%"
-                /> */}
                 <div id="chart">
                   <Chart 
                   options={this.state.options} 
