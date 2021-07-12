@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
-// import { Link } from "react-router-dom"
 import { Alert, Card, CardBody, CardHeader } from 'reactstrap'
 import Datatable from '../../../../globalcomponents/datatable/Datatable';
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 
-const Api = require('../../../api/PortfoliofiisApi')
+const Api = require('../../../api/PortfolioApi')
 
 class Portfoliofiis extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      portfoliofiis: [],
+      portfolio: {
+        id: this.props.id,
+        portfoliofiis: [],
+      },
       isLoaded: false,
       error: null,
 
@@ -39,7 +41,8 @@ class Portfoliofiis extends Component {
   }
 
   componentDidMount() {
-    Api.getPortfoliofiis()
+    if (this.state.portfolio.id) {
+    Api.getPortfoliofiis(this.state.portfolio.id)
       .then(response => {
         const [error, data] = response
         if (error) {
@@ -55,6 +58,7 @@ class Portfoliofiis extends Component {
           })
         }
       })
+    }
   }
 
 // Access to internal datatable instance for customizations
@@ -83,10 +87,9 @@ class Portfoliofiis extends Component {
 
       return (
         <>
-        <Card outline color="gray" className="mb-3">
-        <CardHeader className="bg-gray-lighter text-center">Fundos Imobiliários</CardHeader>
+        <Card color="gray" className="mb-3">
+        <CardHeader className="bg-gray-lighter text-center">Criptomoedas</CardHeader>
         <CardBody>
-          {/* <Link className="btn btn-primary float-right" to="/admin/portfoliofiis/new">Adicionar</Link> */}
           <Datatable options={this.state.dtOptions1}>
           <table className="table table-striped my-4 w-100">
             <thead >

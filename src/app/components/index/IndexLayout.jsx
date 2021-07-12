@@ -9,7 +9,7 @@ export const AppIndexLayout = ({ children }) => {
         <Container>
             <Row>
                 <Col xl={ 3 } className="mt-4">
-                        <Card outline color="gray" className="mb-3">
+                        <Card  color="gray" className="mb-3">
                             <CardBody>
                                 Administre ao lado seus portfolios
                             </CardBody>

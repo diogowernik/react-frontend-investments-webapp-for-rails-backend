@@ -11,7 +11,7 @@ export const DashboardLayout = ({ children }) => {
         <Container>
             <Row>
                 <Col md={ 3 } className="mt-4">
-                        <Card outline color="gray" className="mb-3">
+                        <Card  color="gray" className="mb-3">
                             <CardHeader className="bg-gray-lighter">Menu Administrativo</CardHeader>
                             <CardBody>
                             <Nav className="mr-auto" navbar>  

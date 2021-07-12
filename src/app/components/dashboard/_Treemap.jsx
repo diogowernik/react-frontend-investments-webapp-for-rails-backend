@@ -73,9 +73,9 @@ class TreeMap extends React.Component {
   }
 
   render() {
-    return (
+    return ( 
         <>
-        <Card outline color="gray" className="mb-3">
+        <Card  color="gray" className="mb-3">
             <CardHeader className="bg-gray-lighter">Tree Map</CardHeader>
             <Card body>
                 <Chart

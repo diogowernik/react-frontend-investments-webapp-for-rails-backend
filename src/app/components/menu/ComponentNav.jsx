@@ -2,22 +2,23 @@ import React from 'react'
 import { Tab, Row, Nav, Card, Col  } from 'react-bootstrap';
 import Dashboard from '../dashboard/Dashboard'
 import Composition from '../composition/Compostion'
-import Dividends from '../dividends/Dividends';
-import Location from '../location/Location';
-import Radars from '../radar/Radars';
-import Orders from '../orders/Orders';
-import Taxes from '../taxes/Taxes';
-import Tokens from '../tokens/Tokens';
+// import Dividends from '../dividends/Dividends';
+// import Location from '../location/Location';
+// import Radars from '../radar/Radars';
+// import Orders from '../orders/Orders';
+// import Taxes from '../taxes/Taxes';
+// import Tokens from '../tokens/Tokens';
 
 
 function ComponentNav(props) {
     var id = props.portfolio.id;
+    // var portfolio = props.portfolio
     return (
 
     <Tab.Container defaultActiveKey="dashboard">
         <Row>
             <Col>
-                <Card outline color="gray" className="mt-3 mb-3">
+                <Card  color="gray" className="mt-3 mb-3">
                     <Card.Body>
                         <Nav variant="pills">
 
@@ -29,7 +30,7 @@ function ComponentNav(props) {
                                 <Nav.Link eventKey="compostition">Composição</Nav.Link>
                             </Nav.Item>
 
-                            <Nav.Item>
+                            {/* <Nav.Item>
                                 <Nav.Link eventKey="location">Localização</Nav.Link>
                             </Nav.Item>
 
@@ -51,7 +52,7 @@ function ComponentNav(props) {
 
                             <Nav.Item>
                                 <Nav.Link eventKey="tokens">Token System</Nav.Link>
-                            </Nav.Item>
+                            </Nav.Item> */}
 
                         </Nav>
                     </Card.Body>
@@ -65,9 +66,9 @@ function ComponentNav(props) {
                         <Dashboard id={id}/> 
                     </Tab.Pane>
                     <Tab.Pane eventKey="compostition">
-                        <Composition />
+                        <Composition id={id} />
                     </Tab.Pane>
-                    <Tab.Pane eventKey="location">
+                    {/* <Tab.Pane eventKey="location">
                         <Location/> 
                     </Tab.Pane>
                     <Tab.Pane eventKey="dividends">
@@ -84,7 +85,7 @@ function ComponentNav(props) {
                     </Tab.Pane>
                     <Tab.Pane eventKey="tokens">
                         <Tokens />
-                    </Tab.Pane>
+                    </Tab.Pane> */}
                 </Tab.Content>
             </Col>            
         </Row>

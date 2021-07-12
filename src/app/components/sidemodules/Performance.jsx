@@ -6,7 +6,7 @@ class Performance extends Component {
   render() {
       return (
         <>
-            <Card outline color="gray" className="mb-3">
+            <Card  color="gray" className="mb-3">
                 <CardHeader className="bg-gray-lighter">Performance</CardHeader>
                 <CardBody>
                 <p className="text-center h3 m-3 text-primary">

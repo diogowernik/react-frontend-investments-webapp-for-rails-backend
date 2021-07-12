@@ -191,7 +191,7 @@ class LineChart extends React.Component {
   render() {
     return (
         <>
-        <Card outline color="gray" className="mb-3">
+        <Card  color="gray" className="mb-3">
             <CardHeader className="bg-gray-lighter">LineChart</CardHeader>
             <Card body>
                 <div id="chart">

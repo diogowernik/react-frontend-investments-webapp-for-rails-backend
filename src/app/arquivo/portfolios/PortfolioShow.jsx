@@ -107,14 +107,14 @@ class AppShow extends Component {
                       </div>
                     }
                     <Col xl={ 3 }>
-                        <Card outline color="gray" className="mb-3 mt-3">
+                        <Card  color="gray" className="mb-3 mt-3">
                             <CardBody>
                                 <CardText>
                                     <b>{portfolio.title}</b>
                                 </CardText>
                             </CardBody>
                         </Card>
-                        <Card outline color="gray" className="mb-3">
+                        <Card  color="gray" className="mb-3">
                             <CardHeader className="bg-gray-lighter">Performance</CardHeader>
                             <CardBody>
                             <p className="text-center h3 m-3 text-primary">
@@ -156,12 +156,12 @@ class AppShow extends Component {
                                 </Table>
                             </CardBody>
                         </Card>
-                        <Card outline color="gray" className="mb-3">
+                        <Card  color="gray" className="mb-3">
                             <CardBody>
                                 <CardText>Some quick example text to build on the card title and make up the bulk of the card&apos;s content.</CardText>
                             </CardBody>
                         </Card>
-                        <Card outline color="gray" className="mb-3">
+                        <Card  color="gray" className="mb-3">
                             <CardHeader className="bg-gray-lighter">Header</CardHeader>
                             <CardBody>
                                 <CardTitle>Success card title</CardTitle>
@@ -170,7 +170,7 @@ class AppShow extends Component {
                         </Card>
                     </Col>
                     <Col xl={ 9 }>
-                        <Card outline color="gray" className="mb-3 mt-3">
+                        <Card  color="gray" className="mb-3 mt-3">
                             <CardBody>
                                 <CardText>
                                     <a className="h5 m-4" href={`/portfolio/${portfolio.id}`}>Dashboard</a>
@@ -184,13 +184,13 @@ class AppShow extends Component {
                                 </CardText>
                             </CardBody>
                         </Card>
-                        <Card outline color="gray" className="mb-3">
+                        <Card  color="gray" className="mb-3">
                             <CardHeader className="bg-gray-lighter">Rentabilidade Histórica</CardHeader>
                             <CardBody>
                                 {/* <LineChart data={Line.data} options={Line.options} width={600} height={150}/> */}
                             </CardBody>
                         </Card>
-                        <Card outline color="gray" className="mb-3">
+                        <Card  color="gray" className="mb-3">
                           <CardHeader className="bg-gray-lighter">Composição do Portfolio</CardHeader>
                           <Card body>
                               <TreeChart id={this.props.match.params.id} />

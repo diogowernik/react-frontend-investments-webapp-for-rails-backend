@@ -22,7 +22,7 @@ class PortfolioCards extends Component {
               <Col>
             {portfolios.map(portfolio => (
               <div key={portfolio.id}>                 
-                  <Card outline color="gray" className="mb-3 mr-3">
+                  <Card  color="gray" className="mb-3 mr-3">
                       <CardBody>
                         <a href={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>{portfolio.title}</a>
                       </CardBody>

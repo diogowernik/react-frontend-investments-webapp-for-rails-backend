@@ -6,7 +6,7 @@ import Portfoliocriptos from './tabs/Portfoliocriptos'
 
 
 function ComponentNav(props) {
-    // var id = props.portfolio.id;
+    var id = props.id;
     return (
 
     <Tab.Container defaultActiveKey="dashboard">
@@ -21,10 +21,10 @@ function ComponentNav(props) {
         </Nav>
         <Tab.Content>
             <Tab.Pane eventKey="dashboard">
-                <Portfoliofiis/>
+                <Portfoliofiis id={id}/>
             </Tab.Pane>
             <Tab.Pane eventKey="compostition">
-               <Portfoliocriptos/>
+               <Portfoliocriptos id={id}/>
             </Tab.Pane>
         </Tab.Content>
       </Tab.Container>

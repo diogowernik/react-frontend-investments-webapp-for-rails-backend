@@ -6,12 +6,12 @@ class SideModule extends Component {
   render() {
       return (
         <>
-        <Card outline color="gray" className="mb-3">
+        <Card  color="gray" className="mb-3">
             <CardBody>
                 <CardText>Some quick example text to build on the card title and make up the bulk of the card&apos;s content.</CardText>
             </CardBody>
         </Card>
-        <Card outline color="gray" className="mb-3">
+        <Card  color="gray" className="mb-3">
             <CardHeader className="bg-gray-lighter">Header</CardHeader>
             <CardBody>
                 <CardTitle>Success card title</CardTitle>

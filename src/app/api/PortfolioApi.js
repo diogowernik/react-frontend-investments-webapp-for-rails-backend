@@ -125,9 +125,71 @@ const savePortfolio = (data, id=null) => {
   })
 }
 
+const getPortfoliocriptos = (id) => {
+  let response_ok = null
+  return fetch(`${apiHost}/api/portfolio/portfoliocriptos/${id}`, {
+    method: 'get',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      response_ok = response.ok
+      return response.json()
+    })
+    .then(response => {
+      if (response_ok) {
+        return [false, response]
+      } else {
+        return [true, collectErrors(response)]
+      }
+    })
+}
+
+const getPortfoliofiis = (id) => {
+  let response_ok = null
+  return fetch(`${apiHost}/api/portfolio/portfoliofiis/${id}`, {
+    method: 'get',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      response_ok = response.ok
+      return response.json()
+    })
+    .then(response => {
+      if (response_ok) {
+        return [false, response]
+      } else {
+        return [true, collectErrors(response)]
+      }
+    })
+}
+
+const getTreemap = (id) => {
+  return fetch(`${apiHost}/api/portfolios/${id}`)
+  .then(response => response.json())
+  .then(
+    (response) => {
+      const newSeries = [];
+      var chart = response.treechart;
+      newSeries.push({chart});
+
+      this.setState({
+        series: chart,
+      });
+    });
+
+
+}
+
 export {
   savePortfolio,
   getPortfolio,
   deletePortfolio,
-  getPortfolios
+  getPortfolios,
+  getPortfoliocriptos,
+  getPortfoliofiis,
+  getTreemap
 }

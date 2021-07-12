@@ -118,7 +118,7 @@ class DonutChart extends React.Component {
   render() {
     return (
         <>
-        <Card outline color="gray" className="mb-3">
+        <Card  color="gray" className="mb-3">
             <CardHeader className="bg-gray-lighter">DonutChart</CardHeader>
             <Card body>
                 <Chart
