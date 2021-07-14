@@ -74,42 +74,22 @@ class CategoryForm extends Component {
       })
   }
 
-  // componentDidMount() {
-  //   if (this.state.category.id) {
-  //     Api.getCategory(this.state.category.id)
-  //       .then(response => {
-  //         const [error, data] = response
-  //         if (error) {
-  //           this.setState({
-  //             errors: data
-  //           })
-  //         } else {
-  //           this.setState({
-  //             category: data,
-  //             errors: []
-  //           })
-  //         }
-  //       })
-  //   }
-  // }
   componentDidMount() {
-    // Check if props.id is available 
-        if ( this.state.category.id || this.props.id ) {
-              const id = this.state.category.id || this.props.id;
-                Api.getCategory(id).then((response) => {
-                    const [error, data] = response;
-                    if (error) {
-                        this.setState({
-                            errors: data
-                        });
-                    } else {    
-                        this.setState({
-                            category: data,
-                            errors: []
-                        });
-                    }
+      if (this.props.id ) {
+        Api.getCategory(this.props.id).then((response) => {
+            const [error, data] = response;
+            if (error) {
+                this.setState({
+                    errors: data
                 });
-        }
+            } else {    
+                this.setState({
+                    category: data,
+                    errors: []
+                });
+            }
+        });
+      }
     }
 
   render() {
