@@ -1,2 +1,2 @@
-// export const apiHost = 'https://miz.finance'
-export const apiHost = 'http://localhost:3000'
+export const apiHost = 'https://miz.finance'
+// export const apiHost = 'http://localhost:3000'
