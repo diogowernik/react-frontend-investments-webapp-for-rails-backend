@@ -95,7 +95,7 @@ class Categories extends Component {
                     <td>{category.title}</td>
                     <td>{category.slug}</td>
                     <td>
-                      <Link className="btn btn-danger float-right" to={`/admin/category/${category.id}/delete`}><FaTrashAlt /></Link>
+                      <Button className="btn btn-danger float-right" onClick={() =>Api.deleteCategory(category.id)}><FaTrashAlt /></Button>
                       <Button
                         className="btn btn-success float-right mr-2 "
                         onClick={() =>this.openModal(category.id)}
@@ -115,7 +115,7 @@ class Categories extends Component {
               </Modal.Header>
               <Modal.Body>
                 {/* <CategoryForm /> */}
-                <CategoryForm id={this.state.id || null} />
+                <CategoryForm id={this.state.id || null}/>
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={this.closeModal}>
