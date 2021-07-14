@@ -18,7 +18,6 @@ import FiiForm from '../admin/components/fiis/FiiForm'
 import FiiDelete from '../admin/components/fiis/FiiDelete'
 
 import CategoryForm from '../admin/components/categories/CategoryForm'
-import CategoryDelete from '../admin/components/categories/CategoryDelete'
 
 import AdminPortfolioForm from '../admin/components/portfolios/PortfolioForm'
 import AdminPortfolioDelete from '../admin/components/portfolios/PortfolioDelete'
@@ -62,9 +61,7 @@ const Routes = (props) => {
                 <Route exact path="/admin/fii/:id/edit" render={(routeProps) => ( <FiiForm {...routeProps} /> )} />
                 <Route exact path="/admin/fii/:id/delete" render={(routeProps) => ( <FiiDelete {...routeProps} /> )} />
       
-                {/* <Route exact path='/admin/categories/new' component={CategoryForm} /> */}
                 <Route exact path="/admin/category/:id/edit" render={(routeProps) => ( <CategoryForm {...routeProps} /> )} />
-                <Route exact path="/admin/category/:id/delete" render={(routeProps) => ( <CategoryDelete {...routeProps} /> )} />
       
                 <Route exact path='/admin/portfolios/new' component={AdminPortfolioForm} />
                 <Route exact path="/admin/portfolio/:id/edit" render={(routeProps) => ( <AdminPortfolioForm {...routeProps} /> )} />

@@ -67,8 +67,9 @@ class CategoryForm extends Component {
           })
         } else {
           this.setState({
-            // reload categories
-            redirect: '/admin'
+            // close modal?
+            isOpen: false
+            
           })
         }
       })

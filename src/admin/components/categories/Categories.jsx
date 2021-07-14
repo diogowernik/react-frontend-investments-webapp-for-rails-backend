@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom"
 import { Alert, Modal, Button } from "react-bootstrap";
 import Datatable from '../../../globalcomponents/datatable/Datatable';
 import CategoryForm from './CategoryForm';
@@ -46,6 +45,13 @@ class Categories extends Component {
       })
   } 
 
+  removeCategory = (event, id) => {
+    event.preventDefault();
+    var index = this.state.categories.indexOf(id);
+    this.state.categories.splice(index, 1);
+    this.setState({categories: this.state.categories});
+    Api.deleteCategory(id)
+}
   render() {
     const { error, isLoaded, categories } = this.state
 
@@ -95,7 +101,12 @@ class Categories extends Component {
                     <td>{category.title}</td>
                     <td>{category.slug}</td>
                     <td>
-                      <Button className="btn btn-danger float-right" onClick={() =>Api.deleteCategory(category.id)}><FaTrashAlt /></Button>
+                      <Button 
+                      className="btn btn-danger float-right" 
+                      onClick={(event) =>
+                         this.removeCategory(event, category.id)
+                      }
+                      ><FaTrashAlt /></Button>
                       <Button
                         className="btn btn-success float-right mr-2 "
                         onClick={() =>this.openModal(category.id)}
