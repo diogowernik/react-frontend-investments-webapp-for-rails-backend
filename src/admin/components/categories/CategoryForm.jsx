@@ -8,7 +8,7 @@ class CategoryForm extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
+    this.state = { 
       category: {
         id: this.getCategoryId(props),
         title: '',

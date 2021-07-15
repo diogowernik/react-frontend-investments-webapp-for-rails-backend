@@ -46,6 +46,7 @@ class Categories extends Component {
   } 
 
   removeCategory = (event, id) => {
+    // Tá deletando errado na tabela, mas certo no banco de dados
     event.preventDefault();
     var index = this.state.categories.indexOf(id);
     this.state.categories.splice(index, 1);

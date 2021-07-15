@@ -1,9 +1,10 @@
 import React, { useState, Fragment } from "react";
-import Datatable from '../../../globalcomponents/datatable/Datatable';
+import Datatable from '../../../../globalcomponents/datatable/Datatable';
+import ReadOnlyRow from "./ReadOnlyRow";
+import EditableRow from "./EditableRow";
+
 import { nanoid } from "nanoid";
-import data from "./mock-data.json";
-import ReadOnlyRow from "./components/ReadOnlyRow";
-import EditableRow from "./components/EditableRow";
+import data from "../mock-data.json";
 
 const App = () => {
   const [categories, setCategories] = useState(data);

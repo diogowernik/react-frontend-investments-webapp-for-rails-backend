@@ -2,7 +2,7 @@ import React from "react";
 // import { Container } from 'reactstrap'
 import {Container, Tab, Row, Nav, Card, Col  } from 'react-bootstrap';
 import AdminNavBar from "./_AdminNav"
-import Categories from "../components/categories/Categories2"
+import Categories from "../components/categories/Categories4"
 import Fiis from "../components/fiis/Fiis"
 import Criptos from "../components/criptos/Criptos"
 import Portfolios from "../components/portfolios/Portfolios"
