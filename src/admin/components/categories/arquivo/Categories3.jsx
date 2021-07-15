@@ -75,13 +75,13 @@ const service = {
 };
 
 const styles = {
-  container: { margin: "auto", width: "fit-content" }
+  // container: { margin: "auto", width: "fit-content" }
 };
 
 const Example = () => (
   <div style={styles.container}>
     <CRUDTable
-      caption="Categories"
+      // caption="Categories"
       fetchItems={payload => service.fetchItems(payload)}
     >
       <Fields>

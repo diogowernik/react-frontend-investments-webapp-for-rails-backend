@@ -1,10 +1,10 @@
 import React, { useState, Fragment } from "react";
-import Datatable from '../../../../globalcomponents/datatable/Datatable';
+// import Datatable from '../../../../globalcomponents/datatable/Datatable';
 import ReadOnlyRow from "./ReadOnlyRow";
 import EditableRow from "./EditableRow";
 
 import { nanoid } from "nanoid";
-import data from "../mock-data.json";
+import data from "./mock-data.json";
 
 const App = () => {
   const [categories, setCategories] = useState(data);
@@ -108,7 +108,7 @@ const App = () => {
     <div className="app-container">
       <form onSubmit={handleEditFormSubmit}>
 
-      <Datatable>
+      {/* <Datatable> */}
 
         
       <table className="table table-striped my-4 w-100">
@@ -142,7 +142,7 @@ const App = () => {
         </table>
     
     
-        </Datatable>  
+        {/* </Datatable>   */}
       </form>
 
       <h4 className="mt-4 mb-4">Editar / Criar</h4>

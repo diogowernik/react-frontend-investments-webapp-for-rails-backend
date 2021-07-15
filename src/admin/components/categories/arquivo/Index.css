@@ -6,6 +6,10 @@
     height: 100%;
     text-align: center;
   }
+
+  .crud-table__row--sorter {
+    display: none;
+  }
   .crud-modal-wrapper__background {
     background-color: rgba(0, 0, 0, 0.8);
     position: fixed;
