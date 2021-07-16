@@ -1,6 +1,6 @@
 import React from 'react';
 import { Label, } from 'reactstrap'
-import { apiHost } from '../../config/apiHost.js';
+import { apiHost } from '../apiHost.js';
 
 class SelectCripto extends React.Component {
   constructor(props) {

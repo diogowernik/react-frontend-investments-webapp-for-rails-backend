@@ -1,5 +1,5 @@
 import React from 'react'
-import  MainLayout from '../../layouts/MainLayout';
+import  MainLayout from './MainLayout';
 
 function Smartfolio(props) {
   var id = props.match.params.id;

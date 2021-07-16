@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Alert, Modal, Button } from "react-bootstrap";
-import Datatable from '../../../globalcomponents/datatable/Datatable';
+import Datatable from '../../../config/datatable/Datatable';
 import CategoryForm from './CategoryForm';
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 

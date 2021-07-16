@@ -5,8 +5,8 @@ import LandingPage from '../LandingPage'
 // Admin 
 import AdminIndex from '../admin/AdminIndex'
 // App 
-import Index from '../app/components/index/Index'
-import Smartfolio from '../app/components/smartfolio/Smartfolio'
+import Index from '../app/AppIndex'
+import Smartfolio from '../app/layouts/Smartfolio'
 // import MainLayout from '../app/layouts/MainLayout'
 const Routes = (props) => { 
   return (

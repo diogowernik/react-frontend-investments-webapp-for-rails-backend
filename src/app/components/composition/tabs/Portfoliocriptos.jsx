@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Alert, Card, CardBody, CardHeader } from 'reactstrap'
-import Datatable from '../../../../globalcomponents/datatable/Datatable';
+import Datatable from '../../../../config/datatable/Datatable';
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 
 const Api = require('../../../api/PortfolioApi')

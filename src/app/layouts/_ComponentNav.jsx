@@ -1,7 +1,7 @@
 import React from 'react'
 import { Tab, Row, Nav, Card, Col  } from 'react-bootstrap';
-import Dashboard from '../dashboard/Dashboard'
-import Composition from '../composition/Compostion'
+import Dashboard from '../components/dashboard/Dashboard'
+import Composition from '../components/composition/Compostion'
 // import Dividends from '../dividends/Dividends';
 // import Location from '../location/Location';
 // import Radars from '../radar/Radars';

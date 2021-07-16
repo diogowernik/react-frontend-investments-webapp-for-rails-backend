@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Alert } from 'reactstrap'
 import { Link } from "react-router-dom"
-import Datatable from '../../../globalcomponents/datatable/Datatable';
+import Datatable from '../../../config/datatable/Datatable';
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
 
 const Api = require('../../api/YearsApi')
