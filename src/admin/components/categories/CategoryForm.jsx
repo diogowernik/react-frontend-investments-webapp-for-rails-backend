@@ -15,7 +15,8 @@ class CategoryForm extends Component {
         slug: '',
       },
       redirect: null,
-      errors: []
+      errors: [],
+      reload: false
     }
 
     this.setTitle = this.setTitle.bind(this)
@@ -23,6 +24,7 @@ class CategoryForm extends Component {
     
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
 
   getCategoryId(props) {
     try {
@@ -65,12 +67,12 @@ class CategoryForm extends Component {
           this.setState({
             errors: errors
           })
-        } else {
-          this.setState({
-            // close modal?
-            isOpen: false
-            
-          })
+        } else {  
+          this.setState(
+            () => this.setState({reload: true})
+          )
+        
+      
         }
       })
   }
