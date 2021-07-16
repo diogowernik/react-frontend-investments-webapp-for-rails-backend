@@ -45,12 +45,11 @@ class Categories extends Component {
       })
   } 
 
-  removeCategory = (event, id) => {
-    // Tá deletando errado na tabela, mas certo no banco de dados
-    event.preventDefault();
-    var index = this.state.categories.indexOf(id);
-    this.state.categories.splice(index, 1);
-    this.setState({categories: this.state.categories});
+  removeCategory = (id) => {
+    var categories = [...this.state.categories];
+    var index  = categories.findIndex(function(item, i){return item.id === id})
+    categories.splice(index, 1);
+    this.setState({categories});
     Api.deleteCategory(id)
 }
   render() {
@@ -105,7 +104,7 @@ class Categories extends Component {
                       <Button 
                       className="btn btn-danger float-right" 
                       onClick={(event) =>
-                         this.removeCategory(event, category.id)
+                         this.removeCategory(category.id)
                       }
                       ><FaTrashAlt /></Button>
                       <Button
