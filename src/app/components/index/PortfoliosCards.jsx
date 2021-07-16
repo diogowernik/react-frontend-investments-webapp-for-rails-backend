@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FaPencilAlt,FaTrashAlt  } from 'react-icons/fa';
-import { Row,Card,CardFooter, CardBody, Col} from 'reactstrap'
-
+import {  Link } from 'react-router-dom';
+import { Row,Card,CardFooter, CardBody, Col} from 'reactstrap';
 
 class PortfolioCards extends Component {
   constructor(props) {
@@ -24,11 +24,11 @@ class PortfolioCards extends Component {
               <div key={portfolio.id}>                 
                   <Card  color="gray" className="mb-3 mr-3">
                       <CardBody>
-                        <a href={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>{portfolio.title}</a>
+                        <Link to={`/smartfolio/${portfolio.slug}/${portfolio.id}`}>{portfolio.title}</Link>
                       </CardBody>
                       <CardFooter>
-                        <a className="btn btn-danger float-right" href={`/admin/portfolio/${portfolio.id}/delete`}><FaTrashAlt /></a>
-                        <a className="btn btn-success float-right mr-2" href={`/admin/portfolio/${portfolio.id}/edit`}><FaPencilAlt /></a>{' '}
+                        <Link className="btn btn-danger float-right" to={`/admin/portfolio/${portfolio.id}/delete`}><FaTrashAlt /></Link>
+                        <Link className="btn btn-success float-right mr-2" to={`/admin/portfolio/${portfolio.id}/edit`}><FaPencilAlt /></Link>{' '}
                       </CardFooter>
                   </Card>           
               </div>
