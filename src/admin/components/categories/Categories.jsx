@@ -52,6 +52,12 @@ class Categories extends Component {
     this.setState({categories});
     Api.deleteCategory(id)
 }
+
+addCategory = (id) => {
+  
+}
+
+
   render() {
     const { error, isLoaded, categories } = this.state
 
@@ -109,7 +115,7 @@ class Categories extends Component {
                       ><FaTrashAlt /></Button>
                       <Button
                         className="btn btn-success float-right mr-2 "
-                        onClick={() =>this.openModal(category.id)}
+                        closeModal={this.closeModal}
                       >
                         <FaPencilAlt />
                       </Button>
@@ -125,8 +131,10 @@ class Categories extends Component {
                 <Modal.Title>Adicionar / Editar</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                {/* <CategoryForm /> */}
-                <CategoryForm id={this.state.id || null}/>
+                <CategoryForm 
+                id={this.state.id || null}
+                // closeModal={this.closeModal}
+                />
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={this.closeModal}>

@@ -34,6 +34,10 @@ class CategoryForm extends Component {
     }
   }
 
+  closeModal(props){
+    props.closeModal()
+  }
+
   setTitle(event) {
     let newVal = event.target.value || ''
     this.setFieldState('title', newVal)
@@ -69,12 +73,13 @@ class CategoryForm extends Component {
           })
         } else {  
           this.setState(
-            () => this.setState({reload: true})
+            
           )
         
       
         }
       })
+      
   }
 
   componentDidMount() {
@@ -93,6 +98,8 @@ class CategoryForm extends Component {
             }
         });
       }
+     
+      
     }
 
   render() {
@@ -118,7 +125,10 @@ class CategoryForm extends Component {
                 </div>
               }
 
-              <Form onSubmit={this.handleSubmit}>
+              <Form 
+              onSubmit={this.handleSubmit}
+              // onSubmit={e => { this.handleSubmit(e); this.closeModal() }}
+              >
                 <FormGroup>
                   <Label for="title">Title</Label>
                   <Input type="text" name="title" id="title" value={category.title} placeholder="Enter title" onChange={this.setTitle} />
