@@ -86,7 +86,7 @@ class Categories extends Component {
         <>            
             <Button className="float-right" 
             variant="primary" 
-            onClick={e => this.openModal({modalType: 'create'})}
+            onClick={e => this.openModal()}
             >
               Adicionar
             </Button>
