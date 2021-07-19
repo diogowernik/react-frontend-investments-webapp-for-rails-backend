@@ -58,7 +58,7 @@ class Categories extends Component {
     this.setState(prevState => ({
       categories: [...prevState.categories, {id, slug, title }]
     }));
-    // this.closeModal()
+    this.closeModal()
   }
 
 
@@ -119,6 +119,7 @@ class Categories extends Component {
                       ><FaTrashAlt /></Button>
                       <Button
                         className="btn btn-success float-right mr-2 "
+                        onClick={() =>this.openModal(category.id)}
                       >
                         <FaPencilAlt />
                       </Button>
