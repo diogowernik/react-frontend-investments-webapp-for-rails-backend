@@ -16,6 +16,7 @@ class Categories extends Component {
       isOpen: false,
       id: null
       }
+      this.addCategory = this.addCategory.bind(this);
   }
 
   openModal = (id) => {
@@ -53,13 +54,15 @@ class Categories extends Component {
     Api.deleteCategory(id)
 }
 
-addCategory = (id) => {
-  
+addCategory(id, slug, title) {
+  this.setState(prevState => ({
+    categories: [...prevState.categories, {id, slug, title }]
+  }));
 }
 
 
   render() {
-    const { error, isLoaded, categories } = this.state
+    const { error, isLoaded } = this.state
 
     if (error) {
 
@@ -101,7 +104,7 @@ addCategory = (id) => {
                 </tr>
               </thead>
               <tbody>
-                {categories.map(category => (
+              {this.state.categories.map(category => (
                   <tr key={category.id}>
                     <td>{category.id}</td>
                     <td>{category.title}</td>
@@ -133,7 +136,7 @@ addCategory = (id) => {
               <Modal.Body>
                 <CategoryForm 
                 id={this.state.id || null}
-                // closeModal={this.closeModal}
+                addCategory={this.addCategory}
                 />
               </Modal.Body>
               <Modal.Footer>

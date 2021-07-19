@@ -16,7 +16,7 @@ class CategoryForm extends Component {
       },
       redirect: null,
       errors: [],
-      reload: false
+      closeModal: props.closeModal
     }
 
     this.setTitle = this.setTitle.bind(this)
@@ -32,10 +32,6 @@ class CategoryForm extends Component {
     } catch (error) {
       return null
     }
-  }
-
-  closeModal(props){
-    props.closeModal()
   }
 
   setTitle(event) {
@@ -73,12 +69,14 @@ class CategoryForm extends Component {
           })
         } else {  
           this.setState(
-            
-          )
-        
-      
+          ) 
         }
       })
+    const form = event.target;
+    const title = form.elements["title"].value;
+    const slug = form.elements["slug"].value;
+    this.props.addCategory(slug, title);
+    form.reset();
       
   }
 
@@ -125,10 +123,7 @@ class CategoryForm extends Component {
                 </div>
               }
 
-              <Form 
-              onSubmit={this.handleSubmit}
-              // onSubmit={e => { this.handleSubmit(e); this.closeModal() }}
-              >
+              <Form onSubmit={this.handleSubmit} >
                 <FormGroup>
                   <Label for="title">Title</Label>
                   <Input type="text" name="title" id="title" value={category.title} placeholder="Enter title" onChange={this.setTitle} />
