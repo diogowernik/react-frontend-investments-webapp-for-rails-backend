@@ -74,30 +74,32 @@ class CategoryForm extends Component {
     const form = event.target;
     const title = form.elements["title"].value;
     const slug = form.elements["slug"].value;
-    this.props.addCategory(slug, title);
+    this.props.addCategory( slug, title);
     form.reset();
       
   }
 
   componentDidMount() {
-      if (this.props.id ) {
-        Api.getCategory(this.props.id).then((response) => {
-            const [error, data] = response;
-            if (error) {
-                this.setState({
-                    errors: data
+    // Check if props.id is available 
+        if ( this.state.category.id || this.props.id ) {
+              const id = this.state.category.id || this.props.id;
+                Api.getCategory(id).then((response) => {
+                    const [error, data] = response;
+                    if (error) {
+                        this.setState({
+                            errors: data
+                        });
+                    } else {    
+                        this.setState({
+                            category: data,
+                            errors: []
+                        });
+                    }
                 });
-            } else {    
-                this.setState({
-                    category: data,
-                    errors: []
-                });
-            }
-        });
-      }
-     
-      
+        }
     }
+
+  
 
   render() {
     const { redirect, category, errors } = this.state

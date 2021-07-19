@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom"
 import { Alert, Modal, Button } from "react-bootstrap";
 import Datatable from '../../../config/datatable/Datatable';
 import CategoryForm from './CategoryForm';
@@ -16,7 +17,6 @@ class Categories extends Component {
       isOpen: false,
       id: null
       }
-      this.addCategory = this.addCategory.bind(this);
   }
 
   openModal = (id) => {
@@ -46,24 +46,8 @@ class Categories extends Component {
       })
   } 
 
-  removeCategory = (id) => {
-    var categories = [...this.state.categories];
-    var index  = categories.findIndex(function(item, i){return item.id === id})
-    categories.splice(index, 1);
-    this.setState({categories});
-    Api.deleteCategory(id)
-  }
-
-  addCategory(id, slug, title) {
-    this.setState(prevState => ({
-      categories: [...prevState.categories, {id, slug, title }]
-    }));
-    this.closeModal()
-  }
-
-
   render() {
-    const { error, isLoaded } = this.state
+    const { error, isLoaded, categories } = this.state
 
     if (error) {
 
@@ -85,10 +69,9 @@ class Categories extends Component {
 
       return (
         <>            
-            <Button 
-            className="float-right" 
-            variant="primary" 
-            onClick={e => this.openModal()}
+            <Button className="float-right" variant="primary" 
+            // onClick={this.openModal}
+            onClick={e => this.openModal({modalType: 'create'})}
             >
               Adicionar
             </Button>
@@ -105,24 +88,28 @@ class Categories extends Component {
                 </tr>
               </thead>
               <tbody>
-              {this.state.categories.map(category => (
+                {categories.map(category => (
                   <tr key={category.id}>
                     <td>{category.id}</td>
                     <td>{category.title}</td>
                     <td>{category.slug}</td>
                     <td>
-                      <Button 
-                      className="btn btn-danger float-right" 
-                      onClick={(event) =>
-                         this.removeCategory(category.id)
-                      }
-                      ><FaTrashAlt /></Button>
-                      <Button
-                        className="btn btn-success float-right mr-2 "
-                        onClick={() =>this.openModal(category.id)}
-                      >
-                        <FaPencilAlt />
-                      </Button>
+                      <Link className="btn btn-danger float-right" to={`/admin/category/${category.id}/delete`}><FaTrashAlt /></Link>
+                      <Link className="btn btn-success float-right mr-2" to={`/admin/category/${category.id}/edit`}><FaPencilAlt /></Link>{' '}
+
+                      {/* <Button className="float-right mr-2" variant="primary" onClick={this.openModal}>
+                        Modal Edit
+                      </Button> */}
+
+                              <Button
+                                className="float-right mr-2"
+                                variant="primary"
+                                onClick={() =>this.openModal(category.id)}
+                              >
+                                Modal Edit
+                              </Button>
+
+
                     </td>
                   </tr>
                 ))}
@@ -135,10 +122,8 @@ class Categories extends Component {
                 <Modal.Title>Adicionar / Editar</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <CategoryForm 
-                id={this.id || null}
-                addCategory={this.addCategory}
-                />
+                {/* <CategoryForm /> */}
+                <CategoryForm id={this.state.id || null} />
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={this.closeModal}>
