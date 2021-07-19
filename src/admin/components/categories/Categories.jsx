@@ -61,9 +61,8 @@ class Categories extends Component {
     this.closeModal()
   }
 
-
   render() {
-    const { error, isLoaded } = this.state
+    const { error, isLoaded, categories } = this.state
 
     if (error) {
 
@@ -85,10 +84,9 @@ class Categories extends Component {
 
       return (
         <>            
-            <Button 
-            className="float-right" 
+            <Button className="float-right" 
             variant="primary" 
-            onClick={e => this.openModal()}
+            onClick={e => this.openModal({modalType: 'create'})}
             >
               Adicionar
             </Button>
@@ -105,24 +103,27 @@ class Categories extends Component {
                 </tr>
               </thead>
               <tbody>
-              {this.state.categories.map(category => (
+                {categories.map(category => (
                   <tr key={category.id}>
                     <td>{category.id}</td>
                     <td>{category.title}</td>
                     <td>{category.slug}</td>
                     <td>
-                      <Button 
+                    <Button 
                       className="btn btn-danger float-right" 
                       onClick={(event) =>
                          this.removeCategory(category.id)
                       }
                       ><FaTrashAlt /></Button>
-                      <Button
-                        className="btn btn-success float-right mr-2 "
-                        onClick={() =>this.openModal(category.id)}
-                      >
-                        <FaPencilAlt />
-                      </Button>
+
+                    <Button
+                    className="float-right mr-2"
+                    onClick={() =>this.openModal(category.id)}
+                    >
+                    <FaPencilAlt />
+                    </Button>
+
+
                     </td>
                   </tr>
                 ))}
@@ -136,7 +137,7 @@ class Categories extends Component {
               </Modal.Header>
               <Modal.Body>
                 <CategoryForm 
-                id={this.id || null}
+                id={this.state.id || null} 
                 addCategory={this.addCategory}
                 />
               </Modal.Body>
