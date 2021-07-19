@@ -16,7 +16,6 @@ class CategoryForm extends Component {
       },
       redirect: null,
       errors: [],
-      closeModal: props.closeModal
     }
 
     this.setTitle = this.setTitle.bind(this)

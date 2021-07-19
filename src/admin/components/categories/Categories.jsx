@@ -52,13 +52,14 @@ class Categories extends Component {
     categories.splice(index, 1);
     this.setState({categories});
     Api.deleteCategory(id)
-}
+  }
 
-addCategory(id, slug, title) {
-  this.setState(prevState => ({
-    categories: [...prevState.categories, {id, slug, title }]
-  }));
-}
+  addCategory(id, slug, title) {
+    this.setState(prevState => ({
+      categories: [...prevState.categories, {id, slug, title }]
+    }));
+    // this.closeModal()
+  }
 
 
   render() {
@@ -118,7 +119,6 @@ addCategory(id, slug, title) {
                       ><FaTrashAlt /></Button>
                       <Button
                         className="btn btn-success float-right mr-2 "
-                        closeModal={this.closeModal}
                       >
                         <FaPencilAlt />
                       </Button>
@@ -135,7 +135,7 @@ addCategory(id, slug, title) {
               </Modal.Header>
               <Modal.Body>
                 <CategoryForm 
-                id={this.state.id || null}
+                id={this.id || null}
                 addCategory={this.addCategory}
                 />
               </Modal.Body>
