@@ -78,9 +78,9 @@ class Categories extends Component {
     Api.deleteCategory(id)
   }
 
-  addCategory(id, slug, title, ticker, price) {
+  addCategory(id, slug, title) {
     this.setState(prevState => ({
-      categories: [{id, slug, title, ticker, price }, ...prevState.categories]
+      categories: [{id, slug, title }, ...prevState.categories]
     }));
     this.closeModal()
   }
