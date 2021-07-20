@@ -22,6 +22,7 @@ class Portfoliocriptos extends Component {
         'info': false, // Bottom left status text
         responsive: true,
         "dom": '<"float-left"f><"clear">',
+        "order": [[ 3, "desc" ]],
         // Text translation options
         // Note the required keywords between underscores (e.g _MENU_)
         oLanguage: {

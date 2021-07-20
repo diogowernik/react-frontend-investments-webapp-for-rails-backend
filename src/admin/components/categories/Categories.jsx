@@ -14,7 +14,9 @@ class Categories extends Component {
       isLoaded: false,
       error: null,
       isOpen: false,
-      id: null
+      id: null,
+
+
       }
       this.addCategory = this.addCategory.bind(this);
   }
@@ -56,7 +58,7 @@ class Categories extends Component {
 
   addCategory(id, slug, title) {
     this.setState(prevState => ({
-      categories: [...prevState.categories, {id, slug, title }]
+      categories: [{id, slug, title }, ...prevState.categories]
     }));
     this.closeModal()
   }
@@ -92,7 +94,7 @@ class Categories extends Component {
             </Button>
             
             <h4 className="mt-4 mb-4">Categorias de investimentos</h4>
-            <Datatable>
+            <Datatable options={this.state.dtOptions1}>
               <table className="table table-striped my-4 w-100">
               <thead>
                 <tr>
