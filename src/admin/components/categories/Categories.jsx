@@ -37,7 +37,7 @@ class Categories extends Component {
                 sPrevious: '<em class="fa fa-caret-left"></em>'
             }
         }
-    },
+      },
 
       }
       this.addCategory = this.addCategory.bind(this);
@@ -78,9 +78,9 @@ class Categories extends Component {
     Api.deleteCategory(id)
   }
 
-  addCategory(id, slug, title) {
+  addCategory(id, slug, title, ticker, price) {
     this.setState(prevState => ({
-      categories: [{id, slug, title }, ...prevState.categories]
+      categories: [{id, slug, title, ticker, price }, ...prevState.categories]
     }));
     this.closeModal()
   }

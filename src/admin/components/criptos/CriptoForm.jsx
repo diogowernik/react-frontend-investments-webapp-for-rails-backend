@@ -31,7 +31,7 @@ class CriptoForm extends Component {
 
   getCriptoId(props) {
     try {
-      return props.match.params.id
+      return props.id
     } catch (error) {
       return null
     }
@@ -84,30 +84,38 @@ class CriptoForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/admin/criptos'
           })
         }
       })
+      const form = event.target;
+      const id = "∞"
+      const title = form.elements["title"].value;
+      const slug = form.elements["slug"].value;
+      const ticker = form.elements["ticker"].value;
+      const price = form.elements["price"].value;
+      this.props.addCripto( id, slug, title, ticker, price);
+      form.reset();
   }
 
   componentDidMount() {
-    if (this.state.cripto.id) {
-      Api.getCripto(this.state.cripto.id)
-        .then(response => {
-          const [error, data] = response
-          if (error) {
-            this.setState({
-              errors: data
-            })
-          } else {
-            this.setState({
-              cripto: data,
-              errors: []
-            })
-          }
-        })
+    // Check if props.id is available 
+        if ( this.state.cripto.id || this.props.id ) {
+              const id = this.state.cripto.id || this.props.id;
+                Api.getCripto(id).then((response) => {
+                    const [error, data] = response;
+                    if (error) {
+                        this.setState({
+                            errors: data
+                        });
+                    } else {    
+                        this.setState({
+                            cripto: data,
+                            errors: []
+                        });
+                    }
+                });
+        }
     }
-  }
 
   render() {
     const { redirect, cripto, errors } = this.state
