@@ -72,7 +72,7 @@ class CategoryForm extends Component {
         }
       })
     const form = event.target;
-    const id = ":)"
+    const id = "∞"
     const title = form.elements["title"].value;
     const slug = form.elements["slug"].value;
     this.props.addCategory( id, slug, title);

@@ -16,6 +16,28 @@ class Categories extends Component {
       isOpen: false,
       id: null,
 
+      dtOptions1: {
+        'paging': false, // Table pagination
+        'ordering': true, // Column ordering
+        'info': false, // Bottom left status text
+        responsive: true,
+        "dom": '<"float-left"f><"clear">',
+        "order": [[ 3, "desc" ]],
+        // Text translation options
+        // Note the required keywords between underscores (e.g _MENU_)
+        oLanguage: {
+            sSearch: '<em class="fa fa-search"></em>',
+            sLengthMenu: '_MENU_ records per page',
+            info: 'Showing page _PAGE_ of _PAGES_',
+            zeroRecords: 'Nothing found - sorry',
+            infoEmpty: 'No records available',
+            infoFiltered: '(filtered from _MAX_ total records)',
+            oPaginate: {
+                sNext: '<em class="fa fa-caret-right"></em>',
+                sPrevious: '<em class="fa fa-caret-left"></em>'
+            }
+        }
+    },
 
       }
       this.addCategory = this.addCategory.bind(this);
