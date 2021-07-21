@@ -31,7 +31,7 @@ class FiiForm extends Component {
 
   getFiiId(props) {
     try {
-      return props.match.params.id
+      return props.id
     } catch (error) {
       return null
     }
@@ -84,30 +84,38 @@ class FiiForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/admin/fiis'
           })
         }
       })
+      const form = event.target;
+      const id = "∞"
+      const title = form.elements["title"].value;
+      const slug = form.elements["slug"].value;
+      const ticker = form.elements["ticker"].value;
+      const price = form.elements["price"].value;
+      this.props.addFii( id, slug, title, ticker, price);
+      form.reset();
   }
 
   componentDidMount() {
-    if (this.state.fii.id) {
-      Api.getFii(this.state.fii.id)
-        .then(response => {
-          const [error, data] = response
-          if (error) {
-            this.setState({
-              errors: data
-            })
-          } else {
-            this.setState({
-              fii: data,
-              errors: []
-            })
-          }
-        })
+    // Check if props.id is available 
+        if ( this.state.fii.id || this.props.id ) {
+              const id = this.state.fii.id || this.props.id;
+                Api.getFii(id).then((response) => {
+                    const [error, data] = response;
+                    if (error) {
+                        this.setState({
+                            errors: data
+                        });
+                    } else {    
+                        this.setState({
+                            fii: data,
+                            errors: []
+                        });
+                    }
+                });
+        }
     }
-  }
 
   render() {
     const { redirect, fii, errors } = this.state
@@ -122,7 +130,7 @@ class FiiForm extends Component {
         <>
           <Row>
             <Col>
-              <h3>Editar / Adicionar</h3>
+              <h3>Adicionar / Editar</h3>
 
               {errors.length > 0 &&
                 <div>

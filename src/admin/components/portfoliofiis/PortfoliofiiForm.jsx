@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Row, Col, Alert, Form, Label, Input } from 'reactstrap'
-import SelectPortfolio from '../../../globalcomponents/selects/SelectPortfolio'
-import SelectCategory from '../../../globalcomponents/selects/SelectCategory'
-import SelectFii from '../../../globalcomponents/selects/SelectFii'
+import SelectPortfolio from '../../../config/selects/SelectPortfolio'
+import SelectCategory from '../../../config/selects/SelectCategory'
+import SelectCripto from '../../../config/selects/SelectCripto'
 
 
 const Api = require('../../api/PortfoliofiisApi')
+
 
 class PortfoliofiiForm extends Component {
   constructor(props) {
@@ -22,9 +23,9 @@ class PortfoliofiiForm extends Component {
         portfolio_id: '',
         amount: '',
         cost: '',
+        fii_id: '',
         total_cost: '',
         total_today: '',
-        fii_id: '',
       },
       redirect: null,
       errors: []
@@ -33,10 +34,10 @@ class PortfoliofiiForm extends Component {
     this.setCategory_id = this.setCategory_id.bind(this)
     this.setPortfolio_id = this.setPortfolio_id.bind(this)
     this.setAmount = this.setAmount.bind(this)
+    this.setCost = this.setCost.bind(this)
+    this.setCripto_id = this.setCripto_id.bind(this)
     this.setTotal_today = this.setTotal_today.bind(this)
     this.setTotal_cost = this.setTotal_cost.bind(this)
-    this.setCost = this.setCost.bind(this)
-    this.setFii_id = this.setFii_id.bind(this)
 
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -60,7 +61,7 @@ class PortfoliofiiForm extends Component {
     this.setFieldState('portfolio_id', newVal)
   }
 
-  setFii_id(event) {
+  setCripto_id(event) {
     let newVal = event.target.value || ''
     this.setFieldState('fii_id', newVal)
   }
@@ -115,10 +116,17 @@ class PortfoliofiiForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/admin/portfoliofiis'
           })
         }
       })
+      const form = event.target;
+      const id = "∞"
+      const amount = form.elements["amount"].value;
+      const cost = form.elements["cost"].value;
+      const total_today = form.elements["total_today"].value;
+      const total_cost = form.elements["total_cost"].value;
+      this.props.addPortfoliofii( id, amount, cost, total_cost, total_today);
+      form.reset();
   }
 
   componentDidMount() {
@@ -151,8 +159,7 @@ class PortfoliofiiForm extends Component {
 
       return (
         <>
-            <h3 className="mt-4 mb-4">Editar / Adicionar Fundo Impobiliário a um Portfolio</h3>
-
+              <h3 className="mt-4 mb-4">Editar / Adicionar Criptomoeda a uma Carteira</h3>
               {errors.length > 0 &&
                 <div>
                   {errors.map((error, index) =>
@@ -163,7 +170,7 @@ class PortfoliofiiForm extends Component {
                 </div>
               }
               <Form onSubmit={this.handleSubmit}>
-              <Row>
+                <Row>
                   <Col md={ 4 }>
                     <SelectCategory 
                       category_options={category_options} 
@@ -179,30 +186,30 @@ class PortfoliofiiForm extends Component {
                     />
                   </Col>
                   <Col md={ 4 }>
-                  <SelectFii 
+                  <SelectCripto 
                       portfolio_options={fii_options} 
                       asset={portfoliofii} 
-                      onChange={this.setFii_id}
+                      onChange={this.setCripto_id}
                     />
                   </Col>
                 </Row>
                 <Row>
-                <Col md={ 3 }>
-                  <Label for="amount">Amount</Label>
-                  <Input type="text" name="amount" id="amount" value={portfoliofii.amount} placeholder="Enter amount" onChange={this.setAmount} />
-                </Col>
-                <Col md={ 3 }>
-                  <Label for="cost">Cost</Label>
-                  <Input type="text" name="cost" id="cost" value={portfoliofii.cost} placeholder="Enter cost" onChange={this.setCost} />
-                </Col>
-                <Col md={ 3 }>
-                  <Label for="total_cost">Total cost</Label>
-                  <Input type="text" name="total_cost" id="total_cost" value={portfoliofii.total_cost} placeholder="Enter total_cost" onChange={this.setTotal_cost} />
-                </Col>
-                <Col md={ 3 }>
-                  <Label for="total_today">Total hoje</Label>
-                  <Input type="text" name="total_today" id="total_today" value={portfoliofii.total_today} placeholder="Enter total_today" onChange={this.setTotal_today} />
-                </Col>
+                  <Col md={ 3 } >
+                    <Label for="amount">Amount</Label>
+                    <Input type="text" name="amount" id="amount" value={portfoliofii.amount} placeholder="Enter amount" onChange={this.setAmount} />
+                  </Col>
+                  <Col md={ 3 }>
+                    <Label for="cost">Cost</Label>
+                    <Input type="text" name="cost" id="cost" value={portfoliofii.cost} placeholder="Enter cost" onChange={this.setCost} />
+                    </Col>
+                  <Col md={ 3 }>
+                    <Label for="total_cost">Total cost</Label>
+                    <Input type="text" name="total_cost" id="total_cost" value={portfoliofii.total_cost} placeholder="Enter total_cost" onChange={this.setTotal_cost} />
+                    </Col>
+                  <Col md={ 3 }>
+                    <Label for="total_today">Total hoje</Label>
+                    <Input type="text" name="total_today" id="total_today" value={portfoliofii.total_today} placeholder="Enter total_today" onChange={this.setTotal_today} />
+                  </Col>
                 </Row>
                 <button className="btn btn-success mt-4">Submit</button>
               </Form>

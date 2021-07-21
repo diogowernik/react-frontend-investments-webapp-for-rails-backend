@@ -2,31 +2,32 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Row, Col, Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
-const Api = require('../../api/PortfoliosApi')
+const Api = require('../../api/PortfoliosApi.js')
 
-class AdminPortfolioForm extends Component {
+class PortfolioForm extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
+    this.state = { 
       portfolio: {
         id: this.getPortfolioId(props),
         title: '',
         slug: '',
       },
       redirect: null,
-      errors: []
+      errors: [],
     }
 
     this.setTitle = this.setTitle.bind(this)
     this.setSlug = this.setSlug.bind(this)
-
+    
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+
   getPortfolioId(props) {
     try {
-      return props.match.params.id
+      return props.id
     } catch (error) {
       return null
     }
@@ -42,8 +43,6 @@ class AdminPortfolioForm extends Component {
     this.setFieldState('slug', newVal)
   }
 
-
-
   setFieldState(field, newVal) {
     this.setState((prevState) => {
       let newState = prevState
@@ -58,7 +57,6 @@ class AdminPortfolioForm extends Component {
     let portfolio = {
       title: this.state.portfolio.title,
       slug: this.state.portfolio.slug,
-
     }
 
     Api.savePortfolio(portfolio, this.state.portfolio.id)
@@ -68,32 +66,41 @@ class AdminPortfolioForm extends Component {
           this.setState({
             errors: errors
           })
-        } else {
-          this.setState({
-            redirect: '/admin/portfolios'
-          })
+        } else {  
+          this.setState(
+          ) 
         }
       })
+    const form = event.target;
+    const id = "∞"
+    const title = form.elements["title"].value;
+    const slug = form.elements["slug"].value;
+    this.props.addPortfolio( id, slug, title);
+    form.reset();
+      
   }
 
   componentDidMount() {
-    if (this.state.portfolio.id) {
-      Api.getPortfolio(this.state.portfolio.id)
-        .then(response => {
-          const [error, data] = response
-          if (error) {
-            this.setState({
-              errors: data
-            })
-          } else {
-            this.setState({
-              portfolio: data,
-              errors: []
-            })
-          }
-        })
+    // Check if props.id is available 
+        if ( this.state.portfolio.id || this.props.id ) {
+              const id = this.state.portfolio.id || this.props.id;
+                Api.getPortfolio(id).then((response) => {
+                    const [error, data] = response;
+                    if (error) {
+                        this.setState({
+                            errors: data
+                        });
+                    } else {    
+                        this.setState({
+                            portfolio: data,
+                            errors: []
+                        });
+                    }
+                });
+        }
     }
-  }
+
+  
 
   render() {
     const { redirect, portfolio, errors } = this.state
@@ -108,8 +115,6 @@ class AdminPortfolioForm extends Component {
         <>
           <Row>
             <Col>
-              <h3>Edit Portfolio</h3>
-
               {errors.length > 0 &&
                 <div>
                   {errors.map((error, index) =>
@@ -120,7 +125,7 @@ class AdminPortfolioForm extends Component {
                 </div>
               }
 
-              <Form onSubmit={this.handleSubmit}>
+              <Form onSubmit={this.handleSubmit} >
                 <FormGroup>
                   <Label for="title">Title</Label>
                   <Input type="text" name="title" id="title" value={portfolio.title} placeholder="Enter title" onChange={this.setTitle} />
@@ -139,4 +144,4 @@ class AdminPortfolioForm extends Component {
   }
 }
 
-export default AdminPortfolioForm
+export default PortfolioForm

@@ -11,7 +11,7 @@ class Categories extends Component {
     super(props) 
     this.state = {
       categories: [],
-      isLoaded: false,
+      isLoaded: false, 
       error: null,
       isOpen: false,
       id: null,

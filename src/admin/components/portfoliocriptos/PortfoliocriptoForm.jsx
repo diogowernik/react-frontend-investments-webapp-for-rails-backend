@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Row, Col, Alert, Form, Label, Input } from 'reactstrap'
-import SelectPortfolio from '../../../globalcomponents/selects/SelectPortfolio'
-import SelectCategory from '../../../globalcomponents/selects/SelectCategory'
-import SelectCripto from '../../../globalcomponents/selects/SelectCripto'
+import SelectPortfolio from '../../../config/selects/SelectPortfolio'
+import SelectCategory from '../../../config/selects/SelectCategory'
+import SelectCripto from '../../../config/selects/SelectCripto'
 
 
 const Api = require('../../api/PortfoliocriptosApi')
@@ -116,10 +116,17 @@ class PortfoliocriptoForm extends Component {
           })
         } else {
           this.setState({
-            redirect: '/admin/portfoliocriptos'
           })
         }
       })
+      const form = event.target;
+      const id = "∞"
+      const amount = form.elements["amount"].value;
+      const cost = form.elements["cost"].value;
+      const total_today = form.elements["total_today"].value;
+      const total_cost = form.elements["total_cost"].value;
+      this.props.addPortfoliocripto( id, amount, cost, total_cost, total_today);
+      form.reset();
   }
 
   componentDidMount() {
