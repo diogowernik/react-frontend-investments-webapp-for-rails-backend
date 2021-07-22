@@ -87,7 +87,7 @@ class Portfoliocriptos extends Component {
   }
 
   render() {
-    const { error, isLoaded, portfoliocriptos } = this.state
+    const { error, isLoaded, portfoliocriptos, portfolio } = this.state
 
     if (error) {
 
@@ -166,7 +166,7 @@ class Portfoliocriptos extends Component {
               </Modal.Header>
               <Modal.Body>
                 <PortfoliocriptoForm 
-                portfolio={this.portfolio}
+                asset={portfolio}
                 id={this.state.id || null} 
                 addPortfoliocripto={this.addPortfoliocripto}
                 />

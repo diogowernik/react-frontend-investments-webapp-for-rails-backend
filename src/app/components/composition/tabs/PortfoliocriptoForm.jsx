@@ -19,8 +19,8 @@ class PortfoliocriptoForm extends Component {
       category_options:[],
       portfoliocripto: {
         id: this.getPortfoliocriptoId(props),
-        category_id: '',
-        portfolio_id: '',
+        category_id: 2,
+        portfolio_id: this.props.asset.id,
         amount: '',
         cost: '',
         cripto_id: '',
@@ -171,21 +171,21 @@ class PortfoliocriptoForm extends Component {
               }
               <Form onSubmit={this.handleSubmit}>
                 <Row>
-                  <Col md={ 4 }>
+                  <Col className="d-none" md={ 4 }>
                     <SelectCategory 
                       category_options={category_options} 
                       asset={portfoliocripto}
                       onChange={this.setCategory_id}
                     />
                   </Col>
-                  <Col md={ 4 }>
+                  <Col className="d-none" md={ 4 }>
                     <SelectPortfolio 
                       portfolio_options={portfolio_options} 
                       asset={portfoliocripto} 
                       onChange={this.setPortfolio_id}
                     />
                   </Col>
-                  <Col md={ 4 }>
+                  <Col md={ 12 }>
                   <SelectCripto 
                       portfolio_options={cripto_options} 
                       asset={portfoliocripto} 

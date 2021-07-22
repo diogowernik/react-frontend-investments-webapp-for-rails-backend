@@ -6,7 +6,6 @@ class SelectCategory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        // asset: this.props.asset,
         category_options:[]
     };
     this.handleChange = props.onChange;
