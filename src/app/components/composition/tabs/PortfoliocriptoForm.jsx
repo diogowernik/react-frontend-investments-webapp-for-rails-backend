@@ -172,8 +172,6 @@ class PortfoliocriptoForm extends Component {
               <Form onSubmit={this.handleSubmit}>
                 <Row>
                   <Col md={ 4 }>
-                  {/* <Input type="text" name="category" id="category" defaultValue={2} placeholder="Enter category" onChange={this.setCategory} /> */}
-
                     <SelectCategory 
                       category_options={category_options} 
                       asset={portfoliocripto}
@@ -181,7 +179,6 @@ class PortfoliocriptoForm extends Component {
                     />
                   </Col>
                   <Col md={ 4 }>
-                    {/* <Input type="text" name="portfolio" id="portfolio" defaultValue={1} placeholder="Enter portfolio" onChange={this.setPortfolio} /> */}
                     <SelectPortfolio 
                       portfolio_options={portfolio_options} 
                       asset={portfoliocripto} 
