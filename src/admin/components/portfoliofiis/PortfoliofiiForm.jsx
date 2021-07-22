@@ -45,7 +45,7 @@ class PortfoliofiiForm extends Component {
 
   getPortfoliofiiId(props) {
     try {
-      return props.match.params.id
+      return props.id
     } catch (error) {
       return null
     }

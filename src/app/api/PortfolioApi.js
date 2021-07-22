@@ -167,21 +167,83 @@ const getPortfoliofiis = (id) => {
     })
 }
 
-const getTreemap = (id) => {
-  return fetch(`${apiHost}/api/portfolios/${id}`)
-  .then(response => response.json())
-  .then(
-    (response) => {
-      const newSeries = [];
-      var chart = response.treechart;
-      newSeries.push({chart});
+const deletePortfoliocripto = (id) => {
+  let response_ok = null
+  return fetch(`${apiHost}/api/portfoliocriptos/${id}`, {
+    method: 'delete',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => {
+    response_ok = response.ok
+    if (response.status === 204) {
+      return ''
+    } else {
+      return response.json()
+    }
+  })
+  .then(response => {
+    if (response_ok) {
+      return [false, response]
+    } else {
+      return [true, collectErrors(response)]
+    }
+  })
+}
+const getPortfoliocripto = (id) => {
+  let response_ok = null
+  return fetch(`${apiHost}/api/portfoliocriptos/${id}`, {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => {
+    response_ok = response.ok
+    return response.json()
+  })
+  .then(response => {
+    if (response_ok) {
+      return [false, response]
+    } else {
+      return [true, collectErrors(response)]
+    }
+  })
+}
 
-      this.setState({
-        series: chart,
-      });
-    });
+const savePortfoliocripto = (data, id=null) => {
+  let apiUrl = `${apiHost}/api/portfoliocriptos`
+  let apiMethod = 'post'
+  if (id) {
+    apiUrl = `${apiUrl}/${id}`
+    apiMethod = 'put'
+  }
 
+  const body = JSON.stringify({
+    portfoliocripto: data
+  })
 
+  let response_ok = null
+  return fetch(apiUrl, {
+    method: apiMethod,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: body
+  })
+  .then(response => {
+    response_ok = response.ok
+    return response.json()
+  })
+  .then(response => {
+    if (response_ok) {
+      return [false, null]
+    } else {
+      return [true, collectErrors(response)]
+    }
+  })
 }
 
 export {
@@ -191,5 +253,7 @@ export {
   getPortfolios,
   getPortfoliocriptos,
   getPortfoliofiis,
-  getTreemap
+  deletePortfoliocripto,
+  getPortfoliocripto,
+  savePortfoliocripto
 }

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Row, Col, Alert, Form, Label, Input } from 'reactstrap'
-import SelectPortfolio from '../../../config/selects/SelectPortfolio'
-import SelectCategory from '../../../config/selects/SelectCategory'
-import SelectCripto from '../../../config/selects/SelectCripto'
+import SelectPortfolio from '../../../../config/selects/SelectPortfolio'
+import SelectCategory from '../../../../config/selects/SelectCategory'
+import SelectCripto from '../../../../config/selects/SelectCripto'
 
 
-const Api = require('../../api/PortfoliocriptosApi')
+const Api = require('../../../api/PortfolioApi')
 
 
 class PortfoliocriptoForm extends Component {
@@ -149,7 +149,7 @@ class PortfoliocriptoForm extends Component {
   }
 
   render() {
-    const { redirect, portfoliocripto, errors, cripto_options, portfolio_options, category_options } = this.state
+    const { redirect, portfoliocripto, errors, cripto_options, category_options, portfolio_options } = this.state
 
     if (redirect) {
       return (
@@ -172,6 +172,8 @@ class PortfoliocriptoForm extends Component {
               <Form onSubmit={this.handleSubmit}>
                 <Row>
                   <Col md={ 4 }>
+                  {/* <Input type="text" name="category" id="category" defaultValue={2} placeholder="Enter category" onChange={this.setCategory} /> */}
+
                     <SelectCategory 
                       category_options={category_options} 
                       asset={portfoliocripto}
@@ -179,6 +181,7 @@ class PortfoliocriptoForm extends Component {
                     />
                   </Col>
                   <Col md={ 4 }>
+                    {/* <Input type="text" name="portfolio" id="portfolio" defaultValue={1} placeholder="Enter portfolio" onChange={this.setPortfolio} /> */}
                     <SelectPortfolio 
                       portfolio_options={portfolio_options} 
                       asset={portfoliocripto} 
