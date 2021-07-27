@@ -1,6 +1,6 @@
 import { apiHost } from '../../config/apiHost';
 
-// TODO: base portfolios url
+// TODO: base
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -23,6 +23,8 @@ const collectErrors = (response) => {
   })
   return errors
 }
+
+// Portfolios 
 
 const deletePortfolio = (id) => {
   let response_ok = null
@@ -125,30 +127,11 @@ const savePortfolio = (data, id=null) => {
   })
 }
 
+// Portfoliocriptos
+
 const getPortfoliocriptos = (id) => {
   let response_ok = null
   return fetch(`${apiHost}/api/portfolio/portfoliocriptos/${id}`, {
-    method: 'get',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => {
-      response_ok = response.ok
-      return response.json()
-    })
-    .then(response => {
-      if (response_ok) {
-        return [false, response]
-      } else {
-        return [true, collectErrors(response)]
-      }
-    })
-}
-
-const getPortfoliofiis = (id) => {
-  let response_ok = null
-  return fetch(`${apiHost}/api/portfolio/portfoliofiis/${id}`, {
     method: 'get',
       headers: {
         'Content-Type': 'application/json'
@@ -246,14 +229,122 @@ const savePortfoliocripto = (data, id=null) => {
   })
 }
 
+// Porfoliofiis
+
+const getPortfoliofiis = (id) => {
+  let response_ok = null
+  return fetch(`${apiHost}/api/portfolio/portfoliofiis/${id}`, {
+    method: 'get',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      response_ok = response.ok
+      return response.json()
+    })
+    .then(response => {
+      if (response_ok) {
+        return [false, response]
+      } else {
+        return [true, collectErrors(response)]
+      }
+    })
+}
+
+const deletePortfoliofii = (id) => {
+  let response_ok = null
+  return fetch(`${apiHost}/api/portfoliofiis/${id}`, {
+    method: 'delete',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => {
+    response_ok = response.ok
+    if (response.status === 204) {
+      return ''
+    } else {
+      return response.json()
+    }
+  })
+  .then(response => {
+    if (response_ok) {
+      return [false, response]
+    } else {
+      return [true, collectErrors(response)]
+    }
+  })
+}
+const getPortfoliofii = (id) => {
+  let response_ok = null
+  return fetch(`${apiHost}/api/portfoliofiis/${id}`, {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => {
+    response_ok = response.ok
+    return response.json()
+  })
+  .then(response => {
+    if (response_ok) {
+      return [false, response]
+    } else {
+      return [true, collectErrors(response)]
+    }
+  })
+}
+
+const savePortfoliofii = (data, id=null) => {
+  let apiUrl = `${apiHost}/api/portfoliofiis`
+  let apiMethod = 'post'
+  if (id) {
+    apiUrl = `${apiUrl}/${id}`
+    apiMethod = 'put'
+  }
+
+  const body = JSON.stringify({
+    portfoliofii: data
+  })
+
+  let response_ok = null
+  return fetch(apiUrl, {
+    method: apiMethod,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: body
+  })
+  .then(response => {
+    response_ok = response.ok
+    return response.json()
+  })
+  .then(response => {
+    if (response_ok) {
+      return [false, null]
+    } else {
+      return [true, collectErrors(response)]
+    }
+  })
+}
+
+
+
 export {
   savePortfolio,
   getPortfolio,
   deletePortfolio,
   getPortfolios,
   getPortfoliocriptos,
-  getPortfoliofiis,
   deletePortfoliocripto,
   getPortfoliocripto,
-  savePortfoliocripto
+  savePortfoliocripto,
+  getPortfoliofiis,
+  deletePortfoliofii,
+  getPortfoliofii,
+  savePortfoliofii,
+
 }
